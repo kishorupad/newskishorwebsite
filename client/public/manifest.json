@@ -1,0 +1,21 @@
+{
+  "name": "Kishor Upadhyaya - Social Media Expert",
+  "short_name": "Kishor",
+  "description": "Social Media Expert in Nepal. Account recovery, monetization, AdSense, payout issues solved.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0891b2",
+  "icons": [
+    {
+      "src": "https://kishorupadhyaya.com.np/manus-storage/kishor-profile_3d68c9be.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://kishorupadhyaya.com.np/manus-storage/kishor-profile_3d68c9be.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

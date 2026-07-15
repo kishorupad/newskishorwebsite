@@ -21,6 +21,8 @@ export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [showExitPopup, setShowExitPopup] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [showBackToTop, setShowBackToTop] = useState(false);
 
   const allTestimonials = useMemo(() => [
     { name: 'Aarav Sharma', text: 'My Facebook account was hacked last month. Kishor recovered it within 2 days. Very professional work, kept me updated the whole time.', platform: 'Facebook', time: '2 days' },
@@ -80,10 +82,14 @@ export default function Home() {
     return () => document.removeEventListener('mouseleave', handleMouseLeave);
   }, [handleMouseLeave]);
 
-  // Scroll detection for sticky bar
+  // Scroll detection for sticky bar + progress
   useEffect(() => {
     const handleScroll = () => {
       setHasScrolled(window.scrollY > 400);
+      setShowBackToTop(window.scrollY > 600);
+      const winScroll = document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      setScrollProgress(height > 0 ? (winScroll / height) * 100 : 0);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -120,6 +126,14 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      {/* Scroll Progress Bar */}
+      <div className="fixed top-0 left-0 right-0 z-[60] h-1 bg-transparent">
+        <div
+          className="h-full bg-gradient-to-r from-cyan-500 to-blue-500 transition-all duration-150"
+          style={{ width: `${scrollProgress}%` }}
+        />
+      </div>
+
       <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:bg-primary focus:text-primary-foreground focus:px-4 focus:py-2 focus:rounded-md">
         Skip to main content
       </a>
@@ -995,6 +1009,19 @@ export default function Home() {
             <MessageCircle size={13} /> WhatsApp
           </a>
         </div>
+      )}
+
+      {/* ─── BACK TO TOP ─── */}
+      {showBackToTop && (
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="fixed bottom-6 left-6 z-50 w-10 h-10 bg-background border border-border rounded-full flex items-center justify-center shadow-lg hover:bg-muted transition-all duration-300 hover:scale-110"
+          aria-label="Back to top"
+        >
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="text-foreground">
+            <path d="M8 12V4M8 4L4 8M8 4L12 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </button>
       )}
 
       {/* ─── EXIT INTENT POPUP ─── */}
