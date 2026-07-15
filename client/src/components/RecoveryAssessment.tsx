@@ -12,7 +12,15 @@ interface Answers {
 }
 
 const platformOptions = ['Facebook', 'Instagram', 'YouTube', 'TikTok', 'Google/AdSense', 'Other'];
-const issueOptions = ['Account Hacked/Locked', 'Monetization Problem', 'AdSense Issue', 'Payout/Bank Problem', 'Verification Badge', 'Page/Channel Issue', 'Other'];
+
+const issuesByPlatform: Record<string, string[]> = {
+  Facebook: ['Account Hacked/Locked', 'Monetization Problem', 'Payout/Bank Problem', 'Verification Badge', 'Page/Channel Issue', 'Ad Account Problem', 'Other'],
+  Instagram: ['Account Hacked/Locked', 'Monetization Problem', 'Payout/Bank Problem', 'Verification Badge', 'Profile/Account Issue', 'Shadowban/Restriction', 'Other'],
+  YouTube: ['Account Hacked/Locked', 'Monetization Problem', 'AdSense Issue', 'Payout/Bank Problem', 'Copyright Strike', 'Community Guidelines', 'Subscriber/Watch Time', 'Other'],
+  TikTok: ['Account Hacked/Locked', 'Monetization Problem', 'Payout/Bank Problem', 'Creator Fund Issue', 'Follower/View Issue', 'Other'],
+  'Google/AdSense': ['AdSense Disapproved', 'AdSense Banned', 'Invalid Traffic Issue', 'Payment/Payout Problem', 'Policy Violation', 'PIN Verification', 'Other'],
+  Other: ['Account Hacked/Locked', 'Monetization Problem', 'Payout/Bank Problem', 'Verification Badge', 'Other'],
+};
 const timeOptions = ['Less than 24 hours', '1-3 days', '1-7 weeks', 'More than a month'];
 const accessOptions = ['Yes, I have access', 'No, locked out', 'Not sure'];
 const urgencyOptions = ['Critical — losing money', 'Important — need soon', 'Can wait a few days'];
@@ -69,7 +77,11 @@ export default function RecoveryAssessment() {
   const [showResult, setShowResult] = useState(false);
 
   const setAnswer = (key: keyof Answers, value: string) => {
-    setAnswers(prev => ({ ...prev, [key]: value }));
+    if (key === 'platform') {
+      setAnswers(prev => ({ ...prev, platform: value, issue: '' }));
+    } else {
+      setAnswers(prev => ({ ...prev, [key]: value }));
+    }
   };
 
   const canNext = () => {
@@ -100,7 +112,7 @@ export default function RecoveryAssessment() {
 
   const steps = [
     { question: 'Which platform?', options: platformOptions, key: 'platform' as const },
-    { question: 'What\'s the problem?', options: issueOptions, key: 'issue' as const },
+    { question: 'What\'s the problem?', options: issuesByPlatform[answers.platform] || issuesByPlatform['Other'], key: 'issue' as const },
     { question: 'How long ago?', options: timeOptions, key: 'timeSinceIssue' as const },
     { question: 'Account access?', options: accessOptions, key: 'hasAccountAccess' as const },
     { question: 'How urgent?', options: urgencyOptions, key: 'urgency' as const },
