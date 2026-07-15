@@ -205,7 +205,7 @@ export default function Home() {
                   <div className="relative rounded-3xl overflow-hidden border border-border shadow-2xl shadow-cyan-500/5">
                     <img
                       src="/manus-storage/kishor-profile_3d68c9be.png"
-                      alt="Kishor Upadhyaya - Account Recovery Specialist"
+                      alt="Kishor Upadhyaya - Social Media Expert Nepal"
                       className="w-full aspect-square object-cover"
                       loading="eager"
                       fetchPriority="high"

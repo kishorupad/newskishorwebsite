@@ -15,8 +15,8 @@ export default function SEOHead() {
     const localBusinessSchema = {
       '@context': 'https://schema.org',
       '@type': 'LocalBusiness',
-      name: 'Kishor Upadhyaya - Account Recovery Expert',
-      description: 'Professional account recovery expert specializing in Facebook, Instagram, and YouTube account recovery',
+      name: 'Kishor Upadhyaya - Social Media Expert',
+      description: 'Professional social media expert specializing in Facebook, Instagram, and YouTube account recovery',
       url: SITE_URL,
       telephone: PHONE,
       email: EMAIL,
