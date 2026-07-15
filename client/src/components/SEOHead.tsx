@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { getYearsExperienceText } from '@/lib/experience';
 
-const PROFILE_IMAGE = '/manus-storage/kishor-profile_3d68c9be.png';
+const PROFILE_IMAGE = '/kishwor-5-1770795722.jpg';
 const SITE_URL = 'https://kishorupadhyaya.com.np';
 const PHONE = '+977-9843818304';
 const EMAIL = 'kishorupadhyaya222@gmail.com';

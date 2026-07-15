@@ -204,9 +204,9 @@ export default function Home() {
                   <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-blue-500/5 rounded-3xl blur-[60px]" />
                   <div className="relative rounded-3xl overflow-hidden border border-border shadow-2xl shadow-cyan-500/5">
                     <img
-                      src="/manus-storage/kishor-profile_3d68c9be.png"
+                      src="/kishwor-5-1770795722.jpg"
                       alt="Kishor Upadhyaya - Social Media Expert Nepal"
-                      className="w-full aspect-square object-cover"
+                      className="w-full aspect-square object-cover transition-transform duration-500 hover:scale-110"
                       loading="eager"
                       fetchPriority="high"
                       width="600"
