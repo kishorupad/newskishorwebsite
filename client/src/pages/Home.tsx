@@ -9,6 +9,7 @@ import LiveChat from '@/components/LiveChat';
 import { trpc } from '@/lib/trpc';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { useLang } from '@/contexts/LangContext';
+import { getYearsExperienceText } from '@/lib/experience';
 import { Phone, Mail, MessageCircle, ArrowRight, Shield, Facebook, Instagram, Youtube, Users, Search, CheckCircle, Clock, Lock, DollarSign, Award, ExternalLink } from 'lucide-react';
 
 export default function Home() {
@@ -114,7 +115,7 @@ export default function Home() {
     { value: '1500+', label: 'Problems Solved' },
     { value: '98%', label: 'Success Rate' },
     { value: '24h', label: 'Response Time' },
-    { value: '7+', label: 'Years Experience' },
+    { value: getYearsExperienceText(), label: 'Years Experience' },
   ];
 
   return (
@@ -149,8 +150,8 @@ export default function Home() {
 
                 <p className="text-lg text-muted-foreground/80 mb-4 leading-relaxed max-w-xl">
                   {t(
-                    'From account recovery to monetization, AdSense, payouts, and every social media problem — I handle it all. 7+ years of experience across every major platform.',
-                    'खाता रिकभरीदेखि मोनेटाइजेसन, AdSense, पेमेन्ट, र हरेक सोसल मिडिया समस्या — म सबै सम्भाल्छु। प्रत्येक प्रमुख प्लेटफर्ममा ७+ वर्षको अनुभव।'
+                    `From account recovery to monetization, AdSense, payouts, and every social media problem — I handle it all. ${getYearsExperienceText()} years of experience across every major platform.`,
+                    `खाता रिकभरीदेखि मोनेटाइजेसन, AdSense, पेमेन्ट, र हरेक सोसल मिडिया समस्या — म सबै सम्भाल्छु। प्रत्येक प्रमुख प्लेटफर्ममा ${getYearsExperienceText()} वर्षको अनुभव।`
                   )}
                 </p>
 
@@ -553,7 +554,7 @@ export default function Home() {
                 { icon: '🔒', label: '100% Confidential' },
                 { icon: '⚡', label: '24h Response' },
                 { icon: '✅', label: 'Verified Expert' },
-                { icon: '🏆', label: '7+ Years Experience' },
+                { icon: '🏆', label: `${getYearsExperienceText()} Years Experience` },
                 { icon: '💰', label: 'Pay After Fix' },
                 { icon: '🛡️', label: 'Secure Process' },
               ].map((badge, idx) => (

@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { getYearsExperienceText } from '@/lib/experience';
 
 const PROFILE_IMAGE = '/manus-storage/kishor-profile_3d68c9be.png';
 const SITE_URL = 'https://kishorupadhyaya.com.np';
@@ -65,7 +66,7 @@ export default function SEOHead() {
       name: 'Kishor Upadhyaya',
       url: SITE_URL,
       logo: PROFILE_IMAGE,
-      description: 'Professional account recovery expert with 7+ years of experience',
+      description: `Professional account recovery expert with ${getYearsExperienceText()} years of experience`,
       sameAs: [
         'https://www.facebook.com/kishorupadhyaya',
         'https://www.instagram.com/kishorupadhyaya',

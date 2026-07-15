@@ -465,7 +465,7 @@ export default function Resources() {
               <Card className="mt-8 p-8 bg-gradient-to-r from-primary/10 to-secondary/10 border-primary/20">
                 <h3 className="text-2xl font-bold mb-4">Need Professional Help?</h3>
                 <p className="text-muted-foreground mb-6">
-                  If you're dealing with a compromised account or need expert assistance, I'm here to help. With 7+ years of experience and a 98% success rate, I can recover your account quickly and securely.
+                  If you're dealing with a compromised account or need expert assistance, I'm here to help. With 8+ years of experience and a 98% success rate, I can recover your account quickly and securely.
                 </p>
                 <div className="flex gap-4">
                   <Button className="bg-primary hover:bg-primary/90">Get Help Now</Button>
