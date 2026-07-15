@@ -355,6 +355,21 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ─── PROBLEM ASSESSMENT ─── */}
+        <section id="assessment" className="py-16 md:py-20">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-10 scroll-animate">
+              <h2 className="text-4xl md:text-5xl font-bold mb-3">
+                Free Problem <span className="text-cyan-600 dark:text-cyan-400">Assessment</span>
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-xl mx-auto">
+                Answer 5 quick questions and get a personalized solution plan
+              </p>
+            </div>
+            <RecoveryAssessment />
+          </div>
+        </section>
+
         {/* ─── SOCIAL PROOF (Stats + Testimonials) ─── */}
         <section id="social-proof" className="py-16 md:py-20">
           <div className="container mx-auto px-4">
@@ -628,21 +643,6 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          </div>
-        </section>
-
-        {/* ─── PROBLEM ASSESSMENT ─── */}
-        <section id="assessment" className="py-16 md:py-20">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-10 scroll-animate">
-              <h2 className="text-4xl md:text-5xl font-bold mb-3">
-                Free Problem <span className="text-cyan-600 dark:text-cyan-400">Assessment</span>
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-xl mx-auto">
-                Answer 5 quick questions and get a personalized solution plan
-              </p>
-            </div>
-            <RecoveryAssessment />
           </div>
         </section>
 
