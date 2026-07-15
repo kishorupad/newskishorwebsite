@@ -545,6 +545,27 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ─── TRUST BADGES ─── */}
+        <section className="py-12 border-y border-border bg-muted/20">
+          <div className="container mx-auto px-4">
+            <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10 scroll-animate">
+              {[
+                { icon: '🔒', label: '100% Confidential' },
+                { icon: '⚡', label: '24h Response' },
+                { icon: '✅', label: 'Verified Expert' },
+                { icon: '🏆', label: '7+ Years Experience' },
+                { icon: '💰', label: 'Pay After Fix' },
+                { icon: '🛡️', label: 'Secure Process' },
+              ].map((badge, idx) => (
+                <div key={idx} className="flex items-center gap-2 text-sm font-medium text-muted-foreground">
+                  <span className="text-lg">{badge.icon}</span>
+                  {badge.label}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* ─── GUARANTEES ─── */}
         <section id="guarantees" className="py-16 md:py-20 bg-muted/30">
           <div className="container mx-auto px-4">
@@ -687,6 +708,46 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ─── BLOG PREVIEW ─── */}
+        <section className="py-16 md:py-20">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-10 scroll-animate">
+              <h2 className="text-4xl md:text-5xl font-bold mb-3">
+                Free <span className="text-cyan-600 dark:text-cyan-400">Resources</span>
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-xl mx-auto">
+                Learn how to protect and manage your social media accounts
+              </p>
+            </div>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
+              {[
+                { title: 'How to Recognize Phishing Attacks', desc: 'Learn to identify common phishing tactics and protect your accounts.', icon: '🎣', readTime: '3 min', href: '/resources' },
+                { title: 'Facebook Account Recovery Guide', desc: 'Step-by-step guide to recover your hacked Facebook account.', icon: '📘', readTime: '5 min', href: '/resources' },
+                { title: 'Instagram Security Best Practices', desc: 'Essential security tips to keep your Instagram account safe.', icon: '📸', readTime: '4 min', href: '/resources' },
+              ].map((post, idx) => (
+                <a
+                  key={idx}
+                  href={post.href}
+                  className="scroll-animate p-5 rounded-2xl bg-card border border-border hover:border-cyan-500/20 transition-all duration-300 hover:-translate-y-1 group"
+                  style={{ transitionDelay: `${idx * 80}ms` }}
+                >
+                  <div className="text-3xl mb-3">{post.icon}</div>
+                  <h3 className="font-bold text-sm mb-1.5 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">{post.title}</h3>
+                  <p className="text-muted-foreground text-xs leading-relaxed mb-3">{post.desc}</p>
+                  <span className="text-[10px] font-medium text-muted-foreground">{post.readTime} read →</span>
+                </a>
+              ))}
+            </div>
+
+            <div className="text-center mt-8 scroll-animate">
+              <a href="/resources" className="inline-flex items-center gap-2 px-6 py-3 border border-border text-foreground font-semibold rounded-xl hover:bg-muted transition-all duration-300">
+                View All Resources <ArrowRight size={16} />
+              </a>
+            </div>
+          </div>
+        </section>
+
         {/* ─── CONTACT ─── */}
         <section id="contact" className="py-16 md:py-20 bg-muted/30">
           <div className="container mx-auto px-4">
@@ -769,6 +830,16 @@ export default function Home() {
                   <div>
                     <label htmlFor="contact-message" className="block text-sm font-medium mb-1.5">Describe Your Issue *</label>
                     <Textarea id="contact-message" placeholder="Tell me about your account issue..." value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} rows={4} required />
+                  </div>
+                  <div>
+                    <label htmlFor="contact-screenshot" className="block text-sm font-medium mb-1.5">Screenshot (optional)</label>
+                    <p className="text-xs text-muted-foreground mb-2">Attach a screenshot of the error or issue you're facing</p>
+                    <input
+                      type="file"
+                      id="contact-screenshot"
+                      accept="image/*,.pdf"
+                      className="w-full text-sm text-muted-foreground file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-cyan-500/10 file:text-cyan-600 dark:file:text-cyan-400 hover:file:bg-cyan-500/20 file:cursor-pointer"
+                    />
                   </div>
                   <div>
                     <label htmlFor="contact-source" className="block text-sm font-medium mb-1.5">How did you hear about me?</label>
@@ -912,20 +983,20 @@ export default function Home() {
             </button>
             <div className="text-center">
               <div className="w-14 h-14 bg-cyan-500/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <MessageCircle size={28} className="text-cyan-600 dark:text-cyan-400" />
+                <span className="text-2xl">🎁</span>
               </div>
-              <h3 className="text-xl font-bold mb-2 font-[Sora]">Need Help Recovering Your Account?</h3>
+              <h3 className="text-xl font-bold mb-2 font-[Sora]">Free Security Checklist</h3>
               <p className="text-muted-foreground text-sm mb-5 leading-relaxed">
-                Don't wait — the sooner you act, the better the chances of recovery. Message me on WhatsApp for a free consultation.
+                Get my <strong>10-point social media security checklist</strong> — protect your accounts from hacking. Free, no strings attached.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <a
-                  href="https://wa.me/9779843818304?text=Hi%20Kishor%2C%20I%20need%20help%20recovering%20my%20account"
+                  href="https://wa.me/9779843818304?text=Hi%20Kishor%2C%20please%20send%20me%20the%20free%20security%20checklist"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1 flex items-center justify-center gap-2 py-3 bg-[#25D366] hover:bg-[#20BD5A] text-white font-semibold rounded-xl transition-colors"
                 >
-                  <MessageCircle size={18} /> Chat on WhatsApp
+                  <MessageCircle size={18} /> Get Free Checklist
                 </a>
                 <button
                   onClick={() => setShowExitPopup(false)}
@@ -934,6 +1005,7 @@ export default function Home() {
                   Maybe Later
                 </button>
               </div>
+              <p className="text-[10px] text-muted-foreground mt-3">Sent via WhatsApp. Takes 10 seconds.</p>
             </div>
           </div>
         </div>

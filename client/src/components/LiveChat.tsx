@@ -29,7 +29,7 @@ const responses: Record<string, Message[]> = {
     { id: 2, text: 'Got it — YouTube. What kind of problem are you facing?', isBot: true, options: ['Hacked/Locked', 'Monetization', 'AdSense', 'Copyright Strike', 'Other'] },
   ],
   'Google AdSense': [
-    { id: 2, text: 'Got it — AdSense. What kind of problem are you facing?', isBot: true, options: ['Disapproved', 'Payment Issue', 'Policy Violation', 'Other'] },
+    { id: 2, text: 'Got it — AdSense. What kind of problem are you facing?', isBot: true, options: ['News AdSense Setup', 'Identity Verification', 'PIN/Address Verification', 'Payment Stuck', 'Other'] },
   ],
   'Other': [
     { id: 2, text: 'No problem. What platform and what kind of issue?', isBot: true, options: ['Account Issue', 'Monetization', 'Payment/Payout', 'Other'] },
@@ -114,6 +114,18 @@ const responses: Record<string, Message[]> = {
   ],
   'Payment/Payout': [
     { id: 4, text: "Payment and payout issues are fixable. Connect with Kishor on WhatsApp for help.", isBot: true, action: { label: 'Chat with Kishor on WhatsApp', href: 'https://wa.me/9779843818304?text=Hi%20Kishor%2C%20I%20have%20a%20payment%2Fpayout%20issue.' } },
+  ],
+  'News AdSense Setup': [
+    { id: 3, text: "News AdSense requires specific compliance. Connect with Kishor on WhatsApp for setup assistance.", isBot: true, action: { label: 'Chat with Kishor on WhatsApp', href: 'https://wa.me/9779843818304?text=Hi%20Kishor%2C%20I%20need%20help%20with%20News%20AdSense%20setup.' } },
+  ],
+  'Identity Verification': [
+    { id: 3, text: "AdSense identity verification issues are common and fixable. Connect with Kishor on WhatsApp.", isBot: true, action: { label: 'Chat with Kishor on WhatsApp', href: 'https://wa.me/9779843818304?text=Hi%20Kishor%2C%20I%20have%20an%20AdSense%20identity%20verification%20issue.' } },
+  ],
+  'PIN/Address Verification': [
+    { id: 3, text: "PIN not arriving? Address verification stuck? Connect with Kishor on WhatsApp for help.", isBot: true, action: { label: 'Chat with Kishor on WhatsApp', href: 'https://wa.me/9779843818304?text=Hi%20Kishor%2C%20my%20AdSense%20PIN%2Faddress%20verification%20is%20stuck.' } },
+  ],
+  'Payment Stuck': [
+    { id: 3, text: "AdSense payment stuck is usually fixable. Connect with Kishor on WhatsApp for assistance.", isBot: true, action: { label: 'Chat with Kishor on WhatsApp', href: 'https://wa.me/9779843818304?text=Hi%20Kishor%2C%20my%20AdSense%20payment%20is%20stuck.' } },
   ],
 };
 
