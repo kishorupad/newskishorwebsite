@@ -111,10 +111,10 @@ export default function Home() {
   ];
 
   const stats = [
-    { value: '500+', label: 'Cases Solved' },
-    { value: '98%', label: 'Success Rate' },
-    { value: '7+', label: 'Years Experience' },
-    { value: '24h', label: 'Avg. Response Time' },
+    { value: '1500+', label: 'Problems Solved' },
+    { value: '600+', label: 'Accounts Recovered' },
+    { value: '300+', label: 'Channels Monetized' },
+    { value: '200+', label: 'AdSense Fixed' },
   ];
 
   return (
@@ -155,9 +155,9 @@ export default function Home() {
                 </p>
 
                 <div className="flex items-center gap-4 mb-8 text-sm text-muted-foreground flex-wrap">
-                  <span className="flex items-center gap-1.5"><span className="text-cyan-600 dark:text-cyan-400 font-bold">500+</span> cases solved</span>
+                  <span className="flex items-center gap-1.5"><span className="text-cyan-600 dark:text-cyan-400 font-bold">1500+</span> problems solved</span>
                   <span className="w-1 h-1 rounded-full bg-border" />
-                  <span className="flex items-center gap-1.5"><span className="text-cyan-600 dark:text-cyan-400 font-bold">98%</span> success rate</span>
+                  <span className="flex items-center gap-1.5"><span className="text-cyan-600 dark:text-cyan-400 font-bold">600+</span> accounts recovered</span>
                   <span className="w-1 h-1 rounded-full bg-border" />
                   <span className="flex items-center gap-1.5"><span className="text-cyan-600 dark:text-cyan-400 font-bold">24h</span> response</span>
                 </div>
