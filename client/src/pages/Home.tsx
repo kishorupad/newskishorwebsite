@@ -394,7 +394,7 @@ export default function Home() {
                 {
                   title: 'Instagram Verification Badge',
                   client: 'Fitness influencer, Chitwan',
-                  problem: 'Had 200K+ followers but couldn't get verified. Multiple rejections despite meeting criteria.',
+                  problem: 'Had 200K+ followers but couldn\'t get verified. Multiple rejections despite meeting criteria.',
                   solution: 'Optimized profile for verification, built media presence documentation, created press coverage, submitted strategic application.',
                   result: 'Blue badge obtained. Profile credibility and brand deals increased.',
                   icon: Instagram,
@@ -404,7 +404,7 @@ export default function Home() {
                   title: 'Payout Failed — 3 Months Stuck',
                   client: 'Content creator, Butwal',
                   problem: 'Facebook creator payouts failing for 3 months. $2,400 stuck. Bank details were correct but payouts kept failing.',
-                  solution: 'Identified mismatch between Facebook payout settings and bank's IBAN format. Coordinated with both Facebook and bank.',
+                  solution: 'Identified mismatch between Facebook payout settings and bank\'s IBAN format. Coordinated with both Facebook and bank.',
                   result: 'All pending payouts released. Monthly payouts now working smoothly.',
                   icon: DollarSign,
                   color: 'from-emerald-600 to-emerald-500',
