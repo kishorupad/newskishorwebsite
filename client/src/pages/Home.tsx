@@ -81,9 +81,9 @@ export default function Home() {
     { q: 'How long does account recovery take?', a: 'Most recoveries are completed within 24-72 hours. Complex cases may take up to a week. I keep you updated throughout the process.' },
     { q: 'What information do you need from me?', a: 'I need your account details, the nature of the hack, any recovery emails or phone numbers on file, and proof of identity. I\'ll guide you through everything.' },
     { q: 'Is my personal information safe?', a: 'Absolutely. I use strict security protocols and never share your information with third parties. All data is deleted after recovery.' },
-    { q: 'What if my account cannot be recovered?', a: 'I offer a full money-back guarantee. If I cannot recover your account after exhausting all options, you get 100% of your payment back.' },
+    { q: 'What if my account cannot be recovered?', a: 'The Rs. 2,000 consultation fee covers investigation and assessment. If I cannot solve your problem, you don\'t pay the remaining service fee.' },
     { q: 'Do you only handle hacking cases?', a: 'I handle all social media issues including hacked accounts, locked accounts, suspended accounts, disabled accounts, and forgotten credentials.' },
-    { q: 'How do I pay?', a: 'Payment is only required after successful recovery. No upfront fees. I accept bank transfer, eSewa, and Khalti.' },
+    { q: 'How do I pay?', a: 'Rs. 2,000 consultation fee upfront (covers investigation and assessment). The remaining service fee is charged only after your problem is resolved. I accept bank transfer, eSewa, and Khalti.' },
   ];
 
   const stats = [
@@ -527,7 +527,7 @@ export default function Home() {
                 { icon: DollarSign, title: 'Rs. 2,000 Consultation', desc: 'Initial investigation and assessment fee. Covers full case analysis and recovery plan.', color: 'from-cyan-500 to-cyan-400' },
                 { icon: Clock, title: 'Fast Response', desc: 'I respond to all inquiries within 2-4 hours. Emergency cases get priority handling.', color: 'from-emerald-500 to-emerald-400' },
                 { icon: Lock, title: 'Confidential', desc: 'Your information is kept strictly confidential and encrypted. Data deleted after resolution.', color: 'from-blue-500 to-blue-400' },
-                { icon: CheckCircle, title: 'Pay After Fix', desc: 'Full service fee only charged after your problem is resolved. No hidden charges.', color: 'from-amber-500 to-amber-400' },
+                { icon: CheckCircle, title: 'Pay After Fix', desc: 'Rs. 2,000 upfront investigation. Remaining service fee only after your problem is resolved. No hidden charges.', color: 'from-amber-500 to-amber-400' },
               ].map((item, idx) => (
                 <div key={idx} className="scroll-animate p-5 rounded-2xl bg-card border border-border text-center" style={{ transitionDelay: `${idx * 80}ms` }}>
                   <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${item.color} flex items-center justify-center mx-auto mb-3 shadow-md`}>
@@ -553,7 +553,7 @@ export default function Home() {
                 </div>
                 <div>
                   <span className="font-bold text-muted-foreground">Payment</span>
-                  <p className="text-muted-foreground mt-1">Full fee only after problem is resolved</p>
+                  <p className="text-muted-foreground mt-1">Rs. 2,000 upfront, rest after fix</p>
                 </div>
               </div>
             </div>
