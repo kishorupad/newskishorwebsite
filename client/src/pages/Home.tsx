@@ -8,13 +8,11 @@ import RecoveryAssessment from '@/components/RecoveryAssessment';
 import LiveChat from '@/components/LiveChat';
 import { trpc } from '@/lib/trpc';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { useLang } from '@/contexts/LangContext';
 import { getYearsExperienceText } from '@/lib/experience';
 import { Phone, Mail, MessageCircle, ArrowRight, Shield, Facebook, Instagram, Youtube, Users, Search, CheckCircle, Clock, Lock, DollarSign, Award, ExternalLink } from 'lucide-react';
 
 export default function Home() {
   useScrollAnimation();
-  const { t } = useLang();
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', platform: '' as 'facebook' | 'instagram' | 'youtube' | 'tiktok' | 'adsense' | 'other' | '', message: '', source: '' as 'google' | 'whatsapp' | 'referral' | 'social-media' | 'other' | '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
@@ -139,7 +137,7 @@ export default function Home() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className="animate-fade-in-up">
                 <div className="inline-block mb-5 px-4 py-1.5 bg-cyan-500/8 border border-cyan-500/15 rounded-full">
-                  <span className="text-cyan-600 dark:text-cyan-400 text-sm font-medium">{t('Social Media Expert', 'सोसल मिडिया विशेषज्ञ')}</span>
+                  <span className="text-cyan-600 dark:text-cyan-400 text-sm font-medium">Social Media Expert</span>
                 </div>
 
                 <h1 className="text-5xl lg:text-7xl font-bold mb-5 leading-[1.08] tracking-tight">
@@ -147,14 +145,11 @@ export default function Home() {
                 </h1>
 
                 <p className="text-xl lg:text-2xl text-muted-foreground mb-3 font-semibold font-[Sora]">
-                  {t('All-in-One Social Media Solutions', 'सबै सोसल मिडिया समाधान')}
+                  All-in-One Social Media Solutions
                 </p>
 
                 <p className="text-lg text-muted-foreground/80 mb-4 leading-relaxed max-w-xl">
-                  {t(
-                    `From account recovery to monetization, AdSense, payouts, and every social media problem — I handle it all. ${getYearsExperienceText()} years of experience across every major platform.`,
-                    `खाता रिकभरीदेखि मोनेटाइजेसन, AdSense, पेमेन्ट, र हरेक सोसल मिडिया समस्या — म सबै सम्भाल्छु। प्रत्येक प्रमुख प्लेटफर्ममा ${getYearsExperienceText()} वर्षको अनुभव।`
-                  )}
+                  From account recovery to monetization, AdSense, payouts, and every social media problem — I handle it all. {getYearsExperienceText()} years of experience across every major platform.
                 </p>
 
                 <div className="flex items-center gap-4 mb-8 text-sm text-muted-foreground flex-wrap">
