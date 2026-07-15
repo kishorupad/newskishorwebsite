@@ -162,13 +162,28 @@ export default function Home() {
                   <span className="flex items-center gap-1.5"><span className="text-cyan-600 dark:text-cyan-400 font-bold">24h</span> response</span>
                 </div>
 
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-10">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
                   {stats.map((stat, i) => (
                     <div key={i} className="scroll-animate text-center sm:text-left" style={{ transitionDelay: `${i * 100}ms` }}>
                       <div className="text-3xl font-bold text-cyan-600 dark:text-cyan-400 font-[Sora]">{stat.value}</div>
                       <p className="text-muted-foreground text-xs mt-1">{stat.label}</p>
                     </div>
                   ))}
+                </div>
+
+                <div className="scroll-animate flex flex-wrap gap-3 text-xs text-muted-foreground mb-10">
+                  <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-muted/50 border border-border">
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-500" /> 600+ Accounts Recovered
+                  </span>
+                  <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-muted/50 border border-border">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" /> 300+ Channels Monetized
+                  </span>
+                  <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-muted/50 border border-border">
+                    <span className="w-1.5 h-1.5 rounded-full bg-amber-500" /> 200+ AdSense Fixed
+                  </span>
+                  <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-muted/50 border border-border">
+                    <span className="w-1.5 h-1.5 rounded-full bg-purple-500" /> 400+ Other Issues
+                  </span>
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-3">
