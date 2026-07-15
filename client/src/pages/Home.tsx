@@ -37,7 +37,7 @@ export default function Home() {
     { name: 'Bijay Gurung', text: 'My business page was hacked during a festival season. Kishor worked overtime to recover it quickly. Saved my business.', platform: 'Facebook', time: '1 day' },
     { name: 'Sapna Bista', text: 'Instagram shadowban was killing my reach. Kishor identified the cause and helped me fix it. My engagement is back to normal.', platform: 'Instagram', time: '4 days' },
     { name: 'Nischal KC', text: 'YouTube copyright strike was unfair. Kishor helped me file a proper counter-notification and the strike was removed.', platform: 'YouTube', time: '3 days' },
-    { name: 'Ashmita Thapa', text: 'AdSense account was disabled for invalid traffic. Kishor analyzed everything, fixed the issues, and got it reinstated.', platform: 'AdSense', time: '1 week' },
+    { name: 'Ashmita Thapa', text: 'My AdSense PIN verification was stuck for months. Kishor helped me complete identity verification and now I\'m receiving payments regularly.', platform: 'AdSense', time: '1 week' },
   ], []);
 
   const [testimonials] = useState(() => {
@@ -217,7 +217,7 @@ export default function Home() {
               {[
                 { icon: Shield, title: 'Account Recovery', desc: 'Recover hacked, locked, or disabled accounts on any social media platform.', time: '24-72 hours', color: 'from-blue-600 to-blue-500', msg: 'Hi Kishor, I need help recovering my account.' },
                 { icon: DollarSign, title: 'Monetization Setup', desc: 'Get your Facebook, Instagram, or YouTube account monetized. Eligibility check and full setup.', time: '3-7 days', color: 'from-emerald-600 to-emerald-500', msg: 'Hi Kishor, I need help with monetization.' },
-                { icon: Search, title: 'AdSense Integration', desc: 'Link AdSense to your YouTube channel or website. Fix AdSense disapproval and policy issues.', time: '2-5 days', color: 'from-amber-600 to-amber-500', msg: 'Hi Kishor, I have an AdSense problem.' },
+                { icon: Search, title: 'AdSense Integration', desc: 'News AdSense setup, identity verification, PIN/address verification, payment stuck issues. Get your AdSense working.', time: '2-5 days', color: 'from-amber-600 to-amber-500', msg: 'Hi Kishor, I have an AdSense problem.' },
                 { icon: Users, title: 'Bank & Payout Issues', desc: 'Fix payout failures, bank integration problems, and payment verification on any platform.', time: '1-3 days', color: 'from-purple-600 to-purple-500', msg: 'Hi Kishor, I have a payout/bank issue.' },
                 { icon: Facebook, title: 'Facebook Problems', desc: 'Page verification, business manager issues, ad account problems, and page recovery.', time: '24-48 hours', color: 'from-blue-600 to-blue-400', msg: 'Hi Kishor, I have a Facebook problem.' },
                 { icon: Instagram, title: 'Instagram Problems', desc: 'Profile recovery, verification badge, shadowban issues, and creator account setup.', time: '24-48 hours', color: 'from-pink-600 to-purple-500', msg: 'Hi Kishor, I have an Instagram problem.' },

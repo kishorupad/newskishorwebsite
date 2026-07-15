@@ -18,7 +18,7 @@ const issuesByPlatform: Record<string, string[]> = {
   Instagram: ['Account Hacked/Locked', 'Monetization Problem', 'Payout/Bank Problem', 'Verification Badge', 'Profile/Account Issue', 'Shadowban/Restriction', 'Other'],
   YouTube: ['Account Hacked/Locked', 'Monetization Problem', 'AdSense Issue', 'Payout/Bank Problem', 'Copyright Strike', 'Community Guidelines', 'Subscriber/Watch Time', 'Other'],
   TikTok: ['Account Hacked/Locked', 'Monetization Problem', 'Payout/Bank Problem', 'Creator Fund Issue', 'Follower/View Issue', 'Other'],
-  'Google/AdSense': ['AdSense Disapproved', 'AdSense Banned', 'Invalid Traffic Issue', 'Payment/Payout Problem', 'Policy Violation', 'PIN Verification', 'Other'],
+  'Google/AdSense': ['News AdSense Setup', 'Identity Verification', 'PIN/Address Verification', 'Payment Stuck', 'AdSense Disapproved', 'Policy Violation', 'Other'],
   Other: ['Account Hacked/Locked', 'Monetization Problem', 'Payout/Bank Problem', 'Verification Badge', 'Other'],
 };
 const timeOptions = ['Less than 24 hours', '1-3 days', '1-7 weeks', 'More than a month'];
