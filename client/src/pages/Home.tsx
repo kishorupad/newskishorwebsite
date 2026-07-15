@@ -1036,20 +1036,20 @@ export default function Home() {
             </button>
             <div className="text-center">
               <div className="w-14 h-14 bg-cyan-500/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl">🎁</span>
+                <MessageCircle size={28} className="text-cyan-600 dark:text-cyan-400" />
               </div>
-              <h3 className="text-xl font-bold mb-2 font-[Sora]">Free Security Checklist</h3>
+              <h3 className="text-xl font-bold mb-2 font-[Sora]">Need Help With Your Account?</h3>
               <p className="text-muted-foreground text-sm mb-5 leading-relaxed">
-                Get my <strong>10-point social media security checklist</strong> — protect your accounts from hacking. Free, no strings attached.
+                Don't wait — the sooner you act, the better the chances of recovery. Message me on WhatsApp for a <strong>free assessment</strong>.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <a
-                  href="https://wa.me/9779843818304?text=Hi%20Kishor%2C%20please%20send%20me%20the%20free%20security%20checklist"
+                  href="https://wa.me/9779843818304?text=Hi%20Kishor%2C%20I%20need%20help%20with%20my%20social%20media%20account"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1 flex items-center justify-center gap-2 py-3 bg-[#25D366] hover:bg-[#20BD5A] text-white font-semibold rounded-xl transition-colors"
                 >
-                  <MessageCircle size={18} /> Get Free Checklist
+                  <MessageCircle size={18} /> Chat on WhatsApp
                 </a>
                 <button
                   onClick={() => setShowExitPopup(false)}
@@ -1058,7 +1058,6 @@ export default function Home() {
                   Maybe Later
                 </button>
               </div>
-              <p className="text-[10px] text-muted-foreground mt-3">Sent via WhatsApp. Takes 10 seconds.</p>
             </div>
           </div>
         </div>
