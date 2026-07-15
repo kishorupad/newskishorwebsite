@@ -2,10 +2,12 @@ import { Button } from '@/components/ui/button';
 import { Menu, X, Sun, Moon } from 'lucide-react';
 import { useState } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
+import { useLang } from '@/contexts/LangContext';
 
 export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { theme, toggleTheme, switchable } = useTheme();
+  const { lang, setLang } = useLang();
 
   const navItems = [
     { label: 'Home', href: '#hero' },
@@ -47,6 +49,14 @@ export default function Navigation() {
                 {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
               </button>
             )}
+
+            <button
+              onClick={() => setLang(lang === 'en' ? 'ne' : 'en')}
+              aria-label="Toggle language"
+              className="px-2.5 py-1.5 rounded-lg hover:bg-muted transition-colors duration-200 text-xs font-semibold text-muted-foreground hover:text-foreground border border-border"
+            >
+              {lang === 'en' ? 'नेपाली' : 'ENG'}
+            </button>
 
             <Button asChild className="btn-gradient-sm hidden sm:inline-flex rounded-lg text-sm">
               <a href="#contact">Get Help Now</a>

@@ -13,7 +13,11 @@
     <meta name="robots" content="index, follow" />
     <meta name="language" content="English" />
     <meta name="revisit-after" content="7 days" />
-    <meta name="theme-color" content="#7c3aed" />
+    <meta name="theme-color" content="#0891b2" />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
     
     <!-- Open Graph Tags for Social Sharing -->
     <meta property="og:type" content="website" />
@@ -39,42 +43,141 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
 
-    <!-- JSON-LD Structured Data (static, server-rendered) -->
+    <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": "Kishor Upadhyaya - Account Recovery Expert",
-      "description": "Professional account recovery expert specializing in Facebook, Instagram, and YouTube account recovery",
-      "url": "https://kishorupadhyaya.com.np",
-      "telephone": "+977-9843818304",
-      "email": "kishorupadhyaya222@gmail.com",
-      "areaServed": "NP",
-      "priceRange": "$$",
-      "image": "https://kishorupadhyaya.com.np/manus-storage/kishor-profile_3d68c9be.png",
-      "sameAs": [
-        "https://www.facebook.com/kishorupadhyaya",
-        "https://www.instagram.com/kishorupadhyaya"
-      ],
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "ratingCount": "500",
-        "bestRating": "5",
-        "worstRating": "1"
-      },
-      "address": {
-        "@type": "PostalAddress",
-        "addressCountry": "NP",
-        "addressLocality": "Kathmandu"
-      }
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://kishorupadhyaya.com.np/#person",
+          "name": "Kishor Upadhyaya",
+          "jobTitle": "Social Media Expert",
+          "description": "Professional social media expert in Nepal. Account recovery, monetization, AdSense, payout issues, and all social media problems solved.",
+          "url": "https://kishorupadhyaya.com.np",
+          "image": "https://kishorupadhyaya.com.np/manus-storage/kishor-profile_3d68c9be.png",
+          "telephone": "+977-9843818304",
+          "email": "kishorupadhyaya222@gmail.com",
+          "sameAs": [
+            "https://www.facebook.com/kishorupadhyaya",
+            "https://www.instagram.com/kishorupadhyaya",
+            "https://www.linkedin.com/in/kishorupadhyaya"
+          ],
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "NP",
+            "addressLocality": "Kathmandu"
+          },
+          "knowsAbout": [
+            "Social Media Recovery",
+            "Facebook Account Recovery",
+            "Instagram Account Recovery",
+            "YouTube Monetization",
+            "Google AdSense",
+            "Social Media Marketing"
+          ],
+          "hasOccupation": {
+            "@type": "Occupation",
+            "name": "Social Media Expert",
+            "skills": "Account Recovery, Monetization, AdSense Integration, Social Media Management"
+          }
+        },
+        {
+          "@type": "ProfessionalService",
+          "@id": "https://kishorupadhyaya.com.np/#service",
+          "name": "Kishor Upadhyaya - Social Media Solutions",
+          "description": "Professional social media services including account recovery, monetization setup, AdSense integration, and bank/payout issue resolution.",
+          "url": "https://kishorupadhyaya.com.np",
+          "telephone": "+977-9843818304",
+          "email": "kishorupadhyaya222@gmail.com",
+          "areaServed": {
+            "@type": "Country",
+            "name": "Nepal"
+          },
+          "provider": {
+            "@id": "https://kishorupadhyaya.com.np/#person"
+          },
+          "priceRange": "$$",
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "ratingCount": "500",
+            "bestRating": "5",
+            "worstRating": "1"
+          },
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Social Media Services",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Account Recovery",
+                  "description": "Recover hacked, locked, or disabled social media accounts"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Monetization Setup",
+                  "description": "Get your social media accounts monetized"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "AdSense Integration",
+                  "description": "Link and fix Google AdSense issues"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "Bank & Payout Issues",
+                  "description": "Resolve payment and payout failures"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://kishorupadhyaya.com.np/#website",
+          "url": "https://kishorupadhyaya.com.np",
+          "name": "Kishor Upadhyaya - Social Media Expert",
+          "description": "Professional social media solutions in Nepal",
+          "publisher": {
+            "@id": "https://kishorupadhyaya.com.np/#person"
+          }
+        }
+      ]
     }
+    </script>
+    <!-- Google Analytics (placeholder — replace G-XXXXXXX with your Measurement ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXX');
     </script>
   </head>
 
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <!-- Accessibility: skip to main content -->
+    <noscript>
+      <div style="padding:2rem;text-align:center;font-family:sans-serif;">
+        <h1>Kishor Upadhyaya - Social Media Expert</h1>
+        <p>This website requires JavaScript to function. Please enable JavaScript in your browser.</p>
+        <p>Contact: <a href="tel:+9779843818304">+977-9843818304</a> | <a href="https://wa.me/9779843818304">WhatsApp</a></p>
+      </div>
+    </noscript>
   </body>
 
 </html>

@@ -8,10 +8,12 @@ import RecoveryAssessment from '@/components/RecoveryAssessment';
 import LiveChat from '@/components/LiveChat';
 import { trpc } from '@/lib/trpc';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { useLang } from '@/contexts/LangContext';
 import { Phone, Mail, MessageCircle, ArrowRight, Shield, Facebook, Instagram, Youtube, Users, Search, CheckCircle, Clock, Lock, DollarSign, Award, ExternalLink } from 'lucide-react';
 
 export default function Home() {
   useScrollAnimation();
+  const { t } = useLang();
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', platform: '' as 'facebook' | 'instagram' | 'youtube' | 'tiktok' | 'adsense' | 'other' | '', message: '', source: '' as 'google' | 'whatsapp' | 'referral' | 'social-media' | 'other' | '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
@@ -73,6 +75,8 @@ export default function Home() {
     contactMutation.mutate({ ...formData, platform: formData.platform || 'other' }, { onSettled: () => setIsSubmitting(false) });
   };
 
+  const wa = (msg: string) => `https://wa.me/9779843818304?text=${encodeURIComponent(msg)}`;
+
   const faqs = [
     { q: 'How long does account recovery take?', a: 'Most recoveries are completed within 24-72 hours. Complex cases may take up to a week. I keep you updated throughout the process.' },
     { q: 'What information do you need from me?', a: 'I need your account details, the nature of the hack, any recovery emails or phone numbers on file, and proof of identity. I\'ll guide you through everything.' },
@@ -108,7 +112,7 @@ export default function Home() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className="animate-fade-in-up">
                 <div className="inline-block mb-5 px-4 py-1.5 bg-cyan-500/8 border border-cyan-500/15 rounded-full">
-                  <span className="text-cyan-600 dark:text-cyan-400 text-sm font-medium">Social Media Expert</span>
+                  <span className="text-cyan-600 dark:text-cyan-400 text-sm font-medium">{t('Social Media Expert', 'सोसल मिडिया विशेषज्ञ')}</span>
                 </div>
 
                 <h1 className="text-5xl lg:text-7xl font-bold mb-5 leading-[1.08] tracking-tight">
@@ -116,11 +120,14 @@ export default function Home() {
                 </h1>
 
                 <p className="text-xl lg:text-2xl text-muted-foreground mb-3 font-semibold font-[Sora]">
-                  All-in-One Social Media Solutions
+                  {t('All-in-One Social Media Solutions', 'सबै सोसल मिडिया समाधान')}
                 </p>
 
                 <p className="text-lg text-muted-foreground/80 mb-4 leading-relaxed max-w-xl">
-                  From account recovery to monetization, AdSense, payouts, and every social media problem — I handle it all. 7+ years of experience across every major platform.
+                  {t(
+                    'From account recovery to monetization, AdSense, payouts, and every social media problem — I handle it all. 7+ years of experience across every major platform.',
+                    'खाता रिकभरीदेखि मोनेटाइजेसन, AdSense, पेमेन्ट, र हरेक सोसल मिडिया समस्या — म सबै सम्भाल्छु। प्रत्येक प्रमुख प्लेटफर्ममा ७+ वर्षको अनुभव।'
+                  )}
                 </p>
 
                 <div className="flex items-center gap-4 mb-8 text-sm text-muted-foreground flex-wrap">
@@ -141,7 +148,7 @@ export default function Home() {
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-3">
-                  <a href="#contact" className="btn-gradient inline-flex items-center justify-center gap-2 text-lg">
+                  <a href={wa('Hi Kishor, I need help with a social media problem.')} className="btn-gradient inline-flex items-center justify-center gap-2 text-lg">
                     Get Help Now <ArrowRight size={20} />
                   </a>
                   <a href="#how-it-works" className="px-8 py-3 border border-border text-foreground font-semibold rounded-xl hover:bg-muted transition-all duration-300 text-center">
@@ -184,30 +191,82 @@ export default function Home() {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
               {[
-                { icon: Shield, title: 'Account Recovery', desc: 'Recover hacked, locked, or disabled accounts on any social media platform.', time: '24-72 hours', color: 'from-blue-600 to-blue-500' },
-                { icon: DollarSign, title: 'Monetization Setup', desc: 'Get your Facebook, Instagram, or YouTube account monetized. Eligibility check and full setup.', time: '3-7 days', color: 'from-emerald-600 to-emerald-500' },
-                { icon: Search, title: 'AdSense Integration', desc: 'Link AdSense to your YouTube channel or website. Fix AdSense disapproval and policy issues.', time: '2-5 days', color: 'from-amber-600 to-amber-500' },
-                { icon: Users, title: 'Bank & Payout Issues', desc: 'Fix payout failures, bank integration problems, and payment verification on any platform.', time: '1-3 days', color: 'from-purple-600 to-purple-500' },
-                { icon: Facebook, title: 'Facebook Problems', desc: 'Page verification, business manager issues, ad account problems, and page recovery.', time: '24-48 hours', color: 'from-blue-600 to-blue-400' },
-                { icon: Instagram, title: 'Instagram Problems', desc: 'Profile recovery, verification badge, shadowban issues, and creator account setup.', time: '24-48 hours', color: 'from-pink-600 to-purple-500' },
-                { icon: Youtube, title: 'YouTube Problems', desc: 'Channel recovery, monetization, copyright strikes, community guidelines, and subscriber issues.', time: '48-96 hours', color: 'from-red-600 to-red-500' },
-                { icon: Clock, title: 'Urgent Cases', desc: 'Time-sensitive issues that need immediate attention. Priority handling for emergency cases.', time: 'Same day', color: 'from-orange-600 to-orange-500' },
+                { icon: Shield, title: 'Account Recovery', desc: 'Recover hacked, locked, or disabled accounts on any social media platform.', time: '24-72 hours', color: 'from-blue-600 to-blue-500', msg: 'Hi Kishor, I need help recovering my account.' },
+                { icon: DollarSign, title: 'Monetization Setup', desc: 'Get your Facebook, Instagram, or YouTube account monetized. Eligibility check and full setup.', time: '3-7 days', color: 'from-emerald-600 to-emerald-500', msg: 'Hi Kishor, I need help with monetization.' },
+                { icon: Search, title: 'AdSense Integration', desc: 'Link AdSense to your YouTube channel or website. Fix AdSense disapproval and policy issues.', time: '2-5 days', color: 'from-amber-600 to-amber-500', msg: 'Hi Kishor, I have an AdSense problem.' },
+                { icon: Users, title: 'Bank & Payout Issues', desc: 'Fix payout failures, bank integration problems, and payment verification on any platform.', time: '1-3 days', color: 'from-purple-600 to-purple-500', msg: 'Hi Kishor, I have a payout/bank issue.' },
+                { icon: Facebook, title: 'Facebook Problems', desc: 'Page verification, business manager issues, ad account problems, and page recovery.', time: '24-48 hours', color: 'from-blue-600 to-blue-400', msg: 'Hi Kishor, I have a Facebook problem.' },
+                { icon: Instagram, title: 'Instagram Problems', desc: 'Profile recovery, verification badge, shadowban issues, and creator account setup.', time: '24-48 hours', color: 'from-pink-600 to-purple-500', msg: 'Hi Kishor, I have an Instagram problem.' },
+                { icon: Youtube, title: 'YouTube Problems', desc: 'Channel recovery, monetization, copyright strikes, community guidelines, and subscriber issues.', time: '48-96 hours', color: 'from-red-600 to-red-500', msg: 'Hi Kishor, I have a YouTube problem.' },
+                { icon: Clock, title: 'Urgent Cases', desc: 'Time-sensitive issues that need immediate attention. Priority handling for emergency cases.', time: 'Same day', color: 'from-orange-600 to-orange-500', msg: 'Hi Kishor, I have an urgent social media problem.' },
               ].map((service, idx) => (
                 <div
                   key={idx}
-                  className="scroll-animate p-6 rounded-2xl bg-card border border-border hover:border-cyan-500/20 transition-all duration-300 hover:-translate-y-1 group"
+                  className="scroll-animate p-6 rounded-2xl bg-card border border-border hover:border-cyan-500/20 transition-all duration-300 hover:-translate-y-1 group flex flex-col"
                   style={{ transitionDelay: `${idx * 80}ms` }}
                 >
                   <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
                     <service.icon size={22} className="text-white" />
                   </div>
                   <h3 className="font-bold text-lg mb-2">{service.title}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed mb-3">{service.desc}</p>
-                  <div className="flex items-center gap-1.5 text-xs text-cyan-600 dark:text-cyan-400 font-medium">
-                    <Clock size={12} /> {service.time}
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-3 flex-1">{service.desc}</p>
+                  <div className="flex items-center justify-between mt-auto pt-3 border-t border-border">
+                    <div className="flex items-center gap-1.5 text-xs text-cyan-600 dark:text-cyan-400 font-medium">
+                      <Clock size={12} /> {service.time}
+                    </div>
+                    <a href={wa(service.msg)} target="_blank" rel="noopener noreferrer" className="text-xs font-medium text-[#25D366] hover:text-[#20BD5A] transition-colors">
+                      Chat →
+                    </a>
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ─── SERVICE COMPARISON TABLE ─── */}
+        <section className="py-16 md:py-20 bg-muted/30">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-10 scroll-animate">
+              <h2 className="text-4xl md:text-5xl font-bold mb-3">
+                What I <span className="text-cyan-600 dark:text-cyan-400">Solve</span>
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-xl mx-auto">
+                Quick overview of platforms and problems I handle
+              </p>
+            </div>
+
+            <div className="scroll-animate max-w-4xl mx-auto overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-border">
+                    <th className="text-left py-3 px-4 font-bold text-muted-foreground">Platform</th>
+                    <th className="text-center py-3 px-2 font-medium text-muted-foreground">Recovery</th>
+                    <th className="text-center py-3 px-2 font-medium text-muted-foreground">Monetization</th>
+                    <th className="text-center py-3 px-2 font-medium text-muted-foreground">AdSense</th>
+                    <th className="text-center py-3 px-2 font-medium text-muted-foreground">Payout</th>
+                    <th className="text-center py-3 px-2 font-medium text-muted-foreground">Verification</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    { platform: 'Facebook', recovery: true, monetization: true, adsense: false, payout: false, verification: true },
+                    { platform: 'Instagram', recovery: true, monetization: true, adsense: false, payout: true, verification: true },
+                    { platform: 'YouTube', recovery: true, monetization: true, adsense: true, payout: true, verification: false },
+                    { platform: 'TikTok', recovery: true, monetization: true, adsense: false, payout: true, verification: false },
+                    { platform: 'Google AdSense', recovery: false, monetization: false, adsense: true, payout: true, verification: false },
+                  ].map((row, idx) => (
+                    <tr key={idx} className="border-b border-border hover:bg-muted/50 transition-colors">
+                      <td className="py-3 px-4 font-medium">{row.platform}</td>
+                      <td className="text-center py-3 px-2">{row.recovery ? <span className="text-emerald-500">✓</span> : <span className="text-muted-foreground/40">—</span>}</td>
+                      <td className="text-center py-3 px-2">{row.monetization ? <span className="text-emerald-500">✓</span> : <span className="text-muted-foreground/40">—</span>}</td>
+                      <td className="text-center py-3 px-2">{row.adsense ? <span className="text-emerald-500">✓</span> : <span className="text-muted-foreground/40">—</span>}</td>
+                      <td className="text-center py-3 px-2">{row.payout ? <span className="text-emerald-500">✓</span> : <span className="text-muted-foreground/40">—</span>}</td>
+                      <td className="text-center py-3 px-2">{row.verification ? <span className="text-emerald-500">✓</span> : <span className="text-muted-foreground/40">—</span>}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
         </section>
@@ -288,6 +347,119 @@ export default function Home() {
               </div>
             </div>
 
+          </div>
+        </section>
+
+        {/* ─── CASE STUDIES ─── */}
+        <section className="py-16 md:py-20 bg-muted/30">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12 scroll-animate">
+              <h2 className="text-4xl md:text-5xl font-bold mb-3">
+                Real <span className="text-cyan-600 dark:text-cyan-400">Case Studies</span>
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-xl mx-auto">
+                Actual problems solved — here's how
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+              {[
+                {
+                  title: 'Facebook Page Hacked & Deleted',
+                  client: 'Small business owner, Kathmandu',
+                  problem: 'Hacker deleted 3-year-old business page with 50K followers. Facebook support was unresponsive.',
+                  solution: 'Filed appeal through Meta Business Suite, provided identity verification documents, coordinated with Meta support via business partner channels.',
+                  result: 'Page fully recovered within 48 hours. All content and followers restored.',
+                  icon: Shield,
+                  color: 'from-blue-600 to-blue-500',
+                },
+                {
+                  title: 'YouTube Monetization Rejected',
+                  client: 'Travel vlogger, Pokhara',
+                  problem: 'Channel met all criteria but was repeatedly rejected for "reused content" policy violation.',
+                  solution: 'Audited all videos, identified problematic segments, created unique content strategy, resubmitted with detailed documentation.',
+                  result: 'Monetization approved within 5 days. Channel earning consistently.',
+                  icon: Youtube,
+                  color: 'from-red-600 to-red-500',
+                },
+                {
+                  title: 'AdSense Account Banned',
+                  client: 'News website owner, Lalitpur',
+                  problem: 'AdSense account permanently banned for "invalid traffic" — website was legitimate with real visitors.',
+                  solution: 'Analyzed traffic patterns, identified bot clicks from referrer sites, implemented Cloudflare protection, filed detailed appeal.',
+                  result: 'AdSense account reinstated. Implemented ongoing protection measures.',
+                  icon: Search,
+                  color: 'from-amber-600 to-amber-500',
+                },
+                {
+                  title: 'Instagram Verification Badge',
+                  client: 'Fitness influencer, Chitwan',
+                  problem: 'Had 200K+ followers but couldn't get verified. Multiple rejections despite meeting criteria.',
+                  solution: 'Optimized profile for verification, built media presence documentation, created press coverage, submitted strategic application.',
+                  result: 'Blue badge obtained. Profile credibility and brand deals increased.',
+                  icon: Instagram,
+                  color: 'from-pink-600 to-purple-500',
+                },
+                {
+                  title: 'Payout Failed — 3 Months Stuck',
+                  client: 'Content creator, Butwal',
+                  problem: 'Facebook creator payouts failing for 3 months. $2,400 stuck. Bank details were correct but payouts kept failing.',
+                  solution: 'Identified mismatch between Facebook payout settings and bank's IBAN format. Coordinated with both Facebook and bank.',
+                  result: 'All pending payouts released. Monthly payouts now working smoothly.',
+                  icon: DollarSign,
+                  color: 'from-emerald-600 to-emerald-500',
+                },
+                {
+                  title: 'Instagram Account Disabled',
+                  client: 'E-commerce store owner, Biratnagar',
+                  problem: 'Instagram business account disabled for "community guidelines violation" — no reason given.',
+                  solution: 'Reviewed account for policy issues, identified false-positive flag, submitted structured appeal with business documentation.',
+                  result: 'Account restored within 72 hours. Implemented prevention measures.',
+                  icon: Shield,
+                  color: 'from-purple-600 to-purple-500',
+                },
+              ].map((study, idx) => (
+                <div
+                  key={idx}
+                  className="scroll-animate rounded-2xl bg-card border border-border p-6 hover:border-cyan-500/20 transition-all duration-300 hover:-translate-y-1 flex flex-col"
+                  style={{ transitionDelay: `${idx * 100}ms` }}
+                >
+                  <div className="flex items-start gap-3 mb-4">
+                    <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${study.color} flex items-center justify-center shrink-0`}>
+                      <study.icon size={18} className="text-white" />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-base leading-tight">{study.title}</h3>
+                      <p className="text-xs text-muted-foreground mt-0.5">{study.client}</p>
+                    </div>
+                  </div>
+
+                  <div className="space-y-3 flex-1">
+                    <div>
+                      <p className="text-[10px] uppercase tracking-wider font-semibold text-red-500 mb-1">Problem</p>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{study.problem}</p>
+                    </div>
+                    <div>
+                      <p className="text-[10px] uppercase tracking-wider font-semibold text-blue-500 mb-1">Solution</p>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{study.solution}</p>
+                    </div>
+                    <div>
+                      <p className="text-[10px] uppercase tracking-wider font-semibold text-emerald-500 mb-1">Result</p>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{study.result}</p>
+                    </div>
+                  </div>
+
+                  <a
+                    href={wa(`Hi Kishor, I have a similar problem: ${study.title}`)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-4 text-center text-sm font-medium text-cyan-600 dark:text-cyan-400 hover:underline"
+                  >
+                    I have a similar problem →
+                  </a>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -400,6 +572,50 @@ export default function Home() {
               </p>
             </div>
             <RecoveryAssessment />
+          </div>
+        </section>
+
+        {/* ─── USER FEEDBACK ─── */}
+        <section className="py-16 md:py-20">
+          <div className="container mx-auto px-4">
+            <div className="max-w-2xl mx-auto text-center scroll-animate">
+              <h2 className="text-4xl md:text-5xl font-bold mb-3">
+                Quick <span className="text-cyan-600 dark:text-cyan-400">Feedback</span>
+              </h2>
+              <p className="text-lg text-muted-foreground mb-8">
+                Help me improve — your feedback matters
+              </p>
+            </div>
+
+            <div className="scroll-animate max-w-xl mx-auto space-y-4">
+              {[
+                { q: 'How was your experience?', emoji: '😊', options: ['Excellent', 'Good', 'Okay', 'Needs improvement'] },
+                { q: 'Was your problem solved?', emoji: '✅', options: ['Yes, fully', 'Partially', 'Not yet', 'Still working on it'] },
+                { q: 'Would you recommend me?', emoji: '🤝', options: ['Definitely yes', 'Probably yes', 'Not sure', 'Probably not'] },
+              ].map((fb, idx) => (
+                <div key={idx} className="p-4 rounded-xl bg-card border border-border">
+                  <p className="text-sm font-semibold mb-3">{fb.emoji} {fb.q}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {fb.options.map((opt) => (
+                      <button
+                        key={opt}
+                        onClick={() => {
+                          const waMsg = `Feedback — ${fb.q}: ${opt}`;
+                          window.open(`https://wa.me/9779843818304?text=${encodeURIComponent(waMsg)}`, '_blank');
+                        }}
+                        className="px-3 py-1.5 text-xs rounded-lg border border-border hover:border-cyan-500/30 hover:bg-cyan-50 dark:hover:bg-cyan-900/20 text-muted-foreground hover:text-foreground transition-all"
+                      >
+                        {opt}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              ))}
+
+              <p className="text-center text-xs text-muted-foreground mt-4">
+                Feedback is sent directly to WhatsApp. No data is stored.
+              </p>
+            </div>
           </div>
         </section>
 

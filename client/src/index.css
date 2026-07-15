@@ -376,3 +376,31 @@
     .scroll-animate { opacity: 1; transform: none; }
   }
 }
+
+/* ── Accessibility ── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  background: var(--cyan);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  z-index: 100;
+  font-weight: 600;
+  text-decoration: none;
+}
+.skip-link:focus {
+  top: 0;
+}
+
+/* ── Print styles ── */
+@media print {
+  nav, .live-chat, .whatsapp-button, .exit-popup, .sticky-mobile-bar {
+    display: none !important;
+  }
+  body {
+    font-size: 12pt;
+    color: #000;
+    background: #fff;
+  }
+}
