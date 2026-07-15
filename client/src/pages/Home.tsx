@@ -754,45 +754,56 @@ export default function Home() {
         {/* ─── CONTACT ─── */}
         <section id="contact" className="py-16 md:py-20 bg-muted/30">
           <div className="container mx-auto px-4">
-            <div className="scroll-animate text-center mb-10">
+            <div className="scroll-animate text-center mb-12">
               <h2 className="text-4xl md:text-5xl font-bold mb-3">
                 Get In <span className="text-cyan-600 dark:text-cyan-400">Touch</span>
               </h2>
               <p className="text-muted-foreground max-w-xl mx-auto">
-                Ready to recover your account? Reach out and I'll respond within 2-4 hours.
+                Ready to solve your social media problem? Reach out and I'll respond within 2-4 hours.
               </p>
             </div>
 
             <div className="grid lg:grid-cols-5 gap-8 max-w-5xl mx-auto">
               {/* Contact Info */}
-              <div className="lg:col-span-2 space-y-3">
-                <a href="tel:+9779843818304" className="flex items-center gap-3 p-4 rounded-xl bg-card border border-border hover:border-cyan-500/20 transition-all duration-300 group">
-                  <div className="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center group-hover:bg-cyan-500/15 transition-colors">
-                    <Phone size={18} className="text-cyan-600 dark:text-cyan-400" />
+              <div className="lg:col-span-2 space-y-4">
+                <div className="p-5 rounded-2xl bg-card border border-border">
+                  <h3 className="font-bold mb-4 text-sm uppercase tracking-wider text-muted-foreground">Contact Info</h3>
+                  <div className="space-y-3">
+                    <a href="tel:+9779843818304" className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all duration-300 group">
+                      <div className="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center group-hover:bg-cyan-500/20 transition-colors flex-shrink-0">
+                        <Phone size={18} className="text-cyan-600 dark:text-cyan-400" />
+                      </div>
+                      <div className="min-w-0">
+                        <p className="text-xs text-muted-foreground">Call / WhatsApp</p>
+                        <p className="font-semibold text-sm">+977 9843818304</p>
+                      </div>
+                    </a>
+                    <a href="mailto:kishorupadhyaya222@gmail.com" className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all duration-300 group">
+                      <div className="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center group-hover:bg-cyan-500/20 transition-colors flex-shrink-0">
+                        <Mail size={18} className="text-cyan-600 dark:text-cyan-400" />
+                      </div>
+                      <div className="min-w-0">
+                        <p className="text-xs text-muted-foreground">Email</p>
+                        <p className="font-semibold text-sm truncate">kishorupadhyaya222@gmail.com</p>
+                      </div>
+                    </a>
+                    <a href="https://wa.me/9779843818304" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all duration-300 group">
+                      <div className="w-10 h-10 rounded-xl bg-[#25D366]/10 flex items-center justify-center group-hover:bg-[#25D366]/20 transition-colors flex-shrink-0">
+                        <MessageCircle size={18} className="text-[#25D366]" />
+                      </div>
+                      <div className="min-w-0">
+                        <p className="text-xs text-muted-foreground">WhatsApp</p>
+                        <p className="font-semibold text-sm">Chat directly</p>
+                      </div>
+                    </a>
                   </div>
-                  <div>
-                    <h3 className="font-bold text-sm">Call Me</h3>
-                    <p className="text-muted-foreground text-sm">+977 9843818304</p>
-                  </div>
-                </a>
-                <a href="mailto:kishorupadhyaya222@gmail.com" className="flex items-center gap-3 p-4 rounded-xl bg-card border border-border hover:border-cyan-500/20 transition-all duration-300 group">
-                  <div className="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center group-hover:bg-cyan-500/15 transition-colors">
-                    <Mail size={18} className="text-cyan-600 dark:text-cyan-400" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-sm">Email Me</h3>
-                    <p className="text-muted-foreground text-sm">kishorupadhyaya222@gmail.com</p>
-                  </div>
-                </a>
-                <a href="https://wa.me/9779843818304" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-4 rounded-xl bg-card border border-border hover:border-cyan-500/20 transition-all duration-300 group">
-                  <div className="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center group-hover:bg-cyan-500/15 transition-colors">
-                    <MessageCircle size={18} className="text-cyan-600 dark:text-cyan-400" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-sm">WhatsApp</h3>
-                    <p className="text-muted-foreground text-sm">Chat directly (7am-10pm NPT)</p>
-                  </div>
-                </a>
+                </div>
+
+                <div className="p-4 rounded-2xl bg-cyan-500/5 border border-cyan-500/10">
+                  <p className="text-xs text-muted-foreground text-center">
+                    <span className="font-semibold text-foreground">Available:</span> 7am - 10pm NPT, Sunday - Friday
+                  </p>
+                </div>
               </div>
 
               {/* Contact Form */}
