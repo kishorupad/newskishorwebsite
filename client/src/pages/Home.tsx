@@ -859,8 +859,17 @@ export default function Home() {
                   </div>
 
                   {submitStatus === 'success' && (
-                    <div className="p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-lg text-emerald-600 dark:text-emerald-400 text-sm">
-                      Thank you! Your request has been submitted. I will contact you within 2-4 hours.
+                    <div className="p-4 bg-emerald-500/10 border border-emerald-500/30 rounded-lg text-emerald-600 dark:text-emerald-400 text-sm">
+                      <p className="font-semibold mb-1">✓ Request Submitted!</p>
+                      <p className="mb-2">I'll contact you within 2-4 hours. For faster response:</p>
+                      <a
+                        href={`https://wa.me/9779843818304?text=${encodeURIComponent(`Hi Kishor, I just submitted a contact form. My name is ${formData.name} and I need help with ${formData.platform || 'social media'}.`)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#25D366] hover:bg-[#20BD5A] text-white rounded-lg text-xs font-semibold transition-colors"
+                      >
+                        <MessageCircle size={12} /> Send on WhatsApp (Faster)
+                      </a>
                     </div>
                   )}
                   {submitStatus === 'error' && (
@@ -919,12 +928,28 @@ export default function Home() {
               </ul>
             </div>
             <div>
+              <h4 className="font-bold mb-2 text-sm">Quick Links</h4>
+              <ul className="space-y-1 text-sm text-muted-foreground">
+                <li><a href="#assessment" className="hover:text-foreground transition-colors">Free Assessment</a></li>
+                <li><a href="/resources" className="hover:text-foreground transition-colors">Resources</a></li>
+                <li><a href="#faq" className="hover:text-foreground transition-colors">FAQ</a></li>
+              </ul>
+            </div>
+            <div>
               <h4 className="font-bold mb-2 text-sm">Contact</h4>
               <ul className="space-y-1 text-sm text-muted-foreground">
                 <li>+977 9843818304</li>
                 <li>kishorupadhyaya222@gmail.com</li>
                 <li>Available: 7am-10pm NPT</li>
               </ul>
+              <a
+                href="https://wa.me/9779843818304?text=Hi%20Kishor%2C%20I%20want%20to%20check%20my%20case%20status"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 mt-3 px-3 py-1.5 bg-[#25D366]/10 text-[#25D366] hover:bg-[#25D366]/20 rounded-lg text-xs font-semibold transition-colors"
+              >
+                <MessageCircle size={12} /> Track My Case
+              </a>
             </div>
           </div>
           <div className="border-t border-border pt-5 text-center text-xs text-muted-foreground">
