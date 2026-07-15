@@ -840,7 +840,7 @@ export default function Home() {
                       accept="image/png,image/jpeg,image/jpg,image/webp"
                       className="w-full text-sm text-muted-foreground file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-cyan-500/10 file:text-cyan-600 dark:file:text-cyan-400 hover:file:bg-cyan-500/20 file:cursor-pointer"
                     />
-                    <p className="text-[10px] text-muted-foreground mt-1">PNG, JPG, WebP only. Max 5MB. Error messages, not personal photos.</p>
+                    <p className="text-[10px] text-muted-foreground mt-1">PNG, JPG, WebP only. Max 5MB. Error messages only — inappropriate content will be ignored.</p>
                   </div>
                   <div>
                     <label htmlFor="contact-source" className="block text-sm font-medium mb-1.5">How did you hear about me?</label>
