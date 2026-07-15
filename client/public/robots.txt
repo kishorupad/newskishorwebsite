@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /.env
+Disallow: /private
+
+# Crawl delay to avoid overloading server
+Crawl-delay: 1
+
+# Sitemaps
+Sitemap: https://kishorupadhyaya.com.np/sitemap.xml
