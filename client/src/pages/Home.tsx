@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -20,6 +20,30 @@ export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [showExitPopup, setShowExitPopup] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
+
+  const allTestimonials = useMemo(() => [
+    { name: 'Aarav Sharma', text: 'My Facebook account was hacked last month. Kishor recovered it within 2 days. Very professional work, kept me updated the whole time.', platform: 'Facebook', time: '2 days' },
+    { name: 'Srijana Thapa', text: 'I thought my Instagram was gone forever. Kishor recovered it and also helped me set up two-factor authentication so it doesn\'t happen again.', platform: 'Instagram', time: '3 days' },
+    { name: 'Bikash Gurung', text: 'My YouTube channel with 50K subscribers got hacked. Kishor restored everything — channel, videos, even my monetization. Really grateful.', platform: 'YouTube', time: '4 days' },
+    { name: 'Pratikshya Karki', text: 'My Facebook page with 100K followers was disabled. Kishor got it back in 3 days. He knows exactly how to deal with Meta support.', platform: 'Facebook', time: '3 days' },
+    { name: 'Roshan Thapa', text: 'Instagram monetization was rejected 5 times. Kishor figured out the issue and got it approved within a week. Highly recommend!', platform: 'Instagram', time: '5 days' },
+    { name: 'Sunita Bhandari', text: 'My AdSense PIN never arrived for 6 months. Kishor fixed it in 2 days. I\'m now receiving my payments properly.', platform: 'AdSense', time: '2 days' },
+    { name: 'Anil Magar', text: 'YouTube channel terminated for no reason. Kishor filed the appeal and got it reinstated. Saved my 3 years of hard work.', platform: 'YouTube', time: '5 days' },
+    { name: 'Deepa Rai', text: 'My Instagram account was hacked and the hacker changed everything. Kishor recovered it and helped me secure it properly.', platform: 'Instagram', time: '2 days' },
+    { name: 'Rajesh Shrestha', text: 'Facebook payout was stuck for 4 months. Kishor resolved it within a week. My payments are now running smoothly.', platform: 'Facebook', time: '4 days' },
+    { name: 'Mina Tamang', text: 'TikTok account disabled unexpectedly. Kishor knew exactly what to do and got it back. Very knowledgeable about all platforms.', platform: 'TikTok', time: '3 days' },
+    { name: 'Santosh Lama', text: 'My YouTube monetization was revoked. Kishor identified the issue, fixed it, and got me re-monetized. Professional service.', platform: 'YouTube', time: '6 days' },
+    { name: 'Kabita Adhikari', text: 'Facebook verification badge kept getting rejected. Kishor guided me through the process and I got verified in 2 weeks.', platform: 'Facebook', time: '2 weeks' },
+    { name: 'Bijay Gurung', text: 'My business page was hacked during a festival season. Kishor worked overtime to recover it quickly. Saved my business.', platform: 'Facebook', time: '1 day' },
+    { name: 'Sapna Bista', text: 'Instagram shadowban was killing my reach. Kishor identified the cause and helped me fix it. My engagement is back to normal.', platform: 'Instagram', time: '4 days' },
+    { name: 'Nischal KC', text: 'YouTube copyright strike was unfair. Kishor helped me file a proper counter-notification and the strike was removed.', platform: 'YouTube', time: '3 days' },
+    { name: 'Ashmita Thapa', text: 'AdSense account was disabled for invalid traffic. Kishor analyzed everything, fixed the issues, and got it reinstated.', platform: 'AdSense', time: '1 week' },
+  ], []);
+
+  const [testimonials] = useState(() => {
+    const shuffled = [...allTestimonials].sort(() => Math.random() - 0.5);
+    return shuffled.slice(0, 3);
+  });
 
   // Exit intent detection (desktop mouse leave)
   const handleMouseLeave = useCallback((e: MouseEvent) => {
@@ -327,11 +351,7 @@ export default function Home() {
 
               {/* Testimonials */}
               <div className="grid md:grid-cols-3 gap-4">
-                {[
-                  { name: 'Aarav Sharma', text: 'My Facebook account was hacked last month. Kishor recovered it within 2 days. Very professional work, kept me updated the whole time.', platform: 'Facebook', time: '2 days' },
-                  { name: 'Srijana Thapa', text: 'I thought my Instagram was gone forever. Kishor recovered it and also helped me set up two-factor authentication so it doesn\'t happen again.', platform: 'Instagram', time: '3 days' },
-                  { name: 'Bikash Gurung', text: 'My YouTube channel with 50K subscribers got hacked. Kishor restored everything — channel, videos, even my monetization. Really grateful.', platform: 'YouTube', time: '4 days' },
-                ].map((t, idx) => (
+                {testimonials.map((t, idx) => (
                   <div key={idx} className="scroll-animate p-5 rounded-2xl bg-card border border-border flex flex-col" style={{ transitionDelay: `${idx * 100}ms` }}>
                     <div className="flex items-center gap-2 mb-3">
                       <div className="w-9 h-9 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-600 dark:text-cyan-400 text-sm font-bold">{t.name.split(' ').map(n => n[0]).join('')}</div>
