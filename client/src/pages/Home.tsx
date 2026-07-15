@@ -112,9 +112,9 @@ export default function Home() {
 
   const stats = [
     { value: '1500+', label: 'Problems Solved' },
-    { value: '600+', label: 'Accounts Recovered' },
-    { value: '300+', label: 'Channels Monetized' },
-    { value: '200+', label: 'AdSense Fixed' },
+    { value: '98%', label: 'Success Rate' },
+    { value: '24h', label: 'Response Time' },
+    { value: '7+', label: 'Years Experience' },
   ];
 
   return (
