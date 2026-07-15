@@ -111,7 +111,7 @@ export default function Home() {
   ];
 
   const stats = [
-    { value: '500+', label: 'Accounts Recovered' },
+    { value: '500+', label: 'Cases Solved' },
     { value: '98%', label: 'Success Rate' },
     { value: '7+', label: 'Years Experience' },
     { value: '24h', label: 'Avg. Response Time' },
