@@ -21,7 +21,6 @@ export default function Home() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [showExitPopup, setShowExitPopup] = useState(false);
   const [hasScrolled, setHasScrolled] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
   const [showBackToTop, setShowBackToTop] = useState(false);
 
   const allTestimonials = useMemo(() => [
@@ -87,9 +86,6 @@ export default function Home() {
     const handleScroll = () => {
       setHasScrolled(window.scrollY > 400);
       setShowBackToTop(window.scrollY > 600);
-      const winScroll = document.documentElement.scrollTop;
-      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      setScrollProgress(height > 0 ? (winScroll / height) * 100 : 0);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -126,14 +122,6 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* Scroll Progress Bar */}
-      <div className="fixed top-0 left-0 right-0 z-[60] h-1 bg-transparent">
-        <div
-          className="h-full bg-gradient-to-r from-cyan-500 to-blue-500 transition-all duration-150"
-          style={{ width: `${scrollProgress}%` }}
-        />
-      </div>
-
       <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:bg-primary focus:text-primary-foreground focus:px-4 focus:py-2 focus:rounded-md">
         Skip to main content
       </a>
