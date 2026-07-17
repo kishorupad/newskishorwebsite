@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -17,7 +17,7 @@ export default function Home() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const [showExitPopup, setShowExitPopup] = useState(false);
+
   const [hasScrolled, setHasScrolled] = useState(false);
   const [showBackToTop, setShowBackToTop] = useState(false);
 
@@ -45,39 +45,6 @@ export default function Home() {
     return shuffled.slice(0, 3);
   });
 
-  // Exit intent detection (desktop mouse leave)
-  const handleMouseLeave = useCallback((e: MouseEvent) => {
-    if (e.clientY <= 0 && !showExitPopup && !sessionStorage.getItem('exitPopupShown')) {
-      setShowExitPopup(true);
-      sessionStorage.setItem('exitPopupShown', 'true');
-    }
-  }, [showExitPopup]);
-
-  // Mobile inactivity detection (no interaction for 45 seconds)
-  useEffect(() => {
-    if (showExitPopup || sessionStorage.getItem('exitPopupShown')) return;
-    let timer: ReturnType<typeof setTimeout>;
-    const resetTimer = () => {
-      clearTimeout(timer);
-      timer = setTimeout(() => {
-        setShowExitPopup(true);
-        sessionStorage.setItem('exitPopupShown', 'true');
-      }, 45000);
-    };
-    resetTimer();
-    window.addEventListener('scroll', resetTimer, { passive: true });
-    window.addEventListener('touchstart', resetTimer, { passive: true });
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener('scroll', resetTimer);
-      window.removeEventListener('touchstart', resetTimer);
-    };
-  }, [showExitPopup]);
-
-  useEffect(() => {
-    document.addEventListener('mouseleave', handleMouseLeave);
-    return () => document.removeEventListener('mouseleave', handleMouseLeave);
-  }, [handleMouseLeave]);
 
   // Scroll detection for sticky bar + progress
   useEffect(() => {
@@ -1018,45 +985,7 @@ export default function Home() {
         </button>
       )}
 
-      {/* ─── EXIT INTENT POPUP ─── */}
-      {showExitPopup && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-fade-in-up" style={{ animationDuration: '0.3s' }}>
-          <div className="bg-background border border-border rounded-2xl p-6 max-w-md w-full shadow-2xl relative">
-            <button
-              onClick={() => setShowExitPopup(false)}
-              className="absolute top-4 right-4 text-muted-foreground hover:text-foreground transition-colors text-xl leading-none"
-              aria-label="Close popup"
-            >
-              ×
-            </button>
-            <div className="text-center">
-              <div className="w-14 h-14 bg-cyan-500/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <MessageCircle size={28} className="text-cyan-600 dark:text-cyan-400" />
-              </div>
-              <h3 className="text-xl font-bold mb-2 font-[Sora]">Need Help With Your Account?</h3>
-              <p className="text-muted-foreground text-sm mb-5 leading-relaxed">
-                Don't wait — the sooner you act, the better the chances of recovery. Message me on WhatsApp for a <strong>free assessment</strong>.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3">
-                <a
-                  href="https://wa.me/9779843818304?text=Hi%20Kishor%2C%20I%20need%20help%20with%20my%20social%20media%20account"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 flex items-center justify-center gap-2 py-3 bg-[#25D366] hover:bg-[#20BD5A] text-white font-semibold rounded-xl transition-colors"
-                >
-                  <MessageCircle size={18} /> Chat on WhatsApp
-                </a>
-                <button
-                  onClick={() => setShowExitPopup(false)}
-                  className="flex-1 py-3 border border-border text-foreground font-semibold rounded-xl hover:bg-muted transition-colors"
-                >
-                  Maybe Later
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+
     </div>
   );
 }
