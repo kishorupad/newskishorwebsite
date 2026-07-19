@@ -155,7 +155,7 @@ export default function Home() {
                   <a href={wa('Hi Kishor, I need help with a social media problem.')} className="btn-gradient inline-flex items-center justify-center gap-2 text-lg">
                     Get Help Now <ArrowRight size={20} />
                   </a>
-                  <a href="#how-it-works" className="px-8 py-3 border border-border text-foreground font-semibold rounded-xl hover:bg-muted transition-all duration-300 text-center">
+                  <a href="/how-it-works" className="px-8 py-3 border border-border text-foreground font-semibold rounded-xl hover:bg-muted transition-all duration-300 text-center">
                     How It Works
                   </a>
                 </div>
@@ -888,27 +888,27 @@ export default function Home() {
             <div>
               <h4 className="font-bold mb-2 text-sm">Quick Links</h4>
               <ul className="space-y-1 text-sm text-muted-foreground">
-                <li><a href="#hero" className="hover:text-foreground transition-colors">Home</a></li>
-                <li><a href="#services" className="hover:text-foreground transition-colors">Services</a></li>
-                <li><a href="#how-it-works" className="hover:text-foreground transition-colors">How It Works</a></li>
-                <li><a href="#contact" className="hover:text-foreground transition-colors">Contact</a></li>
+                <li><a href="/" className="hover:text-foreground transition-colors">Home</a></li>
+                <li><a href="/services" className="hover:text-foreground transition-colors">Services</a></li>
+                <li><a href="/how-it-works" className="hover:text-foreground transition-colors">How It Works</a></li>
+                <li><a href="/contact" className="hover:text-foreground transition-colors">Contact</a></li>
               </ul>
             </div>
             <div>
               <h4 className="font-bold mb-2 text-sm">Services</h4>
               <ul className="space-y-1 text-sm text-muted-foreground">
-                <li><a href="#services" className="hover:text-foreground transition-colors">Account Recovery</a></li>
-                <li><a href="#services" className="hover:text-foreground transition-colors">Monetization Setup</a></li>
-                <li><a href="#services" className="hover:text-foreground transition-colors">AdSense Integration</a></li>
-                <li><a href="#services" className="hover:text-foreground transition-colors">Payout & Bank Issues</a></li>
+                <li><a href="/services" className="hover:text-foreground transition-colors">Account Recovery</a></li>
+                <li><a href="/services" className="hover:text-foreground transition-colors">Monetization Setup</a></li>
+                <li><a href="/services" className="hover:text-foreground transition-colors">AdSense Integration</a></li>
+                <li><a href="/services" className="hover:text-foreground transition-colors">Payout & Bank Issues</a></li>
               </ul>
             </div>
             <div>
               <h4 className="font-bold mb-2 text-sm">Quick Links</h4>
               <ul className="space-y-1 text-sm text-muted-foreground">
-                <li><a href="#assessment" className="hover:text-foreground transition-colors">Free Assessment</a></li>
+                <li><a href="/assessment" className="hover:text-foreground transition-colors">Free Assessment</a></li>
                 <li><a href="/resources" className="hover:text-foreground transition-colors">Resources</a></li>
-                <li><a href="#faq" className="hover:text-foreground transition-colors">FAQ</a></li>
+                <li><a href="/faq" className="hover:text-foreground transition-colors">FAQ</a></li>
               </ul>
             </div>
             <div>

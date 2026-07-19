@@ -2,38 +2,42 @@ import { Button } from '@/components/ui/button';
 import { Menu, X, Sun, Moon } from 'lucide-react';
 import { useState } from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
+import { Link, useLocation } from 'wouter';
 
 export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { theme, toggleTheme, switchable } = useTheme();
+  const [location] = useLocation();
 
   const navItems = [
-    { label: 'Home', href: '#hero' },
-    { label: 'Services', href: '#services' },
-    { label: 'How It Works', href: '#how-it-works' },
-    { label: 'Assessment', href: '#assessment' },
-    { label: 'FAQ', href: '#faq' },
-    { label: 'Contact', href: '#contact' },
+    { label: 'Home', href: '/' },
+    { label: 'Services', href: '/services' },
+    { label: 'How It Works', href: '/how-it-works' },
+    { label: 'Assessment', href: '/assessment' },
+    { label: 'FAQ', href: '/faq' },
+    { label: 'Contact', href: '/contact' },
   ];
+
+  const isActive = (href: string) => location === href;
 
   return (
     <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 gap-4">
           <div className="flex-shrink-0">
-            <a href="#hero" className="text-2xl font-bold font-[Sora] text-cyan-600 dark:text-cyan-400 hover:opacity-80 transition-opacity">Kishor</a>
+            <Link href="/" className="text-2xl font-bold font-[Sora] text-cyan-600 dark:text-cyan-400 hover:opacity-80 transition-opacity">Kishor</Link>
           </div>
 
           <div className="hidden lg:flex items-center gap-1 flex-1 justify-center">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.href}
                 href={item.href}
-                className="px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200 relative group whitespace-nowrap"
+                className={`px-3 py-2 text-sm font-medium transition-colors duration-200 relative group whitespace-nowrap ${isActive(item.href) ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'}`}
               >
                 {item.label}
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-cyan-600 dark:bg-cyan-400 group-hover:w-full transition-all duration-300 rounded-full" />
-              </a>
+                <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-cyan-600 dark:bg-cyan-400 transition-all duration-300 rounded-full ${isActive(item.href) ? 'w-full' : 'w-0 group-hover:w-full'}`} />
+              </Link>
             ))}
           </div>
 
@@ -49,7 +53,7 @@ export default function Navigation() {
             )}
 
             <Button asChild className="btn-gradient-sm hidden sm:inline-flex rounded-lg text-sm">
-              <a href="#contact">Get Help Now</a>
+              <Link href="/contact">Get Help Now</Link>
             </Button>
 
             <button
@@ -66,17 +70,17 @@ export default function Navigation() {
         {mobileMenuOpen && (
           <div className="lg:hidden pb-4 space-y-1 border-t border-border pt-3 animate-fade-in-up" style={{ animationDuration: '0.3s' }}>
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.href}
                 href={item.href}
-                className="block px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted rounded-lg transition-colors duration-200"
+                className={`block px-3 py-2 text-sm font-medium rounded-lg transition-colors duration-200 ${isActive(item.href) ? 'text-foreground bg-muted' : 'text-muted-foreground hover:text-foreground hover:bg-muted'}`}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
             <Button asChild className="w-full btn-gradient-sm mt-3 rounded-lg text-sm">
-              <a href="#contact" onClick={() => setMobileMenuOpen(false)}>Get Help Now</a>
+              <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>Get Help Now</Link>
             </Button>
           </div>
         )}

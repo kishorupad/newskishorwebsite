@@ -2,29 +2,56 @@ import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
+import { useEffect } from "react";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 import Resources from "./pages/Resources";
 import SEOHead from "./components/SEOHead";
 
+const sectionRoutes = [
+  "/services",
+  "/how-it-works",
+  "/assessment",
+  "/social-proof",
+  "/certifications",
+  "/guarantees",
+  "/faq",
+  "/contact",
+];
+
+function SectionPage({ sectionId }: { sectionId: string }) {
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const el = document.getElementById(sectionId);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 100);
+    return () => clearTimeout(timer);
+  }, [sectionId]);
+
+  return <Home />;
+}
+
 function Router() {
-  // make sure to consider if you need authentication for certain routes
   return (
     <Switch>
-      <Route path={"/"} component={Home} />
-      <Route path={"/resources"} component={Resources} />
-      <Route path={"/404"} component={NotFound} />
-      {/* Final fallback route */}
+      <Route path="/" component={Home} />
+      <Route path="/resources" component={Resources} />
+      {sectionRoutes.map((route) => {
+        const sectionId = route.slice(1);
+        return (
+          <Route key={route} path={route}>
+            <SectionPage sectionId={sectionId} />
+          </Route>
+        );
+      })}
+      <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>
   );
 }
-
-// NOTE: About Theme
-// - First choose a default theme according to your design style (dark or light bg), than change color palette in index.css
-//   to keep consistent foreground/background color across components
-// - If you want to make theme switchable, pass `switchable` ThemeProvider and use `useTheme` hook
 
 function App() {
   return (
