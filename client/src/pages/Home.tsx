@@ -161,7 +161,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="animate-slide-in-right hidden lg:block" style={{ animationDelay: '0.2s' }}>
+              <div className="animate-slide-in-right mt-10 lg:mt-0 max-w-sm mx-auto lg:max-w-none lg:mx-0" style={{ animationDelay: '0.2s' }}>
                 <div className="relative">
                   <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-blue-500/5 rounded-3xl blur-[60px]" />
                   <div className="relative rounded-3xl overflow-hidden border border-border shadow-2xl shadow-cyan-500/5">
