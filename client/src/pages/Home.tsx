@@ -6,6 +6,10 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import Navigation from '@/components/Navigation';
 import RecoveryAssessment from '@/components/RecoveryAssessment';
 import LiveChat from '@/components/LiveChat';
+<<<<<<< HEAD
+=======
+import InstagramFeature from '@/components/InstagramFeature';
+>>>>>>> 83a777b (Initial website commit)
 import { trpc } from '@/lib/trpc';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { getYearsExperienceText } from '@/lib/experience';
@@ -152,8 +156,13 @@ export default function Home() {
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-3">
+<<<<<<< HEAD
                   <a href={wa('Hi Kishor, I need help with a social media problem.')} className="btn-gradient inline-flex items-center justify-center gap-2 text-lg">
                     Get Help Now <ArrowRight size={20} />
+=======
+                  <a href={wa('Hi Kishor, I want to share my social media problem and book a review. Please let me know the next step.')} className="btn-gradient inline-flex items-center justify-center gap-2 text-lg">
+                    Book a Review <ArrowRight size={20} />
+>>>>>>> 83a777b (Initial website commit)
                   </a>
                   <a href="/how-it-works" className="px-8 py-3 border border-border text-foreground font-semibold rounded-xl hover:bg-muted transition-all duration-300 text-center">
                     How It Works
@@ -181,6 +190,143 @@ export default function Home() {
           </div>
         </section>
 
+<<<<<<< HEAD
+=======
+        {/* ─── FEATURED ON ROUTINE OF NEPAL BANDA ─── */}
+        <InstagramFeature />
+
+        {/* ─── PROBLEM REVIEW & CONSULTATION ─── */}
+        <section id="consultation" className="py-16 md:py-20 bg-muted/20">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12 scroll-animate">
+              <h2 className="text-4xl md:text-5xl font-bold mb-3">
+                Problem <span className="text-cyan-600 dark:text-cyan-400">Review</span>
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-xl mx-auto">
+                Share your issue, explain what happened, and book a 30-minute review session before any recovery work begins.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-5 max-w-6xl mx-auto">
+              {[
+                {
+                  title: '30-Minute Problem Review',
+                  price: 'Rs. 2,000',
+                  description: 'A focused review session to understand the issue, identify the cause, and explain the best next step.',
+                  bullets: ['Issue diagnosis', 'Recovery roadmap', '30-minute consultation'],
+                  cta: 'Book consultation',
+                  waText: 'Hi Kishor, I want to book a 30-minute problem review and understand my issue before any recovery work begins.',
+                },
+                {
+                  title: 'Account Health Check',
+                  price: 'Rs. 3,000',
+                  description: 'A professional check to confirm whether your account has a real issue, security risk, restriction, or recovery problem before any paid recovery work begins.',
+                  bullets: ['Issue detection', 'Risk review', 'Action recommendation'],
+                  cta: 'Check my account',
+                  waText: 'Hi Kishor, I want to check my account for issues and book an account health review.',
+                },
+                {
+                  title: 'Monetization Review',
+                  price: 'Rs. 3,500',
+                  description: 'For monetization issues, policy restrictions, and account eligibility review before any setup work begins.',
+                  bullets: ['Eligibility check', 'Policy review', 'Fix roadmap'],
+                  cta: 'Review monetization',
+                  waText: 'Hi Kishor, I want to review my monetization issue and understand the next step.',
+                },
+                {
+                  title: 'Urgent Case Review',
+                  price: 'Custom quote',
+                  description: 'Priority review for time-sensitive issues that need immediate attention and a faster action plan.',
+                  bullets: ['Priority response', 'Fast diagnosis', 'Urgent action plan'],
+                  cta: 'Request urgent review',
+                  waText: 'Hi Kishor, I need an urgent case review for my time-sensitive issue.',
+                },
+              ].map((plan, idx) => (
+                <div key={idx} className="scroll-animate rounded-2xl border border-border bg-card p-5 shadow-sm hover:-translate-y-1 hover:border-cyan-500/20 transition-all duration-300 flex flex-col h-full">
+                  <div className="mb-4">
+                    <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-[10px] font-semibold uppercase tracking-wide text-cyan-700 dark:text-cyan-300">
+                    Consultation
+                    </span>
+                  </div>
+
+                  <h3 className="text-xl font-bold mb-2">{plan.title}</h3>
+                  <div className="flex items-end gap-2 mb-4">
+                    <span className="text-3xl font-extrabold text-cyan-600 dark:text-cyan-400">{plan.price}</span>
+                  </div>
+
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-4">{plan.description}</p>
+
+                  <ul className="space-y-2 text-sm mb-5 flex-1">
+                    {plan.bullets.map((bullet) => (
+                      <li key={bullet} className="flex items-start gap-2 text-foreground/80">
+                        <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-cyan-600 dark:bg-cyan-400" />
+                        <span>{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="text-xs text-muted-foreground mb-4">
+                    Final recovery or implementation cost is quoted separately after review.
+                  </div>
+
+                  <a
+                    href={wa(plan.waText)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-auto inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 text-white font-semibold px-4 py-3 hover:opacity-95 transition-opacity"
+                  >
+                    {plan.cta} <ArrowRight size={16} />
+                  </a>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ─── MONTHLY SUPPORT PLAN ─── */}
+        <section className="py-16 md:py-20 bg-background">
+          <div className="container mx-auto px-4">
+            <div className="max-w-5xl mx-auto rounded-3xl border border-cyan-500/20 bg-gradient-to-r from-cyan-500/5 to-blue-500/5 p-6 md:p-8 shadow-sm">
+              <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-6 items-center">
+                <div>
+                  <span className="inline-flex items-center px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-[10px] font-semibold uppercase tracking-wide text-cyan-700 dark:text-cyan-300">
+                    Monthly Support
+                  </span>
+                  <h3 className="mt-4 text-3xl md:text-4xl font-bold mb-3">
+                    Social Media <span className="text-cyan-600 dark:text-cyan-400">Security Plan</span>
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed mb-4">
+                    Ongoing protection, account monitoring, and quick support to keep your social media profiles secure and healthy.
+                  </p>
+
+                  <ul className="space-y-2 text-sm text-foreground/80">
+                    <li className="flex items-start gap-2"><span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-cyan-600 dark:bg-cyan-400" /> Monthly account health check</li>
+                    <li className="flex items-start gap-2"><span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-cyan-600 dark:bg-cyan-400" /> Password and security review</li>
+                    <li className="flex items-start gap-2"><span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-cyan-600 dark:bg-cyan-400" /> Support for small issues and quick fixes</li>
+                    <li className="flex items-start gap-2"><span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-cyan-600 dark:bg-cyan-400" /> Recovery guidance when needed</li>
+                  </ul>
+                </div>
+
+                <div className="rounded-2xl border border-border bg-card p-5">
+                  <div className="text-sm text-muted-foreground mb-2">Starting from</div>
+                  <div className="text-4xl font-extrabold text-cyan-600 dark:text-cyan-400 mb-2">Rs. 5,000</div>
+                  <div className="text-sm text-muted-foreground mb-5">per month</div>
+
+                  <a
+                    href={wa('Hi Kishor, I want to know more about your monthly social media security plan.')}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 w-full rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 text-white font-semibold px-4 py-3 hover:opacity-95 transition-opacity"
+                  >
+                    Ask about support <ArrowRight size={16} />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+>>>>>>> 83a777b (Initial website commit)
         {/* ─── SERVICES ─── */}
         <section id="services" className="py-16 md:py-20">
           <div className="container mx-auto px-4">
@@ -718,10 +864,17 @@ export default function Home() {
           <div className="container mx-auto px-4">
             <div className="scroll-animate text-center mb-12">
               <h2 className="text-4xl md:text-5xl font-bold mb-3">
+<<<<<<< HEAD
                 Get In <span className="text-cyan-600 dark:text-cyan-400">Touch</span>
               </h2>
               <p className="text-muted-foreground max-w-xl mx-auto">
                 Ready to solve your social media problem? Reach out and I'll respond within 2-4 hours.
+=======
+                Request a <span className="text-cyan-600 dark:text-cyan-400">Problem Review</span>
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+                Share your issue and the platform involved. After review, I will confirm whether a paid consultation or recovery service is needed.
+>>>>>>> 83a777b (Initial website commit)
               </p>
             </div>
 
@@ -749,13 +902,21 @@ export default function Home() {
                         <p className="font-semibold text-sm truncate">kishorupadhyaya222@gmail.com</p>
                       </div>
                     </a>
+<<<<<<< HEAD
                     <a href="https://wa.me/9779843818304" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all duration-300 group">
+=======
+                    <a href="https://wa.me/9779843818304?text=Hi%20Kishor%2C%20I%20want%20to%20share%20my%20social%20media%20problem%20and%20book%20a%20review%20session." target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all duration-300 group">
+>>>>>>> 83a777b (Initial website commit)
                       <div className="w-10 h-10 rounded-xl bg-[#25D366]/10 flex items-center justify-center group-hover:bg-[#25D366]/20 transition-colors flex-shrink-0">
                         <MessageCircle size={18} className="text-[#25D366]" />
                       </div>
                       <div className="min-w-0">
                         <p className="text-xs text-muted-foreground">WhatsApp</p>
+<<<<<<< HEAD
                         <p className="font-semibold text-sm">Chat directly</p>
+=======
+                        <p className="font-semibold text-sm">Share your issue</p>
+>>>>>>> 83a777b (Initial website commit)
                       </div>
                     </a>
                   </div>
@@ -805,7 +966,11 @@ export default function Home() {
                   </div>
                   <div>
                     <label htmlFor="contact-message" className="block text-sm font-medium mb-1.5">Describe Your Issue *</label>
+<<<<<<< HEAD
                     <Textarea id="contact-message" placeholder="Tell me about your account issue..." value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} rows={4} required />
+=======
+                    <Textarea id="contact-message" placeholder="Tell me about your account issue, error message, or recovery problem..." value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} rows={4} required />
+>>>>>>> 83a777b (Initial website commit)
                   </div>
                   <div>
                     <label htmlFor="contact-screenshot" className="block text-sm font-medium mb-1.5">Screenshot (optional)</label>
@@ -839,12 +1004,20 @@ export default function Home() {
                       <p className="font-semibold mb-1">✓ Request Submitted!</p>
                       <p className="mb-2">I'll contact you within 2-4 hours. For faster response:</p>
                       <a
+<<<<<<< HEAD
                         href={`https://wa.me/9779843818304?text=${encodeURIComponent(`Hi Kishor, I just submitted a contact form. My name is ${formData.name} and I need help with ${formData.platform || 'social media'}.`)}`}
+=======
+                        href={`https://wa.me/9779843818304?text=${encodeURIComponent(`Hi Kishor, I just submitted the review request form. My name is ${formData.name}. My platform is ${formData.platform || 'social media'} and I need a consultation review for my issue.`)}`}
+>>>>>>> 83a777b (Initial website commit)
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#25D366] hover:bg-[#20BD5A] text-white rounded-lg text-xs font-semibold transition-colors"
                       >
+<<<<<<< HEAD
                         <MessageCircle size={12} /> Send on WhatsApp (Faster)
+=======
+                        <MessageCircle size={12} /> Send review request on WhatsApp
+>>>>>>> 83a777b (Initial website commit)
                       </a>
                     </div>
                   )}
@@ -855,7 +1028,11 @@ export default function Home() {
                   )}
 
                   <Button type="submit" className="w-full btn-gradient" disabled={isSubmitting}>
+<<<<<<< HEAD
                     {isSubmitting ? 'Submitting...' : 'Send Message'}
+=======
+                    {isSubmitting ? 'Submitting...' : 'Send Review Request'}
+>>>>>>> 83a777b (Initial website commit)
                     {!isSubmitting && <ArrowRight className="ml-2" size={16} />}
                   </Button>
                 </form>

@@ -232,6 +232,15 @@
     @apply py-16 sm:py-20 lg:py-24;
   }
 
+<<<<<<< HEAD
+=======
+  /* ── Nepali display font (Devanagari) ── */
+  .font-nepali-pop {
+    font-family: 'Baloo 2', 'Sora', sans-serif;
+    font-feature-settings: 'kern' 1;
+  }
+
+>>>>>>> 83a777b (Initial website commit)
   /* ── Keyframes ── */
   @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(30px); }

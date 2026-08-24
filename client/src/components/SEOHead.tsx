@@ -1,4 +1,8 @@
 import { useEffect } from 'react';
+<<<<<<< HEAD
+=======
+import { useLocation } from 'wouter';
+>>>>>>> 83a777b (Initial website commit)
 import { getYearsExperienceText } from '@/lib/experience';
 
 const PROFILE_IMAGE = '/kishwor-5-1770795722.jpg';
@@ -6,10 +10,102 @@ const SITE_URL = 'https://kishorupadhyaya.com.np';
 const PHONE = '+977-9843818304';
 const EMAIL = 'kishorupadhyaya222@gmail.com';
 
+<<<<<<< HEAD
 export default function SEOHead() {
   useEffect(() => {
     // Set dynamic title for the page
     document.title = 'Kishor Upadhyaya | Social Media Expert Nepal — All Problems Solved';
+=======
+const pageMeta = {
+  '/': {
+    title: 'Kishor Upadhyaya | Social Media Expert Nepal — All Problems Solved',
+    description:
+      'Recover hacked Facebook, Instagram, and YouTube accounts in Nepal. Get AdSense, monetization, payout, verification, and social media support from Kishor Upadhyaya.',
+    keywords:
+      'social media expert Nepal, facebook recovery Nepal, instagram recovery Kathmandu, youtube monetization Nepal, adsense help Nepal, hacked account recovery Nepal, kishor upadhyaya, social media consultant Nepal',
+  },
+  '/resources': {
+    title: 'Social Media Security Tips & Recovery Guides | Kishor Upadhyaya',
+    description:
+      'Read practical Facebook, Instagram, YouTube, and cybersecurity guides for hacked account recovery, password safety, phishing prevention, and account protection in Nepal.',
+    keywords:
+      'social media security Nepal, facebook account recovery guide, instagram hacked account help, password security tips, phishing awareness Nepal, account protection guide',
+  },
+  '/services': {
+    title: 'Social Media Services in Nepal | Account Recovery & Monetization',
+    description:
+      'Account recovery, monetization setup, AdSense support, payout fixes, and platform protection for Facebook, Instagram, YouTube, and more in Nepal.',
+    keywords:
+      'facebook recovery service Nepal, instagram monetization helper, youtube monetization support, adsense fix Nepal, social media services Nepal',
+  },
+  '/how-it-works': {
+    title: 'How the Recovery Process Works | Kishor Upadhyaya',
+    description:
+      'Learn how Kishor Upadhyaya handles hacked account recovery, verification, monetization fixes, and social media problem-solving step by step.',
+    keywords:
+      'how social media recovery works, account recovery process Nepal, hacked account help process, social media support steps',
+  },
+  '/assessment': {
+    title: 'Free Social Media Problem Assessment | Kishor Upadhyaya',
+    description:
+      'Get a free assessment for Facebook, Instagram, YouTube, AdSense, and social media platform issues in Nepal.',
+    keywords:
+      'free social media assessment Nepal, facebook problem check, instagram issue diagnosis, youtube monetization assessment',
+  },
+  '/contact': {
+    title: 'Contact Kishor Upadhyaya | Social Media Expert Nepal',
+    description:
+      'Contact Kishor Upadhyaya for Facebook, Instagram, YouTube, and AdSense recovery support in Nepal.',
+    keywords:
+      'contact social media expert Nepal, reach kishor upadhyaya, facebook support Nepal, instagram help Nepal',
+  },
+};
+
+const setMetaTag = (selector: string, attribute: string, value: string) => {
+  let element = document.head.querySelector(selector) as HTMLMetaElement | HTMLLinkElement | null;
+
+  if (!element) {
+    element = document.createElement(selector.includes('meta') ? 'meta' : 'link');
+    if (selector.includes('property=')) {
+      const attr = selector.match(/property="([^"]+)"/)?.[1];
+      if (attr) element.setAttribute('property', attr);
+    }
+    if (selector.includes('name=')) {
+      const attr = selector.match(/name="([^"]+)"/)?.[1];
+      if (attr) element.setAttribute('name', attr);
+    }
+    if (selector.startsWith('link')) {
+      element.setAttribute('rel', 'canonical');
+    }
+    document.head.appendChild(element);
+  }
+
+  if (selector.startsWith('link')) {
+    element.setAttribute('href', value);
+    return;
+  }
+
+  element.setAttribute(attribute, value);
+};
+
+export default function SEOHead() {
+  const [location] = useLocation();
+
+  useEffect(() => {
+    const currentPath = location || '/';
+    const meta = pageMeta[currentPath as keyof typeof pageMeta] || pageMeta['/'];
+
+    document.title = meta.title;
+
+    setMetaTag('meta[name="description"]', 'content', meta.description);
+    setMetaTag('meta[name="keywords"]', 'content', meta.keywords);
+    setMetaTag('meta[property="og:title"]', 'content', meta.title);
+    setMetaTag('meta[property="og:description"]', 'content', meta.description);
+    setMetaTag('meta[property="og:url"]', 'content', `${SITE_URL}${currentPath === '/' ? '' : currentPath}`);
+    setMetaTag('meta[name="twitter:title"]', 'content', meta.title);
+    setMetaTag('meta[name="twitter:description"]', 'content', meta.description);
+    setMetaTag('link[rel="canonical"]', 'href', `${SITE_URL}${currentPath === '/' ? '' : currentPath}`);
+>>>>>>> 83a777b (Initial website commit)
 
     // Add JSON-LD structured data for local business
     const localBusinessSchema = {
@@ -99,7 +195,11 @@ export default function SEOHead() {
         }
       });
     };
+<<<<<<< HEAD
   }, []);
+=======
+  }, [location]);
+>>>>>>> 83a777b (Initial website commit)
 
   return null;
 }
