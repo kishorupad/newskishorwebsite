@@ -1,8 +1,5 @@
 import { useEffect } from 'react';
-<<<<<<< HEAD
-=======
 import { useLocation } from 'wouter';
->>>>>>> 83a777b (Initial website commit)
 import { getYearsExperienceText } from '@/lib/experience';
 
 const PROFILE_IMAGE = '/kishwor-5-1770795722.jpg';
@@ -10,12 +7,6 @@ const SITE_URL = 'https://kishorupadhyaya.com.np';
 const PHONE = '+977-9843818304';
 const EMAIL = 'kishorupadhyaya222@gmail.com';
 
-<<<<<<< HEAD
-export default function SEOHead() {
-  useEffect(() => {
-    // Set dynamic title for the page
-    document.title = 'Kishor Upadhyaya | Social Media Expert Nepal — All Problems Solved';
-=======
 const pageMeta = {
   '/': {
     title: 'Kishor Upadhyaya | Social Media Expert Nepal — All Problems Solved',
@@ -105,9 +96,7 @@ export default function SEOHead() {
     setMetaTag('meta[name="twitter:title"]', 'content', meta.title);
     setMetaTag('meta[name="twitter:description"]', 'content', meta.description);
     setMetaTag('link[rel="canonical"]', 'href', `${SITE_URL}${currentPath === '/' ? '' : currentPath}`);
->>>>>>> 83a777b (Initial website commit)
 
-    // Add JSON-LD structured data for local business
     const localBusinessSchema = {
       '@context': 'https://schema.org',
       '@type': 'LocalBusiness',
@@ -137,7 +126,6 @@ export default function SEOHead() {
       },
     };
 
-    // Add Service schema
     const serviceSchema = {
       '@context': 'https://schema.org',
       '@type': 'Service',
@@ -155,7 +143,6 @@ export default function SEOHead() {
       },
     };
 
-    // Add Organization schema
     const organizationSchema = {
       '@context': 'https://schema.org',
       '@type': 'Organization',
@@ -174,7 +161,6 @@ export default function SEOHead() {
       },
     };
 
-    // Create and append script tags
     const schemas = [localBusinessSchema, serviceSchema, organizationSchema];
 
     schemas.forEach((schema) => {
@@ -195,11 +181,7 @@ export default function SEOHead() {
         }
       });
     };
-<<<<<<< HEAD
-  }, []);
-=======
   }, [location]);
->>>>>>> 83a777b (Initial website commit)
 
   return null;
 }

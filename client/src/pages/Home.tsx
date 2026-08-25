@@ -6,10 +6,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import Navigation from '@/components/Navigation';
 import RecoveryAssessment from '@/components/RecoveryAssessment';
 import LiveChat from '@/components/LiveChat';
-<<<<<<< HEAD
-=======
 import InstagramFeature from '@/components/InstagramFeature';
->>>>>>> 83a777b (Initial website commit)
 import { trpc } from '@/lib/trpc';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { getYearsExperienceText } from '@/lib/experience';
@@ -156,13 +153,8 @@ export default function Home() {
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-3">
-<<<<<<< HEAD
-                  <a href={wa('Hi Kishor, I need help with a social media problem.')} className="btn-gradient inline-flex items-center justify-center gap-2 text-lg">
-                    Get Help Now <ArrowRight size={20} />
-=======
                   <a href={wa('Hi Kishor, I want to share my social media problem and book a review. Please let me know the next step.')} className="btn-gradient inline-flex items-center justify-center gap-2 text-lg">
                     Book a Review <ArrowRight size={20} />
->>>>>>> 83a777b (Initial website commit)
                   </a>
                   <a href="/how-it-works" className="px-8 py-3 border border-border text-foreground font-semibold rounded-xl hover:bg-muted transition-all duration-300 text-center">
                     How It Works
@@ -190,8 +182,6 @@ export default function Home() {
           </div>
         </section>
 
-<<<<<<< HEAD
-=======
         {/* ─── FEATURED ON ROUTINE OF NEPAL BANDA ─── */}
         <InstagramFeature />
 
@@ -326,7 +316,6 @@ export default function Home() {
           </div>
         </section>
 
->>>>>>> 83a777b (Initial website commit)
         {/* ─── SERVICES ─── */}
         <section id="services" className="py-16 md:py-20">
           <div className="container mx-auto px-4">
@@ -864,17 +853,10 @@ export default function Home() {
           <div className="container mx-auto px-4">
             <div className="scroll-animate text-center mb-12">
               <h2 className="text-4xl md:text-5xl font-bold mb-3">
-<<<<<<< HEAD
-                Get In <span className="text-cyan-600 dark:text-cyan-400">Touch</span>
-              </h2>
-              <p className="text-muted-foreground max-w-xl mx-auto">
-                Ready to solve your social media problem? Reach out and I'll respond within 2-4 hours.
-=======
                 Request a <span className="text-cyan-600 dark:text-cyan-400">Problem Review</span>
               </h2>
               <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                 Share your issue and the platform involved. After review, I will confirm whether a paid consultation or recovery service is needed.
->>>>>>> 83a777b (Initial website commit)
               </p>
             </div>
 
@@ -902,21 +884,13 @@ export default function Home() {
                         <p className="font-semibold text-sm truncate">kishorupadhyaya222@gmail.com</p>
                       </div>
                     </a>
-<<<<<<< HEAD
-                    <a href="https://wa.me/9779843818304" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all duration-300 group">
-=======
                     <a href="https://wa.me/9779843818304?text=Hi%20Kishor%2C%20I%20want%20to%20share%20my%20social%20media%20problem%20and%20book%20a%20review%20session." target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all duration-300 group">
->>>>>>> 83a777b (Initial website commit)
                       <div className="w-10 h-10 rounded-xl bg-[#25D366]/10 flex items-center justify-center group-hover:bg-[#25D366]/20 transition-colors flex-shrink-0">
                         <MessageCircle size={18} className="text-[#25D366]" />
                       </div>
                       <div className="min-w-0">
                         <p className="text-xs text-muted-foreground">WhatsApp</p>
-<<<<<<< HEAD
-                        <p className="font-semibold text-sm">Chat directly</p>
-=======
                         <p className="font-semibold text-sm">Share your issue</p>
->>>>>>> 83a777b (Initial website commit)
                       </div>
                     </a>
                   </div>
@@ -966,11 +940,7 @@ export default function Home() {
                   </div>
                   <div>
                     <label htmlFor="contact-message" className="block text-sm font-medium mb-1.5">Describe Your Issue *</label>
-<<<<<<< HEAD
-                    <Textarea id="contact-message" placeholder="Tell me about your account issue..." value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} rows={4} required />
-=======
                     <Textarea id="contact-message" placeholder="Tell me about your account issue, error message, or recovery problem..." value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} rows={4} required />
->>>>>>> 83a777b (Initial website commit)
                   </div>
                   <div>
                     <label htmlFor="contact-screenshot" className="block text-sm font-medium mb-1.5">Screenshot (optional)</label>
@@ -1004,20 +974,12 @@ export default function Home() {
                       <p className="font-semibold mb-1">✓ Request Submitted!</p>
                       <p className="mb-2">I'll contact you within 2-4 hours. For faster response:</p>
                       <a
-<<<<<<< HEAD
-                        href={`https://wa.me/9779843818304?text=${encodeURIComponent(`Hi Kishor, I just submitted a contact form. My name is ${formData.name} and I need help with ${formData.platform || 'social media'}.`)}`}
-=======
                         href={`https://wa.me/9779843818304?text=${encodeURIComponent(`Hi Kishor, I just submitted the review request form. My name is ${formData.name}. My platform is ${formData.platform || 'social media'} and I need a consultation review for my issue.`)}`}
->>>>>>> 83a777b (Initial website commit)
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#25D366] hover:bg-[#20BD5A] text-white rounded-lg text-xs font-semibold transition-colors"
                       >
-<<<<<<< HEAD
-                        <MessageCircle size={12} /> Send on WhatsApp (Faster)
-=======
                         <MessageCircle size={12} /> Send review request on WhatsApp
->>>>>>> 83a777b (Initial website commit)
                       </a>
                     </div>
                   )}
@@ -1028,11 +990,7 @@ export default function Home() {
                   )}
 
                   <Button type="submit" className="w-full btn-gradient" disabled={isSubmitting}>
-<<<<<<< HEAD
-                    {isSubmitting ? 'Submitting...' : 'Send Message'}
-=======
                     {isSubmitting ? 'Submitting...' : 'Send Review Request'}
->>>>>>> 83a777b (Initial website commit)
                     {!isSubmitting && <ArrowRight className="ml-2" size={16} />}
                   </Button>
                 </form>

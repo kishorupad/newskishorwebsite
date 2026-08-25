@@ -8,11 +8,7 @@ export const contactRouter = router({
         name: z.string().min(1, 'Name is required').max(100),
         email: z.string().email('Invalid email address'),
         phone: z.string().min(1, 'Phone is required').max(20),
-<<<<<<< HEAD
-        platform: z.enum(['facebook', 'instagram', 'youtube', 'other']),
-=======
         platform: z.enum(['facebook', 'instagram', 'youtube', 'tiktok', 'adsense', 'other']),
->>>>>>> 83a777b (Initial website commit)
         message: z.string().min(10, 'Message must be at least 10 characters').max(2000),
       })
     )
