@@ -39,6 +39,19 @@ const problems = [
 const timeSlots = ['10:00 AM', '11:30 AM', '1:00 PM', '2:30 PM', '4:00 PM', '5:30 PM'];
 const steps = ['Platform', 'Problem', 'Details', 'Schedule', 'Payment', 'Confirm'];
 
+// Hide time slots that have already passed (applies to today only)
+const isPastSlot = (day: Date, s: string) => {
+  const now = new Date();
+  if (day.toDateString() !== now.toDateString()) return false;
+  const [time, ap] = s.split(' ');
+  let [hh, mm] = time.split(':').map(Number);
+  if (ap === 'PM' && hh !== 12) hh += 12;
+  if (ap === 'AM' && hh === 12) hh = 0;
+  const dt = new Date(day);
+  dt.setHours(hh, mm, 0, 0);
+  return dt <= now;
+};
+
 const fmtDay = (d: Date) =>
   d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', timeZone: 'Asia/Kathmandu' });
 const fmtFull = (d: Date) =>
@@ -67,7 +80,7 @@ export default function Booking() {
     const now = new Date();
     return Array.from({ length: 7 }, (_, i) => {
       const d = new Date(now);
-      d.setDate(now.getDate() + i + 1);
+      d.setDate(now.getDate() + i);
       return d;
     });
   }, []);
@@ -241,7 +254,7 @@ Payment: ${svc.fee} paid via eSewa/Khalti (screenshot attached)`;
                 <div>
                   <p className="text-sm font-medium mb-3 flex items-center gap-2"><Clock size={15} className="text-muted-foreground" /> Available times — {fmtDay(days[dateIdx])}</p>
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                    {timeSlots.map(ts => (
+                    {timeSlots.filter(ts => !isPastSlot(days[dateIdx], ts)).map(ts => (
                       <button key={ts} onClick={() => setSlot(ts)}
                         className={`px-3 py-3 rounded-xl border text-sm font-medium transition-all ${
                           slot === ts ? 'border-violet-500 bg-violet-600 text-white shadow-md shadow-violet-500/25' : 'border-border hover:border-violet-500/40'
@@ -250,6 +263,9 @@ Payment: ${svc.fee} paid via eSewa/Khalti (screenshot attached)`;
                       </button>
                     ))}
                   </div>
+                  {timeSlots.every(ts => isPastSlot(days[dateIdx], ts)) && (
+                    <p className="text-sm text-muted-foreground mt-3">No slots left today — please pick another day.</p>
+                  )}
                 </div>
               )}
             </div>
