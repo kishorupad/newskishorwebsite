@@ -14,6 +14,10 @@ import Resources from "./pages/Resources";
 import SEOHead from "./components/SEOHead";
 import Analytics from "./components/Analytics";
 import Article from "./pages/Article";
+import About from "./pages/About";
+import RefundPolicy from "./pages/RefundPolicy";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Terms from "./pages/Terms";
 
 const sectionRoutes = [
   "/services",
@@ -50,6 +54,10 @@ function Router() {
       <Route path="/checklist" component={Checklist} />
       <Route path="/tools" component={Tools} />
       <Route path="/emergency" component={Emergency} />
+      <Route path="/about" component={About} />
+      <Route path="/refund-policy" component={RefundPolicy} />
+      <Route path="/privacy-policy" component={PrivacyPolicy} />
+      <Route path="/terms" component={Terms} />
       {sectionRoutes.map((route) => {
         const sectionId = route.slice(1);
         return (

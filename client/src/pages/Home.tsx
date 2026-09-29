@@ -1041,6 +1041,7 @@ export default function Home() {
                 <li><a href="/" className="hover:text-foreground transition-colors">Home</a></li>
                 <li><a href="/services" className="hover:text-foreground transition-colors">Services</a></li>
                 <li><a href="/how-it-works" className="hover:text-foreground transition-colors">How It Works</a></li>
+                <li><a href="/about" className="hover:text-foreground transition-colors">About Kishor</a></li>
                 <li><a href="/contact" className="hover:text-foreground transition-colors">Contact</a></li>
                 <li><a href="/emergency" className="text-red-500 hover:text-red-400 transition-colors font-medium">Hacked right now?</a></li>
                 <li><a href="/tools" className="hover:text-foreground transition-colors">Free password tools</a></li>
@@ -1080,8 +1081,13 @@ export default function Home() {
               </a>
             </div>
           </div>
-          <div className="border-t border-border pt-5 text-center text-xs text-muted-foreground">
-            &copy; 2026 Kishor Upadhyaya. All rights reserved.
+          <div className="border-t border-border pt-5 flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-5 text-xs text-muted-foreground">
+            <span>&copy; 2026 Kishor Upadhyaya. All rights reserved.</span>
+            <span className="flex items-center gap-4">
+              <a href="/refund-policy" className="hover:text-foreground transition-colors">Refund Policy</a>
+              <a href="/privacy-policy" className="hover:text-foreground transition-colors">Privacy Policy</a>
+              <a href="/terms" className="hover:text-foreground transition-colors">Terms</a>
+            </span>
           </div>
         </div>
       </footer>
