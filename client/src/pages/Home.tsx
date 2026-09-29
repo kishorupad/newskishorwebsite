@@ -107,8 +107,8 @@ export default function Home() {
               <div className="animate-fade-in-up">
                 <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 bg-violet-500/8 border border-violet-500/15 rounded-full">
                   <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-violet-500"></span>
                   </span>
                   <span className="text-sm font-medium">Available now · replies within 24 hours</span>
                 </div>
