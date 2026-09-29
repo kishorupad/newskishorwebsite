@@ -8,7 +8,6 @@ const recoveries = [
   { text: 'Srijana Thapa — hacked Instagram account recovered', time: 'in 3 days' },
   { text: 'Bikash Gurung — hacked YouTube channel (50K subs) restored', time: 'in 4 days' },
   { text: 'Pratikshya Karki — disabled Facebook page (100K) recovered', time: 'in 3 days' },
-  { text: 'Roshan Thapa — Instagram monetization approved', time: 'in 5 days' },
   { text: 'Sunita Bhandari — AdSense PIN issue fixed', time: 'in 2 days' },
   { text: 'Anil Magar — terminated YouTube channel reinstated', time: 'in 5 days' },
   { text: 'Deepa Rai — hacked Instagram account recovered', time: 'in 2 days' },
