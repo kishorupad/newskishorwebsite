@@ -29,7 +29,6 @@ export default function Home() {
     { name: 'Srijana Thapa', text: 'I thought my Instagram was gone forever. Kishor recovered it and also helped me set up two-factor authentication so it doesn\'t happen again.', platform: 'Instagram', time: '3 days' },
     { name: 'Bikash Gurung', text: 'My YouTube channel with 50K subscribers got hacked. Kishor restored everything — channel, videos, even my monetization. Really grateful.', platform: 'YouTube', time: '4 days' },
     { name: 'Pratikshya Karki', text: 'My Facebook page with 100K followers was disabled. Kishor got it back in 3 days. He knows exactly how to deal with Meta support.', platform: 'Facebook', time: '3 days' },
-    { name: 'Roshan Thapa', text: 'Instagram monetization was rejected 5 times. Kishor figured out the issue and got it approved within a week. Highly recommend!', platform: 'Instagram', time: '5 days' },
     { name: 'Sunita Bhandari', text: 'My AdSense PIN never arrived for 6 months. Kishor fixed it in 2 days. I\'m now receiving my payments properly.', platform: 'AdSense', time: '2 days' },
     { name: 'Anil Magar', text: 'YouTube channel terminated for no reason. Kishor filed the appeal and got it reinstated. Saved my 3 years of hard work.', platform: 'YouTube', time: '5 days' },
     { name: 'Deepa Rai', text: 'My Instagram account was hacked and the hacker changed everything. Kishor recovered it and helped me secure it properly.', platform: 'Instagram', time: '2 days' },
@@ -335,7 +334,7 @@ export default function Home() {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
               {[
                 { icon: Shield, title: 'Account Recovery', desc: 'Recover hacked, locked, or disabled accounts on any social media platform.', time: '24-72 hours', color: 'from-blue-600 to-blue-500', msg: 'Hi Kishor, I need help recovering my account.' },
-                { icon: DollarSign, title: 'Monetization Setup', desc: 'Get your Facebook, Instagram, or YouTube account monetized. Eligibility check and full setup.', time: '3-7 days', color: 'from-emerald-600 to-emerald-500', msg: 'Hi Kishor, I need help with monetization.' },
+                { icon: DollarSign, title: 'Monetization Setup', desc: 'Get your Facebook or YouTube account monetized. Eligibility check and full setup.', time: '3-7 days', color: 'from-emerald-600 to-emerald-500', msg: 'Hi Kishor, I need help with monetization.' },
                 { icon: Search, title: 'AdSense Integration', desc: 'News AdSense setup, identity verification, PIN/address verification, payment stuck issues. Get your AdSense working.', time: '2-5 days', color: 'from-amber-600 to-amber-500', msg: 'Hi Kishor, I have an AdSense problem.' },
                 { icon: Users, title: 'Bank & Payout Issues', desc: 'Fix payout failures, bank integration problems, and payment verification on any platform.', time: '1-3 days', color: 'from-purple-600 to-purple-500', msg: 'Hi Kishor, I have a payout/bank issue.' },
                 { icon: Facebook, title: 'Facebook Problems', desc: 'Page verification, business manager issues, ad account problems, and page recovery.', time: '24-48 hours', color: 'from-blue-600 to-blue-400', msg: 'Hi Kishor, I have a Facebook problem.' },
@@ -394,7 +393,7 @@ export default function Home() {
                 <tbody>
                   {[
                     { platform: 'Facebook', recovery: true, monetization: true, adsense: false, payout: false, verification: true },
-                    { platform: 'Instagram', recovery: true, monetization: true, adsense: false, payout: true, verification: true },
+                    { platform: 'Instagram', recovery: true, monetization: false, adsense: false, payout: true, verification: true },
                     { platform: 'YouTube', recovery: true, monetization: true, adsense: true, payout: true, verification: false },
                     { platform: 'TikTok', recovery: true, monetization: true, adsense: false, payout: true, verification: false },
                     { platform: 'Google AdSense', recovery: false, monetization: false, adsense: true, payout: true, verification: false },

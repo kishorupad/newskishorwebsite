@@ -28,7 +28,7 @@ const pageMeta = {
     description:
       'Account recovery, monetization setup, AdSense support, payout fixes, and platform protection for Facebook, Instagram, YouTube, and more in Nepal.',
     keywords:
-      'facebook recovery service Nepal, instagram monetization helper, youtube monetization support, adsense fix Nepal, social media services Nepal',
+      'facebook recovery service Nepal, youtube monetization support, adsense fix Nepal, social media services Nepal',
   },
   '/how-it-works': {
     title: 'How the Recovery Process Works | Kishor Upadhyaya',
