@@ -291,6 +291,11 @@ Payment: ${svc.fee} paid via eSewa/Khalti (screenshot attached)`;
                   </label>
                 </div>
               </div>
+              <div className="mt-6 px-4 py-3 rounded-xl bg-amber-500/10 border border-amber-500/25 text-sm text-amber-700 dark:text-amber-300">
+                <strong>Honest note:</strong> some cases genuinely can&apos;t be recovered (e.g. permanently deleted accounts, severe policy violations).
+                This fee covers my time to investigate and give you a straight answer — if it&apos;s hopeless, I&apos;ll tell you honestly
+                and guide your next steps instead of taking more of your money.
+              </div>
             </div>
           )}
 
