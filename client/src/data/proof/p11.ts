@@ -7,5 +7,5 @@ const PROOF_HL33 = "data:image/webp;base64,UklGRvBdAABXRUJQVlA4IORdAAAwdQGdASqAA
 export const PART_11 = [
   { src: PROOF_HL31, label: "Channel recovered - RAWKING CZER" },
   { src: PROOF_HL32, label: "Tech assistance - Rabindra Mishra" },
-  { src: PROOF_HL33, label: "Thank you for helping us" },
+  { src: PROOF_HL33, label: "Thank you - @thehulaki" },
 ];
