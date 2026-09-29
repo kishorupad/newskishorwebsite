@@ -9,7 +9,9 @@ import LiveChat from '@/components/LiveChat';
 import InstagramFeature from '@/components/InstagramFeature';
 import { trpc } from '@/lib/trpc';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { getYearsExperienceText } from '@/lib/experience';
+import { getYearsExperience, getYearsExperienceText } from '@/lib/experience';
+import AnimatedCounter from '@/components/AnimatedCounter';
+import RecoveryTicker from '@/components/RecoveryTicker';
 import { Phone, Mail, MessageCircle, ArrowRight, Shield, Facebook, Instagram, Youtube, Users, Search, CheckCircle, Clock, Lock, DollarSign, Award, ExternalLink } from 'lucide-react';
 
 export default function Home() {
@@ -80,10 +82,10 @@ export default function Home() {
   ];
 
   const stats = [
-    { value: '1500+', label: 'Problems Solved' },
-    { value: '98%', label: 'Success Rate' },
-    { value: '24h', label: 'Response Time' },
-    { value: getYearsExperienceText(), label: 'Years Experience' },
+    { numeric: 1500, suffix: '+', label: 'Problems Solved' },
+    { numeric: 98, suffix: '%', label: 'Success Rate' },
+    { numeric: 24, suffix: 'h', label: 'Response Time' },
+    { numeric: getYearsExperience(), suffix: '+', label: 'Years Experience' },
   ];
 
   return (
@@ -131,7 +133,7 @@ export default function Home() {
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
                   {stats.map((stat, i) => (
                     <div key={i} className="scroll-animate text-center sm:text-left" style={{ transitionDelay: `${i * 100}ms` }}>
-                      <div className="text-3xl font-bold text-cyan-600 dark:text-cyan-400 font-[Sora]">{stat.value}</div>
+                      <div className="text-3xl font-bold text-cyan-600 dark:text-cyan-400 font-[Sora]"><AnimatedCounter value={stat.numeric} suffix={stat.suffix} /></div>
                       <p className="text-muted-foreground text-xs mt-1">{stat.label}</p>
                     </div>
                   ))}
@@ -181,6 +183,8 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <RecoveryTicker />
 
         {/* ─── FEATURED ON ROUTINE OF NEPAL BANDA ─── */}
         <InstagramFeature />
@@ -473,7 +477,7 @@ export default function Home() {
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
                 {stats.map((stat, idx) => (
                   <div key={idx} className="scroll-animate text-center p-4 rounded-xl bg-card border border-border" style={{ transitionDelay: `${idx * 80}ms` }}>
-                    <div className="text-2xl md:text-3xl font-bold text-cyan-600 dark:text-cyan-400 font-[Sora]">{stat.value}</div>
+                    <div className="text-2xl md:text-3xl font-bold text-cyan-600 dark:text-cyan-400 font-[Sora]"><AnimatedCounter value={stat.numeric} suffix={stat.suffix} /></div>
                     <p className="text-muted-foreground text-xs mt-0.5">{stat.label}</p>
                   </div>
                 ))}
