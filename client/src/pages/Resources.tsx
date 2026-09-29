@@ -4,10 +4,12 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import ShareButtons from '@/components/ShareButtons';
+import { useLocation } from 'wouter';
+import PageBackdrop from '@/components/PageBackdrop';
 
-interface Article {
+export interface Article {
   id: string;
+  slug: string;
   title: string;
   excerpt: string;
   content: string;
@@ -16,9 +18,10 @@ interface Article {
   icon: React.ReactNode;
 }
 
-const articles: Article[] = [
+export const articles: Article[] = [
   {
     id: '1',
+  slug: 'recognize-phishing-attacks',
     title: 'How to Recognize Phishing Attacks',
     excerpt: 'Learn to identify common phishing tactics and protect your accounts from fraudsters.',
     content: `Phishing attacks are one of the most common ways hackers gain access to accounts. Here's what you need to know:
@@ -49,6 +52,7 @@ const articles: Article[] = [
   },
   {
     id: '2',
+  slug: 'creating-strong-unique-passwords',
     title: 'Creating Strong, Unique Passwords',
     excerpt: 'Master password security to protect all your online accounts.',
     content: `A strong password is your first line of defense against account compromise.
@@ -81,10 +85,11 @@ Use: "BlueMountain$Sunset#2024!"
 Remember: A password manager makes strong passwords effortless.`,
     category: 'prevention',
     readTime: 6,
-    icon: <Key className="text-blue-500" size={24} />,
+    icon: <Key className="text-violet-500" size={24} />,
   },
   {
     id: '3',
+  slug: 'two-factor-authentication-guide',
     title: 'Two-Factor Authentication: Your Safety Net',
     excerpt: 'Understand why 2FA is essential and how to set it up correctly.',
     content: `Two-factor authentication (2FA) adds an extra security layer to your accounts.
@@ -128,6 +133,7 @@ Remember: A password manager makes strong passwords effortless.`,
   },
   {
     id: '4',
+  slug: 'recover-hacked-facebook-account',
     title: 'Steps to Recover a Hacked Facebook Account',
     excerpt: 'A comprehensive guide to regaining access to your compromised Facebook account.',
     content: `If your Facebook account has been hacked, don't panic. Here's what to do:
@@ -180,6 +186,7 @@ I can help with complex Facebook recovery cases. Contact me if you're stuck in t
   },
   {
     id: '5',
+  slug: 'instagram-account-hacked-what-to-do',
     title: 'Instagram Account Hacked? Here\'s What to Do',
     excerpt: 'Quick recovery steps for compromised Instagram accounts.',
     content: `Instagram hacks are common, but recovery is possible with the right steps.
@@ -237,6 +244,7 @@ I can help with complex Facebook recovery cases. Contact me if you're stuck in t
   },
   {
     id: '6',
+  slug: 'protect-youtube-channel-from-hackers',
     title: 'Protecting Your YouTube Channel from Hackers',
     excerpt: 'Essential security measures for YouTube creators and channel owners.',
     content: `Your YouTube channel is valuable - protect it with these security practices.
@@ -295,7 +303,7 @@ I can help with complex Facebook recovery cases. Contact me if you're stuck in t
 export default function Resources() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<'all' | 'cybersecurity' | 'recovery' | 'prevention'>('all');
-  const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
+  const [, setLocation] = useLocation();
 
   const filteredArticles = articles.filter((article) => {
     const matchesSearch = article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -305,7 +313,8 @@ export default function Resources() {
   });
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative">
+      <PageBackdrop />
       {/* Header */}
       <div className="bg-gradient-to-br from-primary/10 to-secondary/10 border-b border-border py-12 md:py-16">
         <div className="container mx-auto px-4">
@@ -321,8 +330,6 @@ export default function Resources() {
 
       {/* Main Content */}
       <div className="container mx-auto px-4 py-12">
-        {!selectedArticle ? (
-          <>
             {/* Search and Filter */}
             <div className="mb-12 space-y-6">
               {/* Search Bar */}
@@ -355,7 +362,7 @@ export default function Resources() {
                   <Card
                     key={article.id}
                     className="p-6 hover:shadow-lg transition cursor-pointer group"
-                    onClick={() => setSelectedArticle(article)}
+                    onClick={() => setLocation(`/resources/${article.slug}`)}
                   >
                     <div className="flex items-start justify-between mb-4">
                       <div className="p-3 bg-muted rounded-lg group-hover:bg-primary/10 transition">
@@ -387,94 +394,6 @@ export default function Resources() {
                 <p className="text-muted-foreground">Try adjusting your search or filter criteria.</p>
               </div>
             )}
-          </>
-        ) : (
-          <>
-            {/* Article View */}
-            <div className="max-w-3xl mx-auto">
-              {/* Back Button */}
-              <Button
-                variant="ghost"
-                onClick={() => setSelectedArticle(null)}
-                className="mb-8"
-              >
-                ← Back to Resources
-              </Button>
-
-              {/* Article Header */}
-              <div className="mb-8">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="p-4 bg-muted rounded-lg">
-                    {selectedArticle.icon}
-                  </div>
-                  <div>
-                    <span className="text-sm font-semibold px-3 py-1 bg-primary/10 text-primary rounded-full">
-                      {selectedArticle.category === 'cybersecurity' && 'Security'}
-                      {selectedArticle.category === 'recovery' && 'Recovery'}
-                      {selectedArticle.category === 'prevention' && 'Prevention'}
-                    </span>
-                    <h1 className="text-4xl font-bold mt-2">{selectedArticle.title}</h1>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4 text-muted-foreground">
-                  <span>{selectedArticle.readTime} minute read</span>
-                </div>
-              </div>
-
-              {/* Article Content */}
-              <Card className="p-8 prose prose-invert max-w-none">
-                <div className="whitespace-pre-wrap text-base leading-relaxed space-y-4">
-                  {selectedArticle.content.split('\n\n').map((paragraph, idx) => (
-                    <div key={idx}>
-                      {paragraph.startsWith('**') ? (
-                        <div>
-                          {paragraph.split('\n').map((line, lineIdx) => (
-                            <div key={lineIdx}>
-                              {line.startsWith('**') ? (
-                                <p className="font-bold text-lg mt-4 mb-2">
-                                  {line.replace(/\*\*/g, '')}
-                                </p>
-                              ) : line.startsWith('-') ? (
-                                <li className="ml-6 mb-1">{line.substring(1).trim()}</li>
-                              ) : line.startsWith('1.') || line.match(/^\d+\./) ? (
-                                <li className="ml-6 mb-1">{line.replace(/^\d+\.\s/, '')}</li>
-                              ) : (
-                                <p>{line}</p>
-                              )}
-                            </div>
-                          ))}
-                        </div>
-                      ) : (
-                        <p>{paragraph}</p>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </Card>
-
-              {/* Share Buttons */}
-              <Card className="mt-12 p-8 border-border">
-                <ShareButtons
-                  title={selectedArticle.title}
-                  url={typeof window !== 'undefined' ? window.location.href : ''}
-                  description={selectedArticle.excerpt}
-                />
-              </Card>
-
-              {/* CTA Section */}
-              <Card className="mt-8 p-8 bg-gradient-to-r from-primary/10 to-secondary/10 border-primary/20">
-                <h3 className="text-2xl font-bold mb-4">Need Professional Help?</h3>
-                <p className="text-muted-foreground mb-6">
-                  If you're dealing with a compromised account or need expert assistance, I'm here to help. With 8+ years of experience and a 98% success rate, I can recover your account quickly and securely.
-                </p>
-                <div className="flex gap-4">
-                  <Button className="bg-primary hover:bg-primary/90">Get Help Now</Button>
-                  <Button variant="outline">Contact Me</Button>
-                </div>
-              </Card>
-            </div>
-          </>
-        )}
       </div>
     </div>
   );

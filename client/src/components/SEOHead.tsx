@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation } from 'wouter';
 import { getYearsExperienceText } from '@/lib/experience';
+import { articles } from '@/pages/Resources';
 
 const PROFILE_IMAGE = '/kishwor-5-1770795722.jpg';
 const SITE_URL = 'https://kishorupadhyaya.com.np';
@@ -9,7 +10,7 @@ const EMAIL = 'kishorupadhyaya222@gmail.com';
 
 const pageMeta = {
   '/': {
-    title: 'Kishor Upadhyaya | Social Media Expert Nepal — All Problems Solved',
+    title: 'Kishor Upadhyaya | Social Media Expert Nepal - All Problems Solved',
     description:
       'Recover hacked Facebook, Instagram, and YouTube accounts in Nepal. Get AdSense, monetization, payout, verification, and social media support from Kishor Upadhyaya.',
     keywords:
@@ -27,7 +28,7 @@ const pageMeta = {
     description:
       'Account recovery, monetization setup, AdSense support, payout fixes, and platform protection for Facebook, Instagram, YouTube, and more in Nepal.',
     keywords:
-      'facebook recovery service Nepal, instagram monetization helper, youtube monetization support, adsense fix Nepal, social media services Nepal',
+      'facebook recovery service Nepal, youtube monetization support, adsense fix Nepal, social media services Nepal',
   },
   '/how-it-works': {
     title: 'How the Recovery Process Works | Kishor Upadhyaya',
@@ -36,12 +37,26 @@ const pageMeta = {
     keywords:
       'how social media recovery works, account recovery process Nepal, hacked account help process, social media support steps',
   },
-  '/assessment': {
-    title: 'Free Social Media Problem Assessment | Kishor Upadhyaya',
+  '/booking': {
+    title: 'Book a Case Review | Kishor Upadhyaya',
     description:
-      'Get a free assessment for Facebook, Instagram, YouTube, AdSense, and social media platform issues in Nepal.',
+      'Book a 30-minute social media case review with Kishor Upadhyaya. Pay the Rs. 2,000 consultation fee online and lock your slot - Facebook, Instagram, YouTube, TikTok, AdSense.',
     keywords:
-      'free social media assessment Nepal, facebook problem check, instagram issue diagnosis, youtube monetization assessment',
+      'book social media consultation Nepal, account recovery booking, kishor upadhyaya booking, social media expert appointment Nepal',
+  },
+  '/tools': {
+    title: 'Free Password Strength Checker & Generator | Kishor Upadhyaya',
+    description:
+      'Check how strong your password is and generate strong passwords for free. Private: everything runs in your browser. By Kishor Upadhyaya, Nepal.',
+    keywords:
+      'password strength checker, strong password generator Nepal, password security tool, free password generator',
+  },
+  '/emergency': {
+    title: 'Hacked Right Now? 5 Emergency Steps | Kishor Upadhyaya',
+    description:
+      'Your Facebook, Instagram or YouTube was just hacked? Do these 5 emergency steps immediately, then book an urgent case review with Kishor Upadhyaya.',
+    keywords:
+      'hacked account emergency, facebook hacked what to do now, instagram hacked help Nepal, urgent account recovery',
   },
   '/contact': {
     title: 'Contact Kishor Upadhyaya | Social Media Expert Nepal',
@@ -84,7 +99,17 @@ export default function SEOHead() {
 
   useEffect(() => {
     const currentPath = location || '/';
-    const meta = pageMeta[currentPath as keyof typeof pageMeta] || pageMeta['/'];
+    const articleMatch = currentPath.match(/^\/resources\/([\w-]+)$/);
+    const article = articleMatch
+      ? articles.find((art) => art.slug === articleMatch[1])
+      : undefined;
+    const meta = article
+      ? {
+          title: `${article.title} | Kishor Upadhyaya`,
+          description: article.excerpt,
+          keywords: `social media guide nepal, ${article.title.toLowerCase()}, account security nepal, kishor upadhyaya`,
+        }
+      : pageMeta[currentPath as keyof typeof pageMeta] || pageMeta['/'];
 
     document.title = meta.title;
 
@@ -109,16 +134,10 @@ export default function SEOHead() {
       priceRange: '$$',
       image: PROFILE_IMAGE,
       sameAs: [
-        'https://www.facebook.com/kishorupadhyaya',
-        'https://www.instagram.com/kishorupadhyaya',
+        'https://www.facebook.com/kishorupp',
+        'https://www.instagram.com/kishorupp',
+        'https://www.linkedin.com/in/kishorupadhyaya/',
       ],
-      aggregateRating: {
-        '@type': 'AggregateRating',
-        ratingValue: '4.9',
-        ratingCount: '500',
-        bestRating: '5',
-        worstRating: '1',
-      },
       address: {
         '@type': 'PostalAddress',
         addressCountry: 'NP',
@@ -151,8 +170,9 @@ export default function SEOHead() {
       logo: PROFILE_IMAGE,
       description: `Professional account recovery expert with ${getYearsExperienceText()} years of experience`,
       sameAs: [
-        'https://www.facebook.com/kishorupadhyaya',
-        'https://www.instagram.com/kishorupadhyaya',
+        'https://www.facebook.com/kishorupp',
+        'https://www.instagram.com/kishorupp',
+        'https://www.linkedin.com/in/kishorupadhyaya/',
       ],
       contactPoint: {
         '@type': 'ContactPoint',

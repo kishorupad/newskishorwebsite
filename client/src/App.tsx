@@ -6,13 +6,22 @@ import { useEffect } from "react";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
+import Booking from "./pages/Booking";
+import Checklist from "./pages/Checklist";
+import Tools from "./pages/Tools";
+import Emergency from "./pages/Emergency";
 import Resources from "./pages/Resources";
 import SEOHead from "./components/SEOHead";
+import Analytics from "./components/Analytics";
+import Article from "./pages/Article";
+import About from "./pages/About";
+import RefundPolicy from "./pages/RefundPolicy";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Terms from "./pages/Terms";
 
 const sectionRoutes = [
   "/services",
   "/how-it-works",
-  "/assessment",
   "/social-proof",
   "/certifications",
   "/guarantees",
@@ -39,6 +48,15 @@ function Router() {
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/resources" component={Resources} />
+      <Route path="/resources/:slug" component={Article} />
+      <Route path="/booking" component={Booking} />
+      <Route path="/checklist" component={Checklist} />
+      <Route path="/tools" component={Tools} />
+      <Route path="/emergency" component={Emergency} />
+      <Route path="/about" component={About} />
+      <Route path="/refund-policy" component={RefundPolicy} />
+      <Route path="/privacy-policy" component={PrivacyPolicy} />
+      <Route path="/terms" component={Terms} />
       {sectionRoutes.map((route) => {
         const sectionId = route.slice(1);
         return (
@@ -62,6 +80,7 @@ function App() {
       >
         <TooltipProvider>
           <SEOHead />
+          <Analytics />
           <Toaster />
           <Router />
         </TooltipProvider>

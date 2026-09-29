@@ -13,7 +13,7 @@ export default function Navigation() {
     { label: 'Home', href: '/' },
     { label: 'Services', href: '/services' },
     { label: 'How It Works', href: '/how-it-works' },
-    { label: 'Assessment', href: '/assessment' },
+    { label: 'About', href: '/about' },
     { label: 'FAQ', href: '/faq' },
     { label: 'Contact', href: '/contact' },
   ];
@@ -25,7 +25,7 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 gap-4">
           <div className="flex-shrink-0">
-            <Link href="/" className="text-2xl font-bold font-[Sora] text-cyan-600 dark:text-cyan-400 hover:opacity-80 transition-opacity">Kishor</Link>
+            <Link href="/" className="text-2xl font-bold font-[Sora] text-violet-600 dark:text-violet-400 hover:opacity-80 transition-opacity">Kishor</Link>
           </div>
 
           <div className="hidden lg:flex items-center gap-1 flex-1 justify-center">
@@ -36,7 +36,7 @@ export default function Navigation() {
                 className={`px-3 py-2 text-sm font-medium transition-colors duration-200 relative group whitespace-nowrap ${isActive(item.href) ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'}`}
               >
                 {item.label}
-                <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-cyan-600 dark:bg-cyan-400 transition-all duration-300 rounded-full ${isActive(item.href) ? 'w-full' : 'w-0 group-hover:w-full'}`} />
+                <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 bg-violet-600 dark:bg-violet-400 transition-all duration-300 rounded-full ${isActive(item.href) ? 'w-full' : 'w-0 group-hover:w-full'}`} />
               </Link>
             ))}
           </div>
@@ -53,7 +53,7 @@ export default function Navigation() {
             )}
 
             <Button asChild className="btn-gradient-sm hidden sm:inline-flex rounded-lg text-sm">
-              <Link href="/contact">Get Help Now</Link>
+              <Link href="/booking">Book a Review</Link>
             </Button>
 
             <button
@@ -80,7 +80,7 @@ export default function Navigation() {
               </Link>
             ))}
             <Button asChild className="w-full btn-gradient-sm mt-3 rounded-lg text-sm">
-              <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>Get Help Now</Link>
+              <Link href="/booking" onClick={() => setMobileMenuOpen(false)}>Book a Review</Link>
             </Button>
           </div>
         )}
