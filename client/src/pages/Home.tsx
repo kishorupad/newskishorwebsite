@@ -99,58 +99,39 @@ export default function Home() {
 
         {/* ─── HERO ─── */}
         <section id="hero" className="relative min-h-[85vh] flex items-center pt-20 pb-12 overflow-hidden">
-          <div className="absolute top-1/4 -left-32 w-96 h-96 bg-cyan-500/[0.06] rounded-full blur-[120px] pointer-events-none" />
-          <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-blue-500/[0.06] rounded-full blur-[120px] pointer-events-none" />
+          <div className="absolute top-1/4 -left-32 w-96 h-96 bg-violet-500/[0.06] rounded-full blur-[120px] pointer-events-none" />
+          <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-indigo-500/[0.06] rounded-full blur-[120px] pointer-events-none" />
 
           <div className="container mx-auto px-4 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className="animate-fade-in-up">
-                <div className="inline-block mb-5 px-4 py-1.5 bg-cyan-500/8 border border-cyan-500/15 rounded-full">
-                  <span className="text-cyan-600 dark:text-cyan-400 text-sm font-medium">Social Media Expert</span>
+                <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 bg-violet-500/8 border border-violet-500/15 rounded-full">
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                  </span>
+                  <span className="text-sm font-medium">Available now · replies within 24 hours</span>
                 </div>
 
-                <h1 className="text-5xl lg:text-7xl font-bold mb-5 leading-[1.08] tracking-tight">
-                  Kishor Upadhyaya
+                <h1 className="text-5xl lg:text-7xl font-bold mb-5 leading-[1.04] tracking-tight">
+                  Kishor <span className="bg-gradient-to-r from-violet-600 to-indigo-600 dark:from-violet-400 dark:to-indigo-400 bg-clip-text text-transparent">Upadhyaya</span>
                 </h1>
 
-                <p className="text-xl lg:text-2xl text-muted-foreground mb-3 font-semibold font-[Sora]">
-                  All-in-One Social Media Solutions
+                <p className="text-xl lg:text-2xl text-foreground mb-4 font-semibold font-[Sora] tracking-tight">
+                  Hacked? Disabled? Demonetized? I&apos;ll get it back.
                 </p>
 
-                <p className="text-lg text-muted-foreground/80 mb-4 leading-relaxed max-w-xl">
-                  From account recovery to monetization, AdSense, payouts, and every social media problem — I handle it all. {getYearsExperienceText()} years of experience across every major platform.
+                <p className="text-lg text-muted-foreground leading-relaxed max-w-xl mb-8">
+                  Nepal&apos;s social media recovery expert — 1,500+ cases solved across Facebook, Instagram, YouTube and TikTok. {getYearsExperienceText()} years of getting accounts back.
                 </p>
-
-                <div className="flex items-center gap-4 mb-8 text-sm text-muted-foreground flex-wrap">
-                  <span className="flex items-center gap-1.5"><span className="text-cyan-600 dark:text-cyan-400 font-bold">1500+</span> problems solved</span>
-                  <span className="w-1 h-1 rounded-full bg-border" />
-                  <span className="flex items-center gap-1.5"><span className="text-cyan-600 dark:text-cyan-400 font-bold">600+</span> accounts recovered</span>
-                  <span className="w-1 h-1 rounded-full bg-border" />
-                  <span className="flex items-center gap-1.5"><span className="text-cyan-600 dark:text-cyan-400 font-bold">24h</span> response</span>
-                </div>
 
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
                   {stats.map((stat, i) => (
                     <div key={i} className="scroll-animate text-center sm:text-left" style={{ transitionDelay: `${i * 100}ms` }}>
-                      <div className="text-3xl font-bold text-cyan-600 dark:text-cyan-400 font-[Sora]"><AnimatedCounter value={stat.numeric} suffix={stat.suffix} /></div>
+                      <div className="text-3xl font-bold text-violet-600 dark:text-violet-400 font-[Sora]"><AnimatedCounter value={stat.numeric} suffix={stat.suffix} /></div>
                       <p className="text-muted-foreground text-xs mt-1">{stat.label}</p>
                     </div>
                   ))}
-                </div>
-
-                <div className="scroll-animate flex flex-wrap gap-3 text-xs text-muted-foreground mb-10">
-                  <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-muted/50 border border-border">
-                    <span className="w-1.5 h-1.5 rounded-full bg-blue-500" /> 600+ Accounts Recovered
-                  </span>
-                  <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-muted/50 border border-border">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" /> 300+ Channels Monetized
-                  </span>
-                  <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-muted/50 border border-border">
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-500" /> 200+ AdSense Fixed
-                  </span>
-                  <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-muted/50 border border-border">
-                    <span className="w-1.5 h-1.5 rounded-full bg-purple-500" /> 400+ Other Issues
-                  </span>
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-3">
@@ -165,8 +146,8 @@ export default function Home() {
 
               <div className="animate-slide-in-right mt-10 lg:mt-0 max-w-sm mx-auto lg:max-w-none lg:mx-0" style={{ animationDelay: '0.2s' }}>
                 <div className="relative">
-                  <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-blue-500/5 rounded-3xl blur-[60px]" />
-                  <div className="relative rounded-3xl overflow-hidden border border-border shadow-2xl shadow-cyan-500/5">
+                  <div className="absolute inset-0 bg-gradient-to-br from-violet-500/10 to-indigo-500/5 rounded-3xl blur-[60px]" />
+                  <div className="relative rounded-3xl overflow-hidden border border-border shadow-2xl shadow-violet-500/5">
                     <img
                       src="/kishwor-5-1770795722.jpg"
                       alt="Kishor Upadhyaya - Social Media Expert Nepal"
@@ -176,6 +157,20 @@ export default function Home() {
                       width="600"
                       height="600"
                     />
+                  </div>
+                  <div className="animate-floaty absolute -top-4 -right-2 sm:-right-6 bg-card/95 backdrop-blur border border-border rounded-2xl shadow-xl px-4 py-3 flex items-center gap-3">
+                    <span className="w-9 h-9 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0"><CheckCircle size={18} /></span>
+                    <span>
+                      <span className="block text-sm font-semibold leading-tight">Account recovered</span>
+                      <span className="block text-xs text-muted-foreground">Facebook · in 2 days</span>
+                    </span>
+                  </div>
+                  <div className="animate-floaty-slow absolute -bottom-4 -left-2 sm:-left-6 bg-card/95 backdrop-blur border border-border rounded-2xl shadow-xl px-4 py-3 flex items-center gap-3">
+                    <span className="w-9 h-9 rounded-full bg-violet-500/15 text-violet-600 dark:text-violet-400 flex items-center justify-center shrink-0"><Youtube size={18} /></span>
+                    <span>
+                      <span className="block text-sm font-semibold leading-tight">50K channel restored</span>
+                      <span className="block text-xs text-muted-foreground">Hacked → fully back</span>
+                    </span>
                   </div>
                 </div>
               </div>
@@ -193,7 +188,7 @@ export default function Home() {
           <div className="container mx-auto px-4">
             <div className="text-center mb-12 scroll-animate">
               <h2 className="text-4xl md:text-5xl font-bold mb-3">
-                Problem <span className="text-cyan-600 dark:text-cyan-400">Review</span>
+                Problem <span className="text-violet-600 dark:text-violet-400">Review</span>
               </h2>
               <p className="text-lg text-muted-foreground max-w-xl mx-auto">
                 Share your issue, explain what happened, and book a 30-minute review session before any recovery work begins.
@@ -235,16 +230,16 @@ export default function Home() {
                   waText: 'Hi Kishor, I need an urgent case review for my time-sensitive issue.',
                 },
               ].map((plan, idx) => (
-                <div key={idx} className="scroll-animate rounded-2xl border border-border bg-card p-5 shadow-sm hover:-translate-y-1 hover:border-cyan-500/20 transition-all duration-300 flex flex-col h-full">
+                <div key={idx} className="scroll-animate rounded-2xl border border-border bg-card p-5 shadow-sm hover:-translate-y-1 hover:border-violet-500/20 transition-all duration-300 flex flex-col h-full">
                   <div className="mb-4">
-                    <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-[10px] font-semibold uppercase tracking-wide text-cyan-700 dark:text-cyan-300">
+                    <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-violet-500/10 border border-violet-500/20 text-[10px] font-semibold uppercase tracking-wide text-violet-700 dark:text-violet-300">
                     Consultation
                     </span>
                   </div>
 
                   <h3 className="text-xl font-bold mb-2">{plan.title}</h3>
                   <div className="flex items-end gap-2 mb-4">
-                    <span className="text-3xl font-extrabold text-cyan-600 dark:text-cyan-400">{plan.price}</span>
+                    <span className="text-3xl font-extrabold text-violet-600 dark:text-violet-400">{plan.price}</span>
                   </div>
 
                   <p className="text-sm text-muted-foreground leading-relaxed mb-4">{plan.description}</p>
@@ -252,7 +247,7 @@ export default function Home() {
                   <ul className="space-y-2 text-sm mb-5 flex-1">
                     {plan.bullets.map((bullet) => (
                       <li key={bullet} className="flex items-start gap-2 text-foreground/80">
-                        <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-cyan-600 dark:bg-cyan-400" />
+                        <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-violet-600 dark:bg-violet-400" />
                         <span>{bullet}</span>
                       </li>
                     ))}
@@ -266,7 +261,7 @@ export default function Home() {
                     href={wa(plan.waText)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-auto inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 text-white font-semibold px-4 py-3 hover:opacity-95 transition-opacity"
+                    className="mt-auto inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-semibold px-4 py-3 hover:opacity-95 transition-opacity"
                   >
                     {plan.cta} <ArrowRight size={16} />
                   </a>
@@ -279,37 +274,37 @@ export default function Home() {
         {/* ─── MONTHLY SUPPORT PLAN ─── */}
         <section className="py-16 md:py-20 bg-background">
           <div className="container mx-auto px-4">
-            <div className="max-w-5xl mx-auto rounded-3xl border border-cyan-500/20 bg-gradient-to-r from-cyan-500/5 to-blue-500/5 p-6 md:p-8 shadow-sm">
+            <div className="max-w-5xl mx-auto rounded-3xl border border-violet-500/20 bg-gradient-to-r from-violet-500/5 to-indigo-500/5 p-6 md:p-8 shadow-sm">
               <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-6 items-center">
                 <div>
-                  <span className="inline-flex items-center px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-[10px] font-semibold uppercase tracking-wide text-cyan-700 dark:text-cyan-300">
+                  <span className="inline-flex items-center px-3 py-1 rounded-full bg-violet-500/10 border border-violet-500/20 text-[10px] font-semibold uppercase tracking-wide text-violet-700 dark:text-violet-300">
                     Monthly Support
                   </span>
                   <h3 className="mt-4 text-3xl md:text-4xl font-bold mb-3">
-                    Social Media <span className="text-cyan-600 dark:text-cyan-400">Security Plan</span>
+                    Social Media <span className="text-violet-600 dark:text-violet-400">Security Plan</span>
                   </h3>
                   <p className="text-muted-foreground leading-relaxed mb-4">
                     Ongoing protection, account monitoring, and quick support to keep your social media profiles secure and healthy.
                   </p>
 
                   <ul className="space-y-2 text-sm text-foreground/80">
-                    <li className="flex items-start gap-2"><span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-cyan-600 dark:bg-cyan-400" /> Monthly account health check</li>
-                    <li className="flex items-start gap-2"><span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-cyan-600 dark:bg-cyan-400" /> Password and security review</li>
-                    <li className="flex items-start gap-2"><span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-cyan-600 dark:bg-cyan-400" /> Support for small issues and quick fixes</li>
-                    <li className="flex items-start gap-2"><span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-cyan-600 dark:bg-cyan-400" /> Recovery guidance when needed</li>
+                    <li className="flex items-start gap-2"><span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-violet-600 dark:bg-violet-400" /> Monthly account health check</li>
+                    <li className="flex items-start gap-2"><span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-violet-600 dark:bg-violet-400" /> Password and security review</li>
+                    <li className="flex items-start gap-2"><span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-violet-600 dark:bg-violet-400" /> Support for small issues and quick fixes</li>
+                    <li className="flex items-start gap-2"><span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-violet-600 dark:bg-violet-400" /> Recovery guidance when needed</li>
                   </ul>
                 </div>
 
                 <div className="rounded-2xl border border-border bg-card p-5">
                   <div className="text-sm text-muted-foreground mb-2">Starting from</div>
-                  <div className="text-4xl font-extrabold text-cyan-600 dark:text-cyan-400 mb-2">Rs. 5,000</div>
+                  <div className="text-4xl font-extrabold text-violet-600 dark:text-violet-400 mb-2">Rs. 5,000</div>
                   <div className="text-sm text-muted-foreground mb-5">per month</div>
 
                   <a
                     href={wa('Hi Kishor, I want to know more about your monthly social media security plan.')}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 w-full rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 text-white font-semibold px-4 py-3 hover:opacity-95 transition-opacity"
+                    className="inline-flex items-center justify-center gap-2 w-full rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-semibold px-4 py-3 hover:opacity-95 transition-opacity"
                   >
                     Ask about support <ArrowRight size={16} />
                   </a>
@@ -324,7 +319,7 @@ export default function Home() {
           <div className="container mx-auto px-4">
             <div className="text-center mb-12 scroll-animate">
               <h2 className="text-4xl md:text-5xl font-bold mb-3">
-                Services <span className="text-cyan-600 dark:text-cyan-400">I Offer</span>
+                Services <span className="text-violet-600 dark:text-violet-400">I Offer</span>
               </h2>
               <p className="text-lg text-muted-foreground max-w-xl mx-auto">
                 Specialized recovery solutions for every major social media platform
@@ -344,7 +339,7 @@ export default function Home() {
               ].map((service, idx) => (
                 <div
                   key={idx}
-                  className="scroll-animate p-6 rounded-2xl bg-card border border-border hover:border-cyan-500/20 transition-all duration-300 hover:-translate-y-1 group flex flex-col"
+                  className="scroll-animate p-6 rounded-2xl bg-card border border-border hover:border-violet-500/20 transition-all duration-300 hover:-translate-y-1 group flex flex-col"
                   style={{ transitionDelay: `${idx * 80}ms` }}
                 >
                   <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
@@ -353,7 +348,7 @@ export default function Home() {
                   <h3 className="font-bold text-lg mb-2">{service.title}</h3>
                   <p className="text-muted-foreground text-sm leading-relaxed mb-3 flex-1">{service.desc}</p>
                   <div className="flex items-center justify-between mt-auto pt-3 border-t border-border">
-                    <div className="flex items-center gap-1.5 text-xs text-cyan-600 dark:text-cyan-400 font-medium">
+                    <div className="flex items-center gap-1.5 text-xs text-violet-600 dark:text-violet-400 font-medium">
                       <Clock size={12} /> {service.time}
                     </div>
                     <a href={wa(service.msg)} target="_blank" rel="noopener noreferrer" className="text-xs font-medium text-[#25D366] hover:text-[#20BD5A] transition-colors">
@@ -371,7 +366,7 @@ export default function Home() {
           <div className="container mx-auto px-4">
             <div className="text-center mb-10 scroll-animate">
               <h2 className="text-4xl md:text-5xl font-bold mb-3">
-                What I <span className="text-cyan-600 dark:text-cyan-400">Solve</span>
+                What I <span className="text-violet-600 dark:text-violet-400">Solve</span>
               </h2>
               <p className="text-lg text-muted-foreground max-w-xl mx-auto">
                 Quick overview of platforms and problems I handle
@@ -418,7 +413,7 @@ export default function Home() {
           <div className="container mx-auto px-4">
             <div className="text-center mb-12 scroll-animate">
               <h2 className="text-4xl md:text-5xl font-bold mb-3">
-                How It <span className="text-cyan-600 dark:text-cyan-400">Works</span>
+                How It <span className="text-violet-600 dark:text-violet-400">Works</span>
               </h2>
               <p className="text-lg text-muted-foreground max-w-xl mx-auto">
                 A simple, transparent process to get your account back
@@ -432,7 +427,7 @@ export default function Home() {
                 { step: '3', title: 'Problem Solved', desc: 'I work with platform support to resolve your issue. You only pay the full fee after the problem is fixed.' },
               ].map((item, idx) => (
                 <div key={idx} className="scroll-animate text-center" style={{ transitionDelay: `${idx * 120}ms` }}>
-                  <div className="w-14 h-14 bg-cyan-600 dark:bg-cyan-500 text-white rounded-2xl flex items-center justify-center font-bold text-xl mx-auto mb-4 shadow-lg shadow-cyan-500/20">
+                  <div className="w-14 h-14 bg-violet-600 dark:bg-violet-500 text-white rounded-2xl flex items-center justify-center font-bold text-xl mx-auto mb-4 shadow-lg shadow-violet-500/20">
                     {item.step}
                   </div>
                   <h3 className="font-bold text-lg mb-2">{item.title}</h3>
@@ -448,7 +443,7 @@ export default function Home() {
           <div className="container mx-auto px-4">
             <div className="text-center mb-10 scroll-animate">
               <h2 className="text-4xl md:text-5xl font-bold mb-3">
-                Free Problem <span className="text-cyan-600 dark:text-cyan-400">Assessment</span>
+                Free Problem <span className="text-violet-600 dark:text-violet-400">Assessment</span>
               </h2>
               <p className="text-lg text-muted-foreground max-w-xl mx-auto">
                 Answer 5 quick questions and get a personalized solution plan
@@ -463,7 +458,7 @@ export default function Home() {
           <div className="container mx-auto px-4">
             <div className="text-center mb-12 scroll-animate">
               <h2 className="text-4xl md:text-5xl font-bold mb-3">
-                Trusted by <span className="text-cyan-600 dark:text-cyan-400">Hundreds</span>
+                Trusted by <span className="text-violet-600 dark:text-violet-400">Hundreds</span>
               </h2>
               <p className="text-lg text-muted-foreground max-w-xl mx-auto">
                 Real results from real people
@@ -476,7 +471,7 @@ export default function Home() {
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
                 {stats.map((stat, idx) => (
                   <div key={idx} className="scroll-animate text-center p-4 rounded-xl bg-card border border-border" style={{ transitionDelay: `${idx * 80}ms` }}>
-                    <div className="text-2xl md:text-3xl font-bold text-cyan-600 dark:text-cyan-400 font-[Sora]"><AnimatedCounter value={stat.numeric} suffix={stat.suffix} /></div>
+                    <div className="text-2xl md:text-3xl font-bold text-violet-600 dark:text-violet-400 font-[Sora]"><AnimatedCounter value={stat.numeric} suffix={stat.suffix} /></div>
                     <p className="text-muted-foreground text-xs mt-0.5">{stat.label}</p>
                   </div>
                 ))}
@@ -487,7 +482,7 @@ export default function Home() {
                 {testimonials.map((t, idx) => (
                   <div key={idx} className="scroll-animate p-5 rounded-2xl bg-card border border-border flex flex-col" style={{ transitionDelay: `${idx * 100}ms` }}>
                     <div className="flex items-center gap-2 mb-3">
-                      <div className="w-9 h-9 rounded-full bg-cyan-500/10 flex items-center justify-center text-cyan-600 dark:text-cyan-400 text-sm font-bold">{t.name.split(' ').map(n => n[0]).join('')}</div>
+                      <div className="w-9 h-9 rounded-full bg-violet-500/10 flex items-center justify-center text-violet-600 dark:text-violet-400 text-sm font-bold">{t.name.split(' ').map(n => n[0]).join('')}</div>
                       <div>
                         <p className="text-sm font-medium leading-tight">{t.name}</p>
                         <p className="text-[10px] text-muted-foreground">{t.platform} • Recovered in {t.time}</p>
@@ -508,7 +503,7 @@ export default function Home() {
           <div className="container mx-auto px-4">
             <div className="text-center mb-12 scroll-animate">
               <h2 className="text-4xl md:text-5xl font-bold mb-3">
-                Real <span className="text-cyan-600 dark:text-cyan-400">Case Studies</span>
+                Real <span className="text-violet-600 dark:text-violet-400">Case Studies</span>
               </h2>
               <p className="text-lg text-muted-foreground max-w-xl mx-auto">
                 Actual problems solved — here's how
@@ -574,7 +569,7 @@ export default function Home() {
               ].map((study, idx) => (
                 <div
                   key={idx}
-                  className="scroll-animate rounded-2xl bg-card border border-border p-6 hover:border-cyan-500/20 transition-all duration-300 hover:-translate-y-1 flex flex-col"
+                  className="scroll-animate rounded-2xl bg-card border border-border p-6 hover:border-violet-500/20 transition-all duration-300 hover:-translate-y-1 flex flex-col"
                   style={{ transitionDelay: `${idx * 100}ms` }}
                 >
                   <div className="flex items-start gap-3 mb-4">
@@ -593,7 +588,7 @@ export default function Home() {
                       <p className="text-sm text-muted-foreground leading-relaxed">{study.problem}</p>
                     </div>
                     <div>
-                      <p className="text-[10px] uppercase tracking-wider font-semibold text-blue-500 mb-1">Solution</p>
+                      <p className="text-[10px] uppercase tracking-wider font-semibold text-indigo-500 mb-1">Solution</p>
                       <p className="text-sm text-muted-foreground leading-relaxed">{study.solution}</p>
                     </div>
                     <div>
@@ -606,7 +601,7 @@ export default function Home() {
                     href={wa(`Hi Kishor, I have a similar problem: ${study.title}`)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-4 text-center text-sm font-medium text-cyan-600 dark:text-cyan-400 hover:underline"
+                    className="mt-4 text-center text-sm font-medium text-violet-600 dark:text-violet-400 hover:underline"
                   >
                     I have a similar problem →
                   </a>
@@ -621,7 +616,7 @@ export default function Home() {
           <div className="container mx-auto px-4">
             <div className="text-center mb-12 scroll-animate">
               <h2 className="text-4xl md:text-5xl font-bold mb-3">
-                Certifications <span className="text-cyan-600 dark:text-cyan-400">& Qualifications</span>
+                Certifications <span className="text-violet-600 dark:text-violet-400">& Qualifications</span>
               </h2>
               <p className="text-lg text-muted-foreground max-w-xl mx-auto">
                 Verified expertise in cybersecurity and social media platforms
@@ -636,7 +631,7 @@ export default function Home() {
               ].map((cert, idx) => (
                 <div
                   key={idx}
-                  className="scroll-animate p-5 rounded-2xl bg-card border border-border hover:border-cyan-500/20 transition-all duration-300"
+                  className="scroll-animate p-5 rounded-2xl bg-card border border-border hover:border-violet-500/20 transition-all duration-300"
                   style={{ transitionDelay: `${idx * 80}ms` }}
                 >
                   <div className="flex items-start gap-3">
@@ -650,7 +645,7 @@ export default function Home() {
                           href={cert.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-[10px] font-mono text-cyan-600 dark:text-cyan-400 bg-cyan-500/8 px-2 py-0.5 rounded hover:bg-cyan-500/15 transition-colors"
+                          className="text-[10px] font-mono text-violet-600 dark:text-violet-400 bg-violet-500/8 px-2 py-0.5 rounded hover:bg-violet-500/15 transition-colors"
                         >
                           Verify ↗
                         </a>
@@ -689,7 +684,7 @@ export default function Home() {
           <div className="container mx-auto px-4">
             <div className="text-center mb-12 scroll-animate">
               <h2 className="text-4xl md:text-5xl font-bold mb-3">
-                My <span className="text-cyan-600 dark:text-cyan-400">Guarantee</span>
+                My <span className="text-violet-600 dark:text-violet-400">Guarantee</span>
               </h2>
               <p className="text-lg text-muted-foreground max-w-xl mx-auto">
                 Your satisfaction and security are my top priorities
@@ -698,9 +693,9 @@ export default function Home() {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto mb-10">
               {[
-                { icon: DollarSign, title: 'Rs. 2,000 Consultation', desc: 'Initial investigation and assessment fee. Covers full case analysis and recovery plan.', color: 'from-cyan-500 to-cyan-400' },
+                { icon: DollarSign, title: 'Rs. 2,000 Consultation', desc: 'Initial investigation and assessment fee. Covers full case analysis and recovery plan.', color: 'from-violet-500 to-violet-400' },
                 { icon: Clock, title: 'Fast Response', desc: 'I respond to all inquiries within 2-4 hours. Emergency cases get priority handling.', color: 'from-emerald-500 to-emerald-400' },
-                { icon: Lock, title: 'Confidential', desc: 'Your information is kept strictly confidential and encrypted. Data deleted after resolution.', color: 'from-blue-500 to-blue-400' },
+                { icon: Lock, title: 'Confidential', desc: 'Your information is kept strictly confidential and encrypted. Data deleted after resolution.', color: 'from-indigo-500 to-violet-400' },
                 { icon: CheckCircle, title: 'Pay After Fix', desc: 'Rs. 2,000 upfront investigation. Remaining service fee only after your problem is resolved. No hidden charges.', color: 'from-amber-500 to-amber-400' },
               ].map((item, idx) => (
                 <div key={idx} className="scroll-animate p-5 rounded-2xl bg-card border border-border text-center" style={{ transitionDelay: `${idx * 80}ms` }}>
@@ -718,7 +713,7 @@ export default function Home() {
               <h3 className="font-bold text-lg mb-4">Pricing Breakdown</h3>
               <div className="grid sm:grid-cols-3 gap-4 text-sm">
                 <div>
-                  <span className="font-bold text-cyan-600 dark:text-cyan-400">Consultation</span>
+                  <span className="font-bold text-violet-600 dark:text-violet-400">Consultation</span>
                   <p className="text-muted-foreground mt-1">Rs. 2,000 — covers investigation and assessment</p>
                 </div>
                 <div>
@@ -739,7 +734,7 @@ export default function Home() {
           <div className="container mx-auto px-4">
             <div className="max-w-2xl mx-auto text-center scroll-animate">
               <h2 className="text-4xl md:text-5xl font-bold mb-3">
-                Quick <span className="text-cyan-600 dark:text-cyan-400">Feedback</span>
+                Quick <span className="text-violet-600 dark:text-violet-400">Feedback</span>
               </h2>
               <p className="text-lg text-muted-foreground mb-8">
                 Help me improve — your feedback matters
@@ -762,7 +757,7 @@ export default function Home() {
                           const waMsg = `Feedback — ${fb.q}: ${opt}`;
                           window.open(`https://wa.me/9779843818304?text=${encodeURIComponent(waMsg)}`, '_blank');
                         }}
-                        className="px-3 py-1.5 text-xs rounded-lg border border-border hover:border-cyan-500/30 hover:bg-cyan-50 dark:hover:bg-cyan-900/20 text-muted-foreground hover:text-foreground transition-all"
+                        className="px-3 py-1.5 text-xs rounded-lg border border-border hover:border-violet-500/30 hover:bg-violet-50 dark:hover:bg-violet-900/20 text-muted-foreground hover:text-foreground transition-all"
                       >
                         {opt}
                       </button>
@@ -783,7 +778,7 @@ export default function Home() {
           <div className="container mx-auto px-4">
             <div className="text-center mb-12 scroll-animate">
               <h2 className="text-4xl md:text-5xl font-bold mb-3">
-                Frequently Asked <span className="text-cyan-600 dark:text-cyan-400">Questions</span>
+                Frequently Asked <span className="text-violet-600 dark:text-violet-400">Questions</span>
               </h2>
               <p className="text-lg text-muted-foreground max-w-xl mx-auto">
                 Quick answers to common questions
@@ -816,7 +811,7 @@ export default function Home() {
           <div className="container mx-auto px-4">
             <div className="text-center mb-10 scroll-animate">
               <h2 className="text-4xl md:text-5xl font-bold mb-3">
-                Free <span className="text-cyan-600 dark:text-cyan-400">Resources</span>
+                Free <span className="text-violet-600 dark:text-violet-400">Resources</span>
               </h2>
               <p className="text-lg text-muted-foreground max-w-xl mx-auto">
                 Learn how to protect and manage your social media accounts
@@ -832,11 +827,11 @@ export default function Home() {
                 <a
                   key={idx}
                   href={post.href}
-                  className="scroll-animate p-5 rounded-2xl bg-card border border-border hover:border-cyan-500/20 transition-all duration-300 hover:-translate-y-1 group"
+                  className="scroll-animate p-5 rounded-2xl bg-card border border-border hover:border-violet-500/20 transition-all duration-300 hover:-translate-y-1 group"
                   style={{ transitionDelay: `${idx * 80}ms` }}
                 >
                   <div className="text-3xl mb-3">{post.icon}</div>
-                  <h3 className="font-bold text-sm mb-1.5 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">{post.title}</h3>
+                  <h3 className="font-bold text-sm mb-1.5 group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">{post.title}</h3>
                   <p className="text-muted-foreground text-xs leading-relaxed mb-3">{post.desc}</p>
                   <span className="text-[10px] font-medium text-muted-foreground">{post.readTime} read →</span>
                 </a>
@@ -856,7 +851,7 @@ export default function Home() {
           <div className="container mx-auto px-4">
             <div className="scroll-animate text-center mb-12">
               <h2 className="text-4xl md:text-5xl font-bold mb-3">
-                Request a <span className="text-cyan-600 dark:text-cyan-400">Problem Review</span>
+                Request a <span className="text-violet-600 dark:text-violet-400">Problem Review</span>
               </h2>
               <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                 Share your issue and the platform involved. After review, I will confirm whether a paid consultation or recovery service is needed.
@@ -870,8 +865,8 @@ export default function Home() {
                   <h3 className="font-bold mb-4 text-sm uppercase tracking-wider text-muted-foreground">Contact Info</h3>
                   <div className="space-y-3">
                     <a href="tel:+9779843818304" className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all duration-300 group">
-                      <div className="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center group-hover:bg-cyan-500/20 transition-colors flex-shrink-0">
-                        <Phone size={18} className="text-cyan-600 dark:text-cyan-400" />
+                      <div className="w-10 h-10 rounded-xl bg-violet-500/10 flex items-center justify-center group-hover:bg-violet-500/20 transition-colors flex-shrink-0">
+                        <Phone size={18} className="text-violet-600 dark:text-violet-400" />
                       </div>
                       <div className="min-w-0">
                         <p className="text-xs text-muted-foreground">Call / WhatsApp</p>
@@ -879,8 +874,8 @@ export default function Home() {
                       </div>
                     </a>
                     <a href="mailto:kishorupadhyaya222@gmail.com" className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all duration-300 group">
-                      <div className="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center group-hover:bg-cyan-500/20 transition-colors flex-shrink-0">
-                        <Mail size={18} className="text-cyan-600 dark:text-cyan-400" />
+                      <div className="w-10 h-10 rounded-xl bg-violet-500/10 flex items-center justify-center group-hover:bg-violet-500/20 transition-colors flex-shrink-0">
+                        <Mail size={18} className="text-violet-600 dark:text-violet-400" />
                       </div>
                       <div className="min-w-0">
                         <p className="text-xs text-muted-foreground">Email</p>
@@ -899,7 +894,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="p-4 rounded-2xl bg-cyan-500/5 border border-cyan-500/10">
+                <div className="p-4 rounded-2xl bg-violet-500/5 border border-violet-500/10">
                   <p className="text-xs text-muted-foreground text-center">
                     <span className="font-semibold text-foreground">Available:</span> 7am - 10pm NPT, Sunday - Friday
                   </p>
@@ -952,7 +947,7 @@ export default function Home() {
                       type="file"
                       id="contact-screenshot"
                       accept="image/png,image/jpeg,image/jpg,image/webp"
-                      className="w-full text-sm text-muted-foreground file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-cyan-500/10 file:text-cyan-600 dark:file:text-cyan-400 hover:file:bg-cyan-500/20 file:cursor-pointer"
+                      className="w-full text-sm text-muted-foreground file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-violet-500/10 file:text-violet-600 dark:file:text-violet-400 hover:file:bg-violet-500/20 file:cursor-pointer"
                     />
                     <p className="text-[10px] text-muted-foreground mt-1">PNG, JPG, WebP only. Max 5MB. Error messages only — inappropriate content will be ignored.</p>
                   </div>
@@ -1009,16 +1004,16 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6 mb-6">
             <div>
-              <h3 className="font-bold mb-2 font-[Sora] text-cyan-600 dark:text-cyan-400">Kishor</h3>
+              <h3 className="font-bold mb-2 font-[Sora] text-violet-600 dark:text-violet-400">Kishor</h3>
               <p className="text-sm text-muted-foreground leading-relaxed mb-3">Expert in solving all social media problems — account recovery, monetization, AdSense, payouts, verification, and more.</p>
               <div className="flex items-center gap-2">
-                <a href="https://facebook.com/kishorupadhyaya" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="w-8 h-8 rounded-lg bg-muted hover:bg-cyan-500/10 flex items-center justify-center text-muted-foreground hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">
+                <a href="https://facebook.com/kishorupadhyaya" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="w-8 h-8 rounded-lg bg-muted hover:bg-violet-500/10 flex items-center justify-center text-muted-foreground hover:text-violet-600 dark:hover:text-violet-400 transition-colors">
                   <Facebook size={15} />
                 </a>
-                <a href="https://instagram.com/kishorupadhyaya" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-8 h-8 rounded-lg bg-muted hover:bg-cyan-500/10 flex items-center justify-center text-muted-foreground hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">
+                <a href="https://instagram.com/kishorupadhyaya" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-8 h-8 rounded-lg bg-muted hover:bg-violet-500/10 flex items-center justify-center text-muted-foreground hover:text-violet-600 dark:hover:text-violet-400 transition-colors">
                   <Instagram size={15} />
                 </a>
-                <a href="https://linkedin.com/in/kishorupadhyaya" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="w-8 h-8 rounded-lg bg-muted hover:bg-cyan-500/10 flex items-center justify-center text-muted-foreground hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors">
+                <a href="https://linkedin.com/in/kishorupadhyaya" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="w-8 h-8 rounded-lg bg-muted hover:bg-violet-500/10 flex items-center justify-center text-muted-foreground hover:text-violet-600 dark:hover:text-violet-400 transition-colors">
                   <ExternalLink size={15} />
                 </a>
               </div>

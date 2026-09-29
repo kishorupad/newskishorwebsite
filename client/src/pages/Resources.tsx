@@ -84,7 +84,7 @@ Use: "BlueMountain$Sunset#2024!"
 Remember: A password manager makes strong passwords effortless.`,
     category: 'prevention',
     readTime: 6,
-    icon: <Key className="text-blue-500" size={24} />,
+    icon: <Key className="text-violet-500" size={24} />,
   },
   {
     id: '3',
