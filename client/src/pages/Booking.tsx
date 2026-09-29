@@ -13,8 +13,8 @@ const services: Record<string, { title: string; fee: string; note?: string }> = 
   'problem-review': { title: '30-Minute Problem Review', fee: 'Rs. 2,000' },
   'health-check': { title: 'Account Health Check', fee: 'Rs. 3,000' },
   'monetization-review': { title: 'Monetization Review', fee: 'Rs. 3,500' },
-  'urgent-review': { title: 'Urgent Case Review', fee: 'Rs. 2,000', note: 'Advance — final quote given after your review.' },
-  'security-plan': { title: 'Social Media Security Plan', fee: 'Rs. 2,000', note: 'Advance — adjusted against your monthly plan.' },
+  'urgent-review': { title: 'Urgent Case Review', fee: 'Rs. 2,000', note: 'Advance - final quote given after your review.' },
+  'security-plan': { title: 'Social Media Security Plan', fee: 'Rs. 2,000', note: 'Advance - adjusted against your monthly plan.' },
 };
 const defaultService = { title: 'Case Review', fee: 'Rs. 2,000' };
 
@@ -137,7 +137,7 @@ export default function Booking() {
   const confirmBooking = () => {
     const day = dateIdx !== null ? fmtFull(days[dateIdx]) : '';
     const msg =
-`New booking — kishorupadhyaya.com.np/booking
+`New booking - kishorupadhyaya.com.np/booking
 Booking ID: ${bookingId}
 Name: ${name.trim()}
 WhatsApp: ${phone.trim()}
@@ -160,7 +160,7 @@ Payment: ${svc.fee} paid via eSewa/Khalti (screenshot attached)`;
           </h1>
           <p className="text-muted-foreground max-w-xl mx-auto">
             Book 30 minutes of focused, one-on-one time on <em>your</em> case. I&apos;ll dig into what happened,
-            diagnose the real issue, and lay out your best next steps — the {svc.fee} fee is for this expert
+            diagnose the real issue, and lay out your best next steps - the {svc.fee} fee is for this expert
             review itself, not a guaranteed fix.
           </p>
         </div>
@@ -189,7 +189,7 @@ Payment: ${svc.fee} paid via eSewa/Khalti (screenshot attached)`;
             </div>
           )}
 
-          {/* STEP 0 — platform */}
+          {/* STEP 0 - platform */}
           {step === 0 && (
             <div>
               <h2 className="text-2xl font-bold mb-1">Which platform?</h2>
@@ -208,7 +208,7 @@ Payment: ${svc.fee} paid via eSewa/Khalti (screenshot attached)`;
             </div>
           )}
 
-          {/* STEP 1 — problem */}
+          {/* STEP 1 - problem */}
           {step === 1 && (
             <div>
               <h2 className="text-2xl font-bold mb-1">What went wrong?</h2>
@@ -232,7 +232,7 @@ Payment: ${svc.fee} paid via eSewa/Khalti (screenshot attached)`;
             </div>
           )}
 
-          {/* STEP 2 — details */}
+          {/* STEP 2 - details */}
           {step === 2 && (
             <div>
               <h2 className="text-2xl font-bold mb-1">Your details</h2>
@@ -258,7 +258,7 @@ Payment: ${svc.fee} paid via eSewa/Khalti (screenshot attached)`;
             </div>
           )}
 
-          {/* STEP 3 — schedule */}
+          {/* STEP 3 - schedule */}
           {step === 3 && (
             <div>
               <h2 className="text-2xl font-bold mb-1">Pick your slot</h2>
@@ -275,7 +275,7 @@ Payment: ${svc.fee} paid via eSewa/Khalti (screenshot attached)`;
               </div>
               {dateIdx !== null && (
                 <div>
-                  <p className="text-sm font-medium mb-3 flex items-center gap-2"><Clock size={15} className="text-muted-foreground" /> Available times — {fmtDay(days[dateIdx])}</p>
+                  <p className="text-sm font-medium mb-3 flex items-center gap-2"><Clock size={15} className="text-muted-foreground" /> Available times - {fmtDay(days[dateIdx])}</p>
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                     {timeSlots.filter(ts => !isPastSlot(days[dateIdx], ts)).map(ts => (
                       <button key={ts} onClick={() => setSlot(ts)}
@@ -287,18 +287,18 @@ Payment: ${svc.fee} paid via eSewa/Khalti (screenshot attached)`;
                     ))}
                   </div>
                   {timeSlots.every(ts => isPastSlot(days[dateIdx], ts)) && (
-                    <p className="text-sm text-muted-foreground mt-3">No slots left today — please pick another day.</p>
+                    <p className="text-sm text-muted-foreground mt-3">No slots left today - please pick another day.</p>
                   )}
                 </div>
               )}
             </div>
           )}
 
-          {/* STEP 4 — payment */}
+          {/* STEP 4 - payment */}
           {step === 4 && (
             <div>
               <h2 className="text-2xl font-bold mb-1">Pay {svc.fee}</h2>
-              <p className="text-muted-foreground text-sm mb-6">{svc.title} — focused time on your specific case: a proper diagnosis and honest next steps, not generic advice. {svc.note || 'Any recovery work after this is quoted separately — and only charged if your problem gets solved.'}</p>
+              <p className="text-muted-foreground text-sm mb-6">{svc.title} - focused time on your specific case: a proper diagnosis and honest next steps, not generic advice. {svc.note || 'Any recovery work after this is quoted separately - and only charged if your problem gets solved.'}</p>
               <div className="grid sm:grid-cols-2 gap-6 items-start">
                 <div className="rounded-2xl border border-border p-5 text-center bg-muted/30">
                   {qrOk ? (
@@ -334,13 +334,13 @@ Payment: ${svc.fee} paid via eSewa/Khalti (screenshot attached)`;
               </div>
               <div className="mt-6 px-4 py-3 rounded-xl bg-amber-500/10 border border-amber-500/25 text-sm text-amber-700 dark:text-amber-300">
                 <strong>Honest note:</strong> some cases genuinely can&apos;t be recovered (e.g. permanently deleted accounts, severe policy violations).
-                This fee covers my time to investigate and give you a straight answer — if it&apos;s hopeless, I&apos;ll tell you honestly
+                This fee covers my time to investigate and give you a straight answer - if it&apos;s hopeless, I&apos;ll tell you honestly
                 and guide your next steps instead of taking more of your money.
               </div>
             </div>
           )}
 
-          {/* STEP 5 — review */}
+          {/* STEP 5 - review */}
           {step === 5 && (
             <div>
               <h2 className="text-2xl font-bold mb-1">Review & confirm</h2>
@@ -354,7 +354,7 @@ Payment: ${svc.fee} paid via eSewa/Khalti (screenshot attached)`;
                   ['Name', name], ['WhatsApp', phone], ['Platform', platform], ['Problem', problem],
                   ['Slot', `${dateIdx !== null ? fmtFull(days[dateIdx]) : ''} · ${slot} (NPT)`],
                   ['Service', svc.title],
-                  ['Payment', `${svc.fee} paid — screenshot ${shotName || 'uploaded'}`],
+                  ['Payment', `${svc.fee} paid - screenshot ${shotName || 'uploaded'}`],
                 ].map(([k, v]) => (
                   <div key={k} className="flex gap-3">
                     <span className="w-24 shrink-0 text-muted-foreground font-medium">{k}</span>
@@ -368,14 +368,14 @@ Payment: ${svc.fee} paid via eSewa/Khalti (screenshot attached)`;
               </div>
               <label className="flex items-start gap-3 cursor-pointer rounded-xl border border-border p-4 hover:border-violet-500/40 transition-colors mb-4">
                 <input type="checkbox" checked={agreed} onChange={e => setAgreed(e.target.checked)} className="mt-1 w-4 h-4 accent-violet-600" />
-                <span className="text-sm">I understand the <strong>{svc.fee}</strong> is for the case review and honest diagnosis — <strong>not</strong> a guaranteed recovery.</span>
+                <span className="text-sm">I understand the <strong>{svc.fee}</strong> is for the case review and honest diagnosis - <strong>not</strong> a guaranteed recovery.</span>
               </label>
               <button onClick={() => { if (!agreed) { setError('Please tick the agreement above to continue.'); return; } confirmBooking(); }}
                 className="btn-gradient w-full inline-flex items-center justify-center gap-2 text-lg !py-4">
                 <CalendarCheck size={20} /> Confirm booking on WhatsApp
               </button>
               <p className="text-xs text-muted-foreground text-center mt-3">
-                WhatsApp will open with your booking details — please attach the payment screenshot in the chat.
+                WhatsApp will open with your booking details - please attach the payment screenshot in the chat.
                 Your slot is confirmed once payment is verified.
               </p>
             </div>

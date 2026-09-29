@@ -19,7 +19,7 @@ export default function Home() {
   const allTestimonials = useMemo(() => [
     { name: 'Aarav Sharma', text: 'My Facebook account was hacked last month. Kishor recovered it within 2 days. Very professional work, kept me updated the whole time.', platform: 'Facebook', time: '2 days' },
     { name: 'Srijana Thapa', text: 'I thought my Instagram was gone forever. Kishor recovered it and also helped me set up two-factor authentication so it doesn\'t happen again.', platform: 'Instagram', time: '3 days' },
-    { name: 'Bikash Gurung', text: 'My YouTube channel with 50K subscribers got hacked. Kishor restored everything — channel, videos, even my monetization. Really grateful.', platform: 'YouTube', time: '4 days' },
+    { name: 'Bikash Gurung', text: 'My YouTube channel with 50K subscribers got hacked. Kishor restored everything - channel, videos, even my monetization. Really grateful.', platform: 'YouTube', time: '4 days' },
     { name: 'Pratikshya Karki', text: 'My Facebook page with 100K followers was disabled. Kishor got it back in 3 days. He knows exactly how to deal with Meta support.', platform: 'Facebook', time: '3 days' },
     { name: 'Sunita Bhandari', text: 'My AdSense PIN never arrived for 6 months. Kishor fixed it in 2 days. I\'m now receiving my payments properly.', platform: 'AdSense', time: '2 days' },
     { name: 'Anil Magar', text: 'YouTube channel terminated for no reason. Kishor filed the appeal and got it reinstated. Saved my 3 years of hard work.', platform: 'YouTube', time: '5 days' },
@@ -52,13 +52,13 @@ export default function Home() {
 
   const faqs = [
     { q: 'How long does account recovery take?', a: 'Most recoveries are completed within 24-72 hours. Complex cases may take up to a week. I keep you updated throughout the process.' },
-    { q: 'Do I have to pay before we talk?', a: 'Yes. Every consultation is booked and paid in advance through the booking page — pick your service, pay via eSewa/Khalti, upload the screenshot. This way you get my full focused time, instead of rushed free chats.' },
-    { q: 'What exactly am I paying for?', a: "You're paying for my time and expertise: a proper diagnosis of your specific case and honest next steps — not a guaranteed recovery. Some cases genuinely can't be fixed, and I'll tell you that straight instead of taking more of your money." },
-    { q: 'What if my account cannot be recovered?', a: "Then you don't pay anything beyond the consultation fee. That fee covers the investigation and honest diagnosis itself — and I'll guide your next steps (like securing a new account) so it still works for you." },
+    { q: 'Do I have to pay before we talk?', a: 'Yes. Every consultation is booked and paid in advance through the booking page - pick your service, pay via eSewa/Khalti, upload the screenshot. This way you get my full focused time, instead of rushed free chats.' },
+    { q: 'What exactly am I paying for?', a: "You're paying for my time and expertise: a proper diagnosis of your specific case and honest next steps - not a guaranteed recovery. Some cases genuinely can't be fixed, and I'll tell you that straight instead of taking more of your money." },
+    { q: 'What if my account cannot be recovered?', a: "Then you don't pay anything beyond the consultation fee. That fee covers the investigation and honest diagnosis itself - and I'll guide your next steps (like securing a new account) so it still works for you." },
     { q: 'What information do you need from me?', a: 'Your account details, what happened, any recovery emails or phone numbers on file, and proof of identity. The booking form asks for the essentials upfront.' },
     { q: 'Is my personal information safe?', a: 'Absolutely. I use strict security protocols and never share your information with third parties. All data is deleted after recovery.' },
     { q: 'Do you only handle hacking cases?', a: 'I handle all social media issues including hacked accounts, locked accounts, suspended accounts, disabled accounts, and forgotten credentials.' },
-    { q: 'How do I pay?', a: 'Through the booking page: scan the eSewa/Khalti QR, pay the fee for your chosen service (Rs. 2,000\u20133,500), and upload the payment screenshot. Your slot is locked once I verify payment — then we talk on WhatsApp.' },
+    { q: 'How do I pay?', a: 'Through the booking page: scan the eSewa/Khalti QR, pay the fee for your chosen service (Rs. 2,000\u20133,500), and upload the payment screenshot. Your slot is locked once I verify payment - then we talk on WhatsApp.' },
   ];
 
   const stats = [
@@ -103,7 +103,7 @@ export default function Home() {
                 </p>
 
                 <p className="text-lg text-muted-foreground leading-relaxed max-w-xl mb-8">
-                  Nepal&apos;s social media recovery expert — 1,500+ cases solved across Facebook, Instagram, YouTube and TikTok. {getYearsExperienceText()} years of getting accounts back.
+                  Nepal&apos;s social media recovery expert - 1,500+ cases solved across Facebook, Instagram, YouTube and TikTok. {getYearsExperienceText()} years of getting accounts back.
                 </p>
 
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
@@ -376,11 +376,11 @@ export default function Home() {
                   ].map((row, idx) => (
                     <tr key={idx} className="border-b border-border hover:bg-muted/50 transition-colors">
                       <td className="py-3 px-4 font-medium">{row.platform}</td>
-                      <td className="text-center py-3 px-2">{row.recovery ? <span className="text-emerald-500">✓</span> : <span className="text-muted-foreground/40">—</span>}</td>
-                      <td className="text-center py-3 px-2">{row.monetization ? <span className="text-emerald-500">✓</span> : <span className="text-muted-foreground/40">—</span>}</td>
-                      <td className="text-center py-3 px-2">{row.adsense ? <span className="text-emerald-500">✓</span> : <span className="text-muted-foreground/40">—</span>}</td>
-                      <td className="text-center py-3 px-2">{row.payout ? <span className="text-emerald-500">✓</span> : <span className="text-muted-foreground/40">—</span>}</td>
-                      <td className="text-center py-3 px-2">{row.verification ? <span className="text-emerald-500">✓</span> : <span className="text-muted-foreground/40">—</span>}</td>
+                      <td className="text-center py-3 px-2">{row.recovery ? <span className="text-emerald-500">✓</span> : <span className="text-muted-foreground/40">-</span>}</td>
+                      <td className="text-center py-3 px-2">{row.monetization ? <span className="text-emerald-500">✓</span> : <span className="text-muted-foreground/40">-</span>}</td>
+                      <td className="text-center py-3 px-2">{row.adsense ? <span className="text-emerald-500">✓</span> : <span className="text-muted-foreground/40">-</span>}</td>
+                      <td className="text-center py-3 px-2">{row.payout ? <span className="text-emerald-500">✓</span> : <span className="text-muted-foreground/40">-</span>}</td>
+                      <td className="text-center py-3 px-2">{row.verification ? <span className="text-emerald-500">✓</span> : <span className="text-muted-foreground/40">-</span>}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -404,7 +404,7 @@ export default function Home() {
             <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
               {[
                 { step: '1', title: 'Contact Me', desc: 'Reach out via WhatsApp, email, or the form. Describe your problem and I\'ll respond within 2-4 hours.' },
-                { step: '2', title: 'Assessment', desc: 'I analyze your case, assess the best approach, and explain exactly what I can do — with Rs. 2,000 consultation fee upfront.' },
+                { step: '2', title: 'Assessment', desc: 'I analyze your case, assess the best approach, and explain exactly what I can do - with Rs. 2,000 consultation fee upfront.' },
                 { step: '3', title: 'Problem Solved', desc: 'I work with platform support to resolve your issue. You only pay the full fee after the problem is fixed.' },
               ].map((item, idx) => (
                 <div key={idx} className="scroll-animate text-center" style={{ transitionDelay: `${idx * 120}ms` }}>
@@ -487,7 +487,7 @@ export default function Home() {
                 Real <span className="text-violet-600 dark:text-violet-400">Case Studies</span>
               </h2>
               <p className="text-lg text-muted-foreground max-w-xl mx-auto">
-                Actual problems solved — here's how
+                Actual problems solved - here's how
               </p>
             </div>
 
@@ -530,7 +530,7 @@ export default function Home() {
                   color: 'from-pink-600 to-purple-500',
                 },
                 {
-                  title: 'Payout Failed — 3 Months Stuck',
+                  title: 'Payout Failed - 3 Months Stuck',
                   client: 'Content creator, Butwal',
                   problem: 'Facebook creator payouts failing for 3 months. $2,400 stuck. Bank details were correct but payouts kept failing.',
                   solution: 'Identified mismatch between Facebook payout settings and bank\'s IBAN format. Coordinated with both Facebook and bank.',
@@ -541,7 +541,7 @@ export default function Home() {
                 {
                   title: 'Instagram Account Disabled',
                   client: 'E-commerce store owner, Biratnagar',
-                  problem: 'Instagram business account disabled for "community guidelines violation" — no reason given.',
+                  problem: 'Instagram business account disabled for "community guidelines violation" - no reason given.',
                   solution: 'Reviewed account for policy issues, identified false-positive flag, submitted structured appeal with business documentation.',
                   result: 'Account restored within 72 hours. Implemented prevention measures.',
                   icon: Shield,
@@ -693,11 +693,11 @@ export default function Home() {
               <div className="grid sm:grid-cols-3 gap-4 text-sm">
                 <div>
                   <span className="font-bold text-violet-600 dark:text-violet-400">Consultation</span>
-                  <p className="text-muted-foreground mt-1">Rs. 2,000 — covers investigation and assessment</p>
+                  <p className="text-muted-foreground mt-1">Rs. 2,000 - covers investigation and assessment</p>
                 </div>
                 <div>
                   <span className="font-bold text-emerald-600 dark:text-emerald-400">Service Fee</span>
-                  <p className="text-muted-foreground mt-1">Varies by case — explained before starting</p>
+                  <p className="text-muted-foreground mt-1">Varies by case - explained before starting</p>
                 </div>
                 <div>
                   <span className="font-bold text-muted-foreground">Payment</span>
@@ -716,7 +716,7 @@ export default function Home() {
                 Quick <span className="text-violet-600 dark:text-violet-400">Feedback</span>
               </h2>
               <p className="text-lg text-muted-foreground mb-8">
-                Help me improve — your feedback matters
+                Help me improve - your feedback matters
               </p>
             </div>
 
@@ -733,7 +733,7 @@ export default function Home() {
                       <button
                         key={opt}
                         onClick={() => {
-                          const waMsg = `Feedback — ${fb.q}: ${opt}`;
+                          const waMsg = `Feedback - ${fb.q}: ${opt}`;
                           window.open(`https://wa.me/9779843818304?text=${encodeURIComponent(waMsg)}`, '_blank');
                         }}
                         className="px-3 py-1.5 text-xs rounded-lg border border-border hover:border-violet-500/30 hover:bg-violet-50 dark:hover:bg-violet-900/20 text-muted-foreground hover:text-foreground transition-all"
@@ -836,7 +836,7 @@ export default function Home() {
                 <div className="flex-1">
                   <p className="text-xs font-bold uppercase tracking-widest text-violet-200 mb-1">New · Digital download</p>
                   <h3 className="text-2xl md:text-3xl font-bold mb-1">Social Media Security Checklist</h3>
-                  <p className="text-violet-100 text-sm">20 steps to lock your accounts before hackers lock you out — the same steps I give my paid clients.</p>
+                  <p className="text-violet-100 text-sm">20 steps to lock your accounts before hackers lock you out - the same steps I give my paid clients.</p>
                 </div>
                 <div className="shrink-0 text-left md:text-right">
                   <p className="text-3xl font-bold">Rs. 499</p>
@@ -858,7 +858,7 @@ export default function Home() {
                 Book a <span className="text-violet-600 dark:text-violet-400">Problem Review</span>
               </h2>
               <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                All reviews are booked and paid in advance — pick a time, pay via eSewa/Khalti, and we talk. No free chats, no waiting.
+                All reviews are booked and paid in advance - pick a time, pay via eSewa/Khalti, and we talk. No free chats, no waiting.
               </p>
             </div>
 
@@ -911,10 +911,9 @@ export default function Home() {
                   <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-to-r from-violet-600 to-indigo-600 flex items-center justify-center">
                     <CalendarCheck size={26} className="text-white" />
                   </div>
-                  <h3 className="text-2xl font-bold mb-2">Skip the form — book directly</h3>
+                  <h3 className="text-2xl font-bold mb-2">Skip the form - book directly</h3>
                   <p className="text-muted-foreground text-sm leading-relaxed mb-5 max-w-md mx-auto">
-                    I don&apos;t do free chats or free advice. Every case review is booked and paid in advance —
-                    you get my full focused time, and a straight answer.
+                    I don&apos;t do free chats or free advice. Every case review is booked and paid in advance: you get my full focused time, and a straight answer.
                   </p>
                   <div className="flex flex-wrap justify-center gap-2 mb-6">
                     {['Rs. 2,000 review', 'Rs. 3,000 health check', 'Rs. 3,500 monetization'].map(tag => (
@@ -939,7 +938,7 @@ export default function Home() {
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6 mb-6">
             <div>
               <h3 className="font-bold mb-2 font-[Sora] text-violet-600 dark:text-violet-400">Kishor</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed mb-3">Expert in solving all social media problems — account recovery, monetization, AdSense, payouts, verification, and more.</p>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-3">Expert in solving all social media problems - account recovery, monetization, AdSense, payouts, verification, and more.</p>
               <div className="flex items-center gap-2">
                 <a href="https://facebook.com/kishorupadhyaya" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="w-8 h-8 rounded-lg bg-muted hover:bg-violet-500/10 flex items-center justify-center text-muted-foreground hover:text-violet-600 dark:hover:text-violet-400 transition-colors">
                   <Facebook size={15} />

@@ -10,7 +10,7 @@ const EMAIL = 'kishorupadhyaya222@gmail.com';
 
 const pageMeta = {
   '/': {
-    title: 'Kishor Upadhyaya | Social Media Expert Nepal — All Problems Solved',
+    title: 'Kishor Upadhyaya | Social Media Expert Nepal - All Problems Solved',
     description:
       'Recover hacked Facebook, Instagram, and YouTube accounts in Nepal. Get AdSense, monetization, payout, verification, and social media support from Kishor Upadhyaya.',
     keywords:
@@ -47,7 +47,7 @@ const pageMeta = {
   '/booking': {
     title: 'Book a Case Review | Kishor Upadhyaya',
     description:
-      'Book a 30-minute social media case review with Kishor Upadhyaya. Pay the Rs. 2,000 consultation fee online and lock your slot — Facebook, Instagram, YouTube, TikTok, AdSense.',
+      'Book a 30-minute social media case review with Kishor Upadhyaya. Pay the Rs. 2,000 consultation fee online and lock your slot - Facebook, Instagram, YouTube, TikTok, AdSense.',
     keywords:
       'book social media consultation Nepal, account recovery booking, kishor upadhyaya booking, social media expert appointment Nepal',
   },

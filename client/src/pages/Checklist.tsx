@@ -10,10 +10,10 @@ const PRICE = 'Rs. 499';
 
 const inside = [
   { t: 'Lock your accounts', d: '2FA, strong passwords, backup codes, login alerts, trusted contacts' },
-  { t: 'Secure your email', d: 'Your email is the master key — lock it first, kill hacker filters' },
+  { t: 'Secure your email', d: 'Your email is the master key - lock it first, kill hacker filters' },
   { t: 'Beat phishing', d: 'The #1 attack in Nepal: fake "page violation" & "monetization" messages' },
   { t: 'Protect pages & payouts', d: 'Page role audits, Business Manager safety, admin rules' },
-  { t: 'Hacked? First 30 minutes', d: 'Exact order of what to do — and what NOT to do' },
+  { t: 'Hacked? First 30 minutes', d: 'Exact order of what to do - and what NOT to do' },
   { t: 'Stay safe forever', d: 'The 5-minute monthly routine + scam red-flags list' },
 ];
 
@@ -53,7 +53,7 @@ export default function Checklist() {
 
   const confirmOrder = () => {
     const msg =
-`New checklist order — kishorupadhyaya.com.np/checklist
+`New checklist order - kishorupadhyaya.com.np/checklist
 Order ID: ${orderId}
 Name: ${name.trim()}
 WhatsApp: ${phone.trim()}
@@ -81,7 +81,7 @@ Payment: ${PRICE} paid via eSewa/Khalti (screenshot attached)`;
             </div>
             <h1 className="text-3xl md:text-4xl font-bold mb-2">Social Media Security Checklist</h1>
             <p className="text-violet-100 text-sm leading-relaxed mb-5">
-              20 steps to lock your Facebook, Instagram, YouTube &amp; TikTok —
+              20 steps to lock your Facebook, Instagram, YouTube &amp; TikTok,
               everything I tell my paid 1-on-1 clients, in one checklist.
             </p>
             <div className="flex items-center gap-3">
@@ -125,7 +125,7 @@ Payment: ${PRICE} paid via eSewa/Khalti (screenshot attached)`;
           </div>
         )}
 
-        {/* STEP 1 — details */}
+        {/* STEP 1 - details */}
         {step === 1 && (
           <div>
             <h2 className="text-2xl font-bold mb-1">Your details</h2>
@@ -146,7 +146,7 @@ Payment: ${PRICE} paid via eSewa/Khalti (screenshot attached)`;
           </div>
         )}
 
-        {/* STEP 2 — payment */}
+        {/* STEP 2 - payment */}
         {step === 2 && (
           <div>
             <h2 className="text-2xl font-bold mb-1">Pay {PRICE}</h2>
@@ -190,17 +190,17 @@ Payment: ${PRICE} paid via eSewa/Khalti (screenshot attached)`;
           </div>
         )}
 
-        {/* STEP 3 — review & get PDF */}
+        {/* STEP 3 - review & get PDF */}
         {step === 3 && (
           <div>
             <h2 className="text-2xl font-bold mb-1">Get your PDF</h2>
-            <p className="text-muted-foreground text-sm mb-6">Confirm on WhatsApp — I verify payment and send your PDF.</p>
+            <p className="text-muted-foreground text-sm mb-6">Confirm on WhatsApp - I verify payment and send your PDF.</p>
             <div className="rounded-2xl border border-border bg-muted/30 p-5 space-y-3 text-sm mb-6">
               <div className="flex gap-3 pb-3 mb-1 border-b border-border">
                 <span className="w-24 shrink-0 text-muted-foreground font-medium">Order ID</span>
                 <span className="font-bold text-violet-600 dark:text-violet-400 tracking-wide">{orderId}</span>
               </div>
-              {[['Name', name], ['WhatsApp', phone], ['Product', 'Security Checklist (PDF)'], ['Payment', `${PRICE} paid — screenshot ${shotName || 'uploaded'}`]].map(([k, v]) => (
+              {[['Name', name], ['WhatsApp', phone], ['Product', 'Security Checklist (PDF)'], ['Payment', `${PRICE} paid - screenshot ${shotName || 'uploaded'}`]].map(([k, v]) => (
                 <div key={k} className="flex gap-3">
                   <span className="w-24 shrink-0 text-muted-foreground font-medium">{k}</span>
                   <span className="font-semibold">{v}</span>
@@ -209,7 +209,7 @@ Payment: ${PRICE} paid via eSewa/Khalti (screenshot attached)`;
             </div>
             <div className="flex items-start gap-3 px-4 py-3 rounded-xl bg-violet-500/10 border border-violet-500/25 text-sm mb-4">
               <Zap size={16} className="text-violet-600 dark:text-violet-400 shrink-0 mt-0.5" />
-              <span><strong>How delivery works:</strong> tap below, send the WhatsApp message, and I&apos;ll verify your payment and reply with the PDF — usually within a few hours.</span>
+              <span><strong>How delivery works:</strong> tap below, send the WhatsApp message, and I&apos;ll verify your payment and reply with the PDF - usually within a few hours.</span>
             </div>
             <button onClick={confirmOrder}
               className="w-full inline-flex items-center justify-center gap-2 text-lg !py-4 rounded-xl bg-[#25D366] hover:bg-[#20BD5A] text-white font-semibold transition-colors">
