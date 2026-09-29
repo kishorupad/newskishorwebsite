@@ -7,7 +7,7 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { getYearsExperience, getYearsExperienceText } from '@/lib/experience';
 import AnimatedCounter from '@/components/AnimatedCounter';
 import RecoveryTicker from '@/components/RecoveryTicker';
-import { Phone, Mail, MessageCircle, ArrowRight, Shield, Facebook, Instagram, Youtube, Users, Search, CheckCircle, Clock, Lock, DollarSign, Award, ExternalLink, CalendarCheck, FileCheck, KeyRound, Siren, BookOpen } from 'lucide-react';
+import { Phone, Mail, MessageCircle, ArrowRight, Shield, Facebook, Instagram, Youtube, Users, Search, CheckCircle, Clock, Lock, DollarSign, Award, ExternalLink, CalendarCheck, FileCheck, KeyRound, Siren, BookOpen, ShieldCheck } from 'lucide-react';
 
 export default function Home() {
   useScrollAnimation();
@@ -79,77 +79,88 @@ export default function Home() {
       <main id="main-content">
 
         {/* ─── HERO ─── */}
-        <section id="hero" className="relative min-h-[85vh] flex items-center pt-20 pb-12 overflow-hidden">
-          <div className="absolute top-1/4 -left-32 w-96 h-96 bg-violet-500/[0.06] rounded-full blur-[120px] pointer-events-none" />
-          <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-indigo-500/[0.06] rounded-full blur-[120px] pointer-events-none" />
+        <section id="hero" className="relative min-h-[94vh] flex items-center pt-28 pb-16 overflow-hidden">
+          {/* Aurora background */}
+          <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+            <div className="animate-blob absolute -top-24 -left-24 w-[38rem] h-[38rem] bg-violet-600/20 dark:bg-violet-600/25 rounded-full blur-[130px]" />
+            <div className="animate-blob-slow absolute top-1/3 -right-28 w-[34rem] h-[34rem] bg-indigo-600/20 dark:bg-indigo-600/25 rounded-full blur-[130px]" />
+            <div className="animate-blob absolute bottom-0 left-1/3 w-[30rem] h-[30rem] bg-fuchsia-600/10 dark:bg-fuchsia-600/15 rounded-full blur-[130px]" />
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.07)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.07)_1px,transparent_1px)] bg-[size:54px_54px] [mask-image:radial-gradient(ellipse_75%_65%_at_50%_38%,black,transparent)]" />
+          </div>
 
           <div className="container mx-auto px-4 relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
               <div className="animate-fade-in-up">
-                <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 bg-violet-500/8 border border-violet-500/15 rounded-full">
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-violet-500"></span>
+                <div className="inline-flex items-center gap-2.5 mb-7 px-4 py-2 rounded-full border border-violet-500/25 bg-white/60 dark:bg-white/5 backdrop-blur-xl shadow-lg shadow-violet-500/10">
+                  <span className="relative flex h-2.5 w-2.5">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
                   </span>
-                  <span className="text-sm font-medium">Available now · replies within 24 hours</span>
+                  <span className="text-sm font-semibold">Available now · replies within 24 hours</span>
                 </div>
 
-                <h1 className="text-5xl lg:text-7xl font-bold mb-5 leading-[1.04] tracking-tight">
-                  Kishor <span className="bg-gradient-to-r from-violet-600 to-indigo-600 dark:from-violet-400 dark:to-indigo-400 bg-clip-text text-transparent">Upadhyaya</span>
+                <h1 className="font-[Sora] text-[2.9rem] leading-[1.02] sm:text-6xl lg:text-7xl xl:text-[5.1rem] font-bold mb-6 tracking-tight">
+                  Hacked? Disabled?<br />
+                  <span className="animate-gradient bg-gradient-to-r from-violet-600 via-indigo-600 to-fuchsia-600 dark:from-violet-400 dark:via-indigo-400 dark:to-fuchsia-400 bg-clip-text text-transparent">I&apos;ll get it back.</span>
                 </h1>
 
-                <p className="text-xl lg:text-2xl text-foreground mb-4 font-semibold font-[Sora] tracking-tight">
-                  Hacked? Disabled? Demonetized? I&apos;ll get it back.
+                <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-xl mb-8">
+                  I&apos;m <strong className="text-foreground font-semibold">Kishor Upadhyaya</strong> - Nepal&apos;s social media recovery expert.
+                  <strong className="text-foreground font-semibold"> 1,500+ cases</strong> solved across Facebook, Instagram, YouTube and TikTok.
                 </p>
 
-                <p className="text-lg text-muted-foreground leading-relaxed max-w-xl mb-8">
-                  Nepal&apos;s social media recovery expert - 1,500+ cases solved across Facebook, Instagram, YouTube and TikTok. {getYearsExperienceText()} years of getting accounts back.
-                </p>
+                <div className="flex flex-col sm:flex-row gap-3 mb-5">
+                  <a href="/booking" className="btn-gradient group inline-flex items-center justify-center gap-2 text-lg">
+                    Book a Review <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                  </a>
+                  <a href="/emergency" className="inline-flex items-center justify-center gap-2 px-8 py-3 rounded-xl border-2 border-red-500/40 text-red-600 dark:text-red-400 font-semibold text-lg hover:bg-red-500/10 transition-all duration-300">
+                    <Siren size={19} /> Hacked right now?
+                  </a>
+                </div>
 
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
+                <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-muted-foreground mb-9">
+                  <span className="inline-flex items-center gap-1.5"><ShieldCheck size={15} className="text-emerald-500" /> Honest diagnosis</span>
+                  <span className="inline-flex items-center gap-1.5"><Lock size={15} className="text-emerald-500" /> Secure eSewa / Khalti payment</span>
+                  <span className="inline-flex items-center gap-1.5"><Clock size={15} className="text-emerald-500" /> 24h response</span>
+                </div>
+
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 rounded-3xl border border-white/50 dark:border-white/10 bg-white/55 dark:bg-white/5 backdrop-blur-xl shadow-xl shadow-violet-500/10 px-6 py-5">
                   {stats.map((stat, i) => (
-                    <div key={i} className="scroll-animate text-center sm:text-left" style={{ transitionDelay: `${i * 100}ms` }}>
-                      <div className="text-3xl font-bold text-violet-600 dark:text-violet-400 font-[Sora]"><AnimatedCounter value={stat.numeric} suffix={stat.suffix} /></div>
-                      <p className="text-muted-foreground text-xs mt-1">{stat.label}</p>
+                    <div key={i} className="text-center sm:text-left">
+                      <div className="text-[1.7rem] font-bold text-violet-600 dark:text-violet-400 font-[Sora] leading-none mb-1.5"><AnimatedCounter value={stat.numeric} suffix={stat.suffix} /></div>
+                      <p className="text-muted-foreground text-xs font-medium">{stat.label}</p>
                     </div>
                   ))}
                 </div>
-
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <a href="/booking" className="btn-gradient inline-flex items-center justify-center gap-2 text-lg">
-                    Book a Review <ArrowRight size={20} />
-                  </a>
-                  <a href="/how-it-works" className="px-8 py-3 border border-border text-foreground font-semibold rounded-xl hover:bg-muted transition-all duration-300 text-center">
-                    How It Works
-                  </a>
-                </div>
               </div>
 
-              <div className="animate-slide-in-right mt-10 lg:mt-0 max-w-sm mx-auto lg:max-w-none lg:mx-0" style={{ animationDelay: '0.2s' }}>
-                <div className="relative">
-                  <div className="absolute inset-0 bg-gradient-to-br from-violet-500/10 to-indigo-500/5 rounded-3xl blur-[60px]" />
-                  <div className="relative rounded-3xl overflow-hidden border border-border shadow-2xl shadow-violet-500/5">
-                    <img
-                      src="/kishwor-5-1770795722.jpg"
-                      alt="Kishor Upadhyaya - Social Media Expert Nepal"
-                      className="w-full aspect-square object-cover transition-transform duration-500 hover:scale-110"
-                      loading="eager"
-                      fetchPriority="high"
-                      width="600"
-                      height="600"
-                    />
+              <div className="animate-slide-in-right mt-6 lg:mt-0" style={{ animationDelay: '0.15s' }}>
+                <div className="relative max-w-md mx-auto">
+                  <div className="absolute -inset-10 bg-gradient-to-br from-violet-600/30 via-indigo-600/20 to-fuchsia-600/25 rounded-[3rem] blur-3xl pointer-events-none" />
+                  <div className="relative p-1.5 rounded-[2.2rem] bg-gradient-to-br from-violet-500 via-indigo-500 to-fuchsia-500 shadow-2xl shadow-violet-500/25">
+                    <div className="rounded-[1.8rem] overflow-hidden bg-card">
+                      <img
+                        src="/kishwor-5-1770795722.jpg"
+                        alt="Kishor Upadhyaya - Social Media Expert Nepal"
+                        className="w-full aspect-[4/5] object-cover"
+                        loading="eager"
+                        fetchPriority="high"
+                        width="600"
+                        height="750"
+                      />
+                    </div>
                   </div>
-                  <div className="animate-floaty absolute -top-4 -right-2 sm:-right-6 bg-card/95 backdrop-blur border border-border rounded-2xl shadow-xl px-4 py-3 flex items-center gap-3">
-                    <span className="w-9 h-9 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0"><CheckCircle size={18} /></span>
+                  <div className="animate-floaty absolute top-8 -right-3 sm:-right-8 rounded-2xl border border-white/50 dark:border-white/10 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl shadow-xl px-4 py-3 flex items-center gap-3">
+                    <span className="w-10 h-10 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0"><CheckCircle size={19} /></span>
                     <span>
-                      <span className="block text-sm font-semibold leading-tight">Account recovered</span>
+                      <span className="block text-sm font-bold leading-tight">Account recovered</span>
                       <span className="block text-xs text-muted-foreground">Facebook · in 2 days</span>
                     </span>
                   </div>
-                  <div className="animate-floaty-slow absolute -bottom-4 -left-2 sm:-left-6 bg-card/95 backdrop-blur border border-border rounded-2xl shadow-xl px-4 py-3 flex items-center gap-3">
-                    <span className="w-9 h-9 rounded-full bg-violet-500/15 text-violet-600 dark:text-violet-400 flex items-center justify-center shrink-0"><Youtube size={18} /></span>
+                  <div className="animate-floaty-slow absolute bottom-10 -left-3 sm:-left-8 rounded-2xl border border-white/50 dark:border-white/10 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl shadow-xl px-4 py-3 flex items-center gap-3">
+                    <span className="w-10 h-10 rounded-full bg-violet-500/15 text-violet-600 dark:text-violet-400 flex items-center justify-center shrink-0"><Youtube size={19} /></span>
                     <span>
-                      <span className="block text-sm font-semibold leading-tight">50K channel restored</span>
+                      <span className="block text-sm font-bold leading-tight">50K channel restored</span>
                       <span className="block text-xs text-muted-foreground">Hacked → fully back</span>
                     </span>
                   </div>
