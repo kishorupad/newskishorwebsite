@@ -147,15 +147,6 @@ export default function InstagramProof() {
             <figcaption className="text-center text-white/80 text-sm mt-3">
               {highlights[lightbox].label}
               <span className="text-white/40"> - {lightbox + 1} / {highlights.length}</span>
-              <a
-                href={INSTAGRAM_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-                className="block mt-2 text-pink-400 hover:text-pink-300 text-xs font-medium"
-              >
-                Open this highlight on Instagram
-              </a>
             </figcaption>
           </figure>
         </div>
