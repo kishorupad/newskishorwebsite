@@ -120,7 +120,7 @@ Payment: ${PRICE} paid via eSewa/Khalti (screenshot attached)`;
             <p className="font-bold text-lg mb-1">PDF coming soon</p>
             <p className="text-sm text-muted-foreground leading-relaxed">
               I&apos;m finalizing the checklist right now. It will be available here
-              for {PRICE} very soon - please check back in a bit.
+              very soon - please check back in a bit.
             </p>
           </div>
         ) : (
