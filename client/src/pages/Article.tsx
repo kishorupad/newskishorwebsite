@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import ShareButtons from '@/components/ShareButtons';
 import { articles } from './Resources';
+import PageBackdrop from '@/components/PageBackdrop';
 
 const SITE_URL = 'https://kishorupadhyaya.com.np';
 
@@ -14,7 +15,8 @@ export default function Article() {
 
   if (!article) {
     return (
-      <div className="min-h-screen bg-background text-foreground">
+      <div className="min-h-screen bg-background text-foreground relative">
+      <PageBackdrop />
         <div className="container mx-auto px-4 py-32 text-center">
           <h1 className="text-3xl font-bold mb-4">Article not found</h1>
           <p className="text-muted-foreground mb-8">This guide may have been moved or removed.</p>

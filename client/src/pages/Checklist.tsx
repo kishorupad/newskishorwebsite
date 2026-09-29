@@ -4,6 +4,7 @@ import {
   QrCode, ImagePlus, FileCheck, Lock, Zap,
 } from 'lucide-react';
 import Navigation from '@/components/Navigation';
+import PageBackdrop from '@/components/PageBackdrop';
 
 const WA_NUMBER = '9779843818304';
 const PRICE = 'Rs. 499';
@@ -65,7 +66,8 @@ Payment: ${PRICE} paid via eSewa/Khalti (screenshot attached)`;
   const inputCls = 'w-full px-4 py-3 rounded-xl border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500 transition-all';
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground relative">
+      <PageBackdrop />
       <Navigation />
       <main className="container mx-auto px-4 pt-24 pb-16 max-w-2xl">
         <button onClick={() => step > 1 ? setStep(step - 1) : window.history.back()}

@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useLocation } from 'wouter';
+import PageBackdrop from '@/components/PageBackdrop';
 
 export interface Article {
   id: string;
@@ -312,7 +313,8 @@ export default function Resources() {
   });
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative">
+      <PageBackdrop />
       {/* Header */}
       <div className="bg-gradient-to-br from-primary/10 to-secondary/10 border-b border-border py-12 md:py-16">
         <div className="container mx-auto px-4">

@@ -4,6 +4,7 @@ import {
   Clock, AlertTriangle,
 } from 'lucide-react';
 import Navigation from '@/components/Navigation';
+import PageBackdrop from '@/components/PageBackdrop';
 
 const steps = [
   {
@@ -40,7 +41,8 @@ export default function Emergency() {
   const toggle = (i: number) => setDone(d => d.includes(i) ? d.filter(x => x !== i) : [...d, i]);
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground relative">
+      <PageBackdrop />
       <Navigation />
       <main className="container mx-auto px-4 pt-24 pb-16 max-w-2xl">
         <button onClick={() => window.history.back()}

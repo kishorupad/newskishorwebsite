@@ -6,6 +6,7 @@ import {
   CheckCircle2, Upload, CalendarCheck, Clock, QrCode, ImagePlus,
 } from 'lucide-react';
 import Navigation from '@/components/Navigation';
+import PageBackdrop from '@/components/PageBackdrop';
 
 const WA_NUMBER = '9779843818304';
 
@@ -151,7 +152,8 @@ Payment: ${svc.fee} paid via eSewa/Khalti (screenshot attached)`;
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground relative">
+      <PageBackdrop />
       <Navigation />
       <main className="container mx-auto px-4 pt-28 pb-20 max-w-3xl">
         <div className="text-center mb-8">

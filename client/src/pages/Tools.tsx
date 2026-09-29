@@ -4,6 +4,7 @@ import {
   RefreshCw, ArrowLeft, Lock, CheckCircle2, XCircle,
 } from 'lucide-react';
 import Navigation from '@/components/Navigation';
+import PageBackdrop from '@/components/PageBackdrop';
 
 const COMMON = ['password', '123456', '123456789', 'qwerty', 'abc123', 'password1', '12345678', '111111', '123123', 'admin', 'letmein', 'welcome', 'monkey', 'dragon', 'master', 'kathmandu', 'kathmandu123', 'nepal', 'nepal123', 'everest', 'himalaya', 'pokhara', 'ram123', 'hari123', 'sita123', 'test123', 'user123', 'facebook', 'instagram', 'tiktok', 'youtube', 'iloveyou', 'superman', 'football', 'sunshine', 'princess'];
 const SEQS = ['012', '123', '234', '345', '456', '567', '678', '789', '890', 'abc', 'bcd', 'cde', 'def', 'qwe', 'asd'];
@@ -160,7 +161,8 @@ export default function Tools() {
   const inputCls = 'w-full px-4 py-3.5 rounded-xl border border-border bg-background text-foreground text-lg font-mono placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500 transition-all';
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground relative">
+      <PageBackdrop />
       <Navigation />
       <main className="container mx-auto px-4 pt-24 pb-16 max-w-2xl">
         <button onClick={() => window.history.back()}
