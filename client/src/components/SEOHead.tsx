@@ -51,6 +51,20 @@ const pageMeta = {
     keywords:
       'book social media consultation Nepal, account recovery booking, kishor upadhyaya booking, social media expert appointment Nepal',
   },
+  '/tools': {
+    title: 'Free Password Strength Checker & Generator | Kishor Upadhyaya',
+    description:
+      'Check how strong your password is and generate unhackable passwords for free. Private: everything runs in your browser. By Kishor Upadhyaya, Nepal.',
+    keywords:
+      'password strength checker, strong password generator Nepal, password security tool, free password generator',
+  },
+  '/emergency': {
+    title: 'Hacked Right Now? 5 Emergency Steps | Kishor Upadhyaya',
+    description:
+      'Your Facebook, Instagram or YouTube was just hacked? Do these 5 emergency steps immediately, then book an urgent case review with Kishor Upadhyaya.',
+    keywords:
+      'hacked account emergency, facebook hacked what to do now, instagram hacked help Nepal, urgent account recovery',
+  },
   '/contact': {
     title: 'Contact Kishor Upadhyaya | Social Media Expert Nepal',
     description:

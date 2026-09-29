@@ -8,6 +8,8 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 import Booking from "./pages/Booking";
 import Checklist from "./pages/Checklist";
+import Tools from "./pages/Tools";
+import Emergency from "./pages/Emergency";
 import Resources from "./pages/Resources";
 import SEOHead from "./components/SEOHead";
 import Analytics from "./components/Analytics";
@@ -46,6 +48,8 @@ function Router() {
       <Route path="/resources/:slug" component={Article} />
       <Route path="/booking" component={Booking} />
       <Route path="/checklist" component={Checklist} />
+      <Route path="/tools" component={Tools} />
+      <Route path="/emergency" component={Emergency} />
       {sectionRoutes.map((route) => {
         const sectionId = route.slice(1);
         return (

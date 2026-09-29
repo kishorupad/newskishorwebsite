@@ -825,6 +825,43 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ─── PRICING ─── */}
+        <section className="py-16 md:py-20">
+          <div className="container mx-auto px-4">
+            <div className="scroll-animate text-center mb-10">
+              <h2 className="text-4xl md:text-5xl font-bold mb-3">
+                Services & <span className="text-violet-600 dark:text-violet-400">Pricing</span>
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+                Pick what fits your situation. Every booking is paid in advance - no free chats, no surprises.
+              </p>
+            </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto">
+              {[
+                { key: 'problem-review', name: '30-Minute Problem Review', price: 'Rs. 2,000', desc: 'One specific problem. Honest diagnosis and clear next steps.', tag: null },
+                { key: 'health-check', name: 'Account Health Check', price: 'Rs. 3,000', desc: 'Full audit of your accounts, pages and security - before something breaks.', tag: null },
+                { key: 'monetization-review', name: 'Monetization Review', price: 'Rs. 3,500', desc: 'Monetization rejections, payout issues and AdSense problems.', tag: null },
+                { key: 'urgent-review', name: 'Urgent Case Review', price: 'Rs. 2,000', desc: 'Hacked right now and need help today. Priority handling.', tag: 'URGENT', adv: true },
+                { key: 'security-plan', name: 'Monthly Security Plan', price: 'Rs. 2,000', desc: 'Ongoing protection for your accounts, month after month.', tag: null, adv: true },
+                { key: 'tools', name: 'Free Password Tools', price: 'Free', desc: 'Check your password strength and generate unhackable passwords.', tag: 'FREE', free: true },
+              ].map(s => (
+                <div key={s.key} className="scroll-animate relative rounded-2xl bg-card border border-border p-6 flex flex-col hover:border-violet-500/40 hover:shadow-lg hover:shadow-violet-500/10 transition-all duration-300">
+                  {s.tag && (
+                    <span className={`absolute -top-3 left-6 px-3 py-1 rounded-full text-[10px] font-bold tracking-wider ${s.tag === 'FREE' ? 'bg-emerald-500 text-white' : 'bg-red-500 text-white'}`}>{s.tag}</span>
+                  )}
+                  <h3 className="font-bold text-lg mb-1">{s.name}</h3>
+                  <p className="text-3xl font-bold text-violet-600 dark:text-violet-400 mb-1">{s.price}{s.adv && <span className="text-sm font-medium text-muted-foreground"> advance</span>}</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-5 flex-1">{s.desc}</p>
+                  <a href={s.free ? '/tools' : `/booking?service=${s.key}`}
+                    className={`inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm font-bold transition-all ${s.free ? 'border border-border hover:bg-muted' : 'btn-gradient'}`}>
+                    {s.free ? 'Use free tools' : 'Book now'} <ArrowRight size={15} />
+                  </a>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* ─── DIGITAL PRODUCT PROMO ─── */}
         <section className="py-12">
           <div className="container mx-auto px-4">
@@ -958,6 +995,8 @@ export default function Home() {
                 <li><a href="/services" className="hover:text-foreground transition-colors">Services</a></li>
                 <li><a href="/how-it-works" className="hover:text-foreground transition-colors">How It Works</a></li>
                 <li><a href="/contact" className="hover:text-foreground transition-colors">Contact</a></li>
+                <li><a href="/emergency" className="text-red-500 hover:text-red-400 transition-colors font-medium">Hacked right now?</a></li>
+                <li><a href="/tools" className="hover:text-foreground transition-colors">Free password tools</a></li>
               </ul>
             </div>
             <div>
