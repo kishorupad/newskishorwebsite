@@ -135,7 +135,7 @@ export default function Home() {
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-3">
-                  <a href={wa('Hi Kishor, I want to share my social media problem and book a review. Please let me know the next step.')} className="btn-gradient inline-flex items-center justify-center gap-2 text-lg">
+                  <a href="/booking" className="btn-gradient inline-flex items-center justify-center gap-2 text-lg">
                     Book a Review <ArrowRight size={20} />
                   </a>
                   <a href="/how-it-works" className="px-8 py-3 border border-border text-foreground font-semibold rounded-xl hover:bg-muted transition-all duration-300 text-center">

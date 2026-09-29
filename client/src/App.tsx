@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
+import Booking from "./pages/Booking";
 import Resources from "./pages/Resources";
 import SEOHead from "./components/SEOHead";
 import Analytics from "./components/Analytics";
@@ -42,6 +43,7 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/resources" component={Resources} />
       <Route path="/resources/:slug" component={Article} />
+      <Route path="/booking" component={Booking} />
       {sectionRoutes.map((route) => {
         const sectionId = route.slice(1);
         return (

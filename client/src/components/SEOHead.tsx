@@ -44,6 +44,13 @@ const pageMeta = {
     keywords:
       'free social media assessment Nepal, facebook problem check, instagram issue diagnosis, youtube monetization assessment',
   },
+  '/booking': {
+    title: 'Book a Case Review | Kishor Upadhyaya',
+    description:
+      'Book a 30-minute social media case review with Kishor Upadhyaya. Pay the Rs. 2,000 consultation fee online and lock your slot — Facebook, Instagram, YouTube, TikTok, AdSense.',
+    keywords:
+      'book social media consultation Nepal, account recovery booking, kishor upadhyaya booking, social media expert appointment Nepal',
+  },
   '/contact': {
     title: 'Contact Kishor Upadhyaya | Social Media Expert Nepal',
     description:

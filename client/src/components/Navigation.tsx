@@ -53,7 +53,7 @@ export default function Navigation() {
             )}
 
             <Button asChild className="btn-gradient-sm hidden sm:inline-flex rounded-lg text-sm">
-              <Link href="/contact">Get Help Now</Link>
+              <Link href="/booking">Book a Review</Link>
             </Button>
 
             <button
@@ -80,7 +80,7 @@ export default function Navigation() {
               </Link>
             ))}
             <Button asChild className="w-full btn-gradient-sm mt-3 rounded-lg text-sm">
-              <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>Get Help Now</Link>
+              <Link href="/booking" onClick={() => setMobileMenuOpen(false)}>Book a Review</Link>
             </Button>
           </div>
         )}
