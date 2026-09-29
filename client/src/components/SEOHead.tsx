@@ -47,7 +47,7 @@ const pageMeta = {
   '/tools': {
     title: 'Free Password Strength Checker & Generator | Kishor Upadhyaya',
     description:
-      'Check how strong your password is and generate unhackable passwords for free. Private: everything runs in your browser. By Kishor Upadhyaya, Nepal.',
+      'Check how strong your password is and generate strong passwords for free. Private: everything runs in your browser. By Kishor Upadhyaya, Nepal.',
     keywords:
       'password strength checker, strong password generator Nepal, password security tool, free password generator',
   },

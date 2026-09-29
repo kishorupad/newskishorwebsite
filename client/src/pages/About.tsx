@@ -33,7 +33,7 @@ export default function About() {
             </h1>
             <p className="text-lg text-muted-foreground leading-relaxed">
               From Jumla to Kathmandu - the guy Nepal calls when social media breaks.
-              I&apos;ve solved <strong className="text-foreground">1,000+ cases</strong> of hacked, disabled and
+              I&apos;ve solved <strong className="text-foreground">1,500+ cases</strong> of hacked, disabled and
               demonetized accounts across Facebook, Instagram, YouTube and TikTok.
             </p>
           </div>

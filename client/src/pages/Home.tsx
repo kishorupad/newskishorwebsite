@@ -138,13 +138,13 @@ export default function Home() {
                     <span className="w-10 h-10 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0"><CheckCircle size={19} /></span>
                     <span>
                       <span className="block text-sm font-bold leading-tight">Account recovered</span>
-                      <span className="block text-xs text-muted-foreground">Facebook · in 2 days</span>
+                      <span className="block text-xs text-muted-foreground">Facebook · recovered</span>
                     </span>
                   </div>
                   <div className="animate-floaty-slow absolute bottom-10 -left-3 sm:-left-8 rounded-2xl border border-white/50 dark:border-white/10 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl shadow-xl px-4 py-3 flex items-center gap-3">
                     <span className="w-10 h-10 rounded-full bg-violet-500/15 text-violet-600 dark:text-violet-400 flex items-center justify-center shrink-0"><Youtube size={19} /></span>
                     <span>
-                      <span className="block text-sm font-bold leading-tight">50K channel restored</span>
+                      <span className="block text-sm font-bold leading-tight">Channel restored</span>
                       <span className="block text-xs text-muted-foreground">Hacked → fully back</span>
                     </span>
                   </div>
@@ -462,9 +462,9 @@ export default function Home() {
                 {
                   title: 'Facebook Page Hacked & Deleted',
                   client: 'Small business owner, Kathmandu',
-                  problem: 'Hacker deleted 3-year-old business page with 50K followers. Facebook support was unresponsive.',
+                  problem: 'Hacker deleted a business page with thousands of followers. Facebook support was unresponsive.',
                   solution: 'Filed appeal through Meta Business Suite, provided identity verification documents, coordinated with Meta support via business partner channels.',
-                  result: 'Page fully recovered within 48 hours. All content and followers restored.',
+                  result: 'Page fully recovered. All content and followers restored.',
                   icon: Shield,
                   color: 'from-blue-600 to-blue-500',
                 },
@@ -473,7 +473,7 @@ export default function Home() {
                   client: 'Travel vlogger, Pokhara',
                   problem: 'Channel met all criteria but was repeatedly rejected for "reused content" policy violation.',
                   solution: 'Audited all videos, identified problematic segments, created unique content strategy, resubmitted with detailed documentation.',
-                  result: 'Monetization approved within 5 days. Channel earning consistently.',
+                  result: 'Monetization approved after re-review. Channel earning consistently.',
                   icon: Youtube,
                   color: 'from-red-600 to-red-500',
                 },
@@ -489,16 +489,16 @@ export default function Home() {
                 {
                   title: 'Instagram Verification Badge',
                   client: 'Fitness influencer, Chitwan',
-                  problem: 'Had 200K+ followers but couldn\'t get verified. Multiple rejections despite meeting criteria.',
+                  problem: 'Had a large following but couldn\'t get verified. Multiple rejections despite meeting criteria.',
                   solution: 'Optimized profile for verification, built media presence documentation, created press coverage, submitted strategic application.',
                   result: 'Blue badge obtained. Profile credibility and brand deals increased.',
                   icon: Instagram,
                   color: 'from-pink-600 to-purple-500',
                 },
                 {
-                  title: 'Payout Failed - 3 Months Stuck',
+                  title: 'Payout Failed - Months Stuck',
                   client: 'Content creator, Butwal',
-                  problem: 'Facebook creator payouts failing for 3 months. $2,400 stuck. Bank details were correct but payouts kept failing.',
+                  problem: 'Facebook creator payouts failing for months. A significant balance stuck. Bank details were correct but payouts kept failing.',
                   solution: 'Identified mismatch between Facebook payout settings and bank\'s IBAN format. Coordinated with both Facebook and bank.',
                   result: 'All pending payouts released. Monthly payouts now working smoothly.',
                   icon: DollarSign,
@@ -509,7 +509,7 @@ export default function Home() {
                   client: 'E-commerce store owner, Biratnagar',
                   problem: 'Instagram business account disabled for "community guidelines violation" - no reason given.',
                   solution: 'Reviewed account for policy issues, identified false-positive flag, submitted structured appeal with business documentation.',
-                  result: 'Account restored within 72 hours. Implemented prevention measures.',
+                  result: 'Account restored. Implemented prevention measures.',
                   icon: Shield,
                   color: 'from-purple-600 to-purple-500',
                 },
@@ -838,7 +838,7 @@ export default function Home() {
                 { key: 'monetization-review', name: 'Monetization Review', price: 'Rs. 3,500', desc: 'Monetization rejections, payout issues and AdSense problems.', tag: null },
                 { key: 'urgent-review', name: 'Urgent Case Review', price: 'Rs. 2,000', desc: 'Hacked right now and need help today. Priority handling.', tag: 'URGENT', adv: true },
                 { key: 'security-plan', name: 'Monthly Security Plan', price: 'Rs. 2,000', desc: 'Ongoing protection for your accounts, month after month.', tag: null, adv: true },
-                { key: 'tools', name: 'Free Password Tools', price: 'Free', desc: 'Check your password strength and generate unhackable passwords.', tag: 'FREE', free: true },
+                { key: 'tools', name: 'Free Password Tools', price: 'Free', desc: 'Check your password strength and generate strong passwords.', tag: 'FREE', free: true },
               ].map(s => (
                 <div key={s.key} className="scroll-animate relative rounded-2xl bg-card border border-border p-6 flex flex-col hover:border-violet-500/40 hover:shadow-lg hover:shadow-violet-500/10 transition-all duration-300">
                   {s.tag && (
@@ -956,7 +956,7 @@ export default function Home() {
                   <a href="/booking" className="btn-gradient inline-flex items-center justify-center gap-2 px-8 py-3.5 text-base">
                     Book a Review <ArrowRight size={16} />
                   </a>
-                  <p className="text-xs text-muted-foreground mt-4">Pay via eSewa/Khalti · slot locked after payment verification</p>
+                  <p className="text-xs text-muted-foreground mt-4">Pay via eSewa/Khalti · I confirm your slot on WhatsApp after payment</p>
                 </div>
               </div>
             </div>

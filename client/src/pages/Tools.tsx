@@ -262,7 +262,7 @@ export default function Tools() {
           <h2 className="text-xl font-bold mb-1 flex items-center gap-2">
             <RefreshCw size={20} className="text-violet-600 dark:text-violet-400" /> Strong Password Generator
           </h2>
-          <p className="text-sm text-muted-foreground mb-4">One click. Unhackable. Copy it into a password manager.</p>
+          <p className="text-sm text-muted-foreground mb-4">One click. Strong. Copy it into a password manager.</p>
           <div className="flex gap-2 mb-5">
             <button onClick={() => { setGenMode('random'); setGenerated(genPassword(len, upper, lower, digits, symbols)); }}
               className={`flex-1 px-4 py-2.5 rounded-xl text-sm font-semibold border transition-all ${genMode === 'random' ? 'bg-violet-500/10 border-violet-500/40 text-violet-700 dark:text-violet-300' : 'border-border text-muted-foreground'}`}>

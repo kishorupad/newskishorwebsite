@@ -25,7 +25,7 @@ const steps = [
   },
   {
     t: 'Report it inside the app, then get expert help',
-    d: 'Use Help > Report a problem in the app. Then, if you are locked out or the hacker changed your recovery details, book an urgent review - I handle exactly these cases every day.',
+    d: 'Use Help > Report a problem in the app. Then, if you are locked out or the hacker changed your recovery details, book an urgent review - I handle exactly these cases.',
   },
 ];
 
@@ -94,7 +94,7 @@ export default function Emergency() {
         </div>
 
         <div className="rounded-3xl bg-gradient-to-r from-violet-600 to-indigo-600 text-white p-8 text-center">
-          <h2 className="text-2xl font-bold mb-2">Locked out? I do this every day.</h2>
+          <h2 className="text-2xl font-bold mb-2">Locked out? This is what I do.</h2>
           <p className="text-violet-100 text-sm mb-6 max-w-md mx-auto">
             If the hacker changed your email or phone, or you cannot get back in,
             book an <strong>Urgent Case Review</strong>. I will diagnose your case personally and tell you honestly what is possible.
