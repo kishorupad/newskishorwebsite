@@ -9,6 +9,7 @@ import {
 import Navigation from '@/components/Navigation';
 import PageBackdrop from '@/components/PageBackdrop';
 import { PAYMENT_QR } from '@/data/paymentQr';
+import { sendSlipViaApi } from '@/lib/sendSlip';
 
 const WA_NUMBER = '9779843818304';
 
@@ -134,6 +135,7 @@ export default function Booking() {
     if (!f) return;
     setShotName(f.name);
     setShot(URL.createObjectURL(f));
+    setShotFile(f);
   };
   const [copied, setCopied] = useState(false);
   const copyNumber = async () => {
@@ -148,9 +150,23 @@ export default function Booking() {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  const [shotFile, setShotFile] = useState<File | null>(null);
+  const [sending, setSending] = useState(false);
+  const [slipState, setSlipState] = useState<'idle' | 'auto' | 'manual'>('idle');
 
-  const confirmBooking = () => {
+
+  const confirmBooking = async () => {
     const day = dateIdx !== null ? fmtFull(days[dateIdx]) : '';
+    setSending(true);
+    let auto = false;
+    if (shotFile) {
+      auto = await sendSlipViaApi(shotFile, {
+        kind: 'booking', ref: bookingId, name: name.trim(), phone: phone.trim(),
+        line: `${day} · ${slot} (NPT)`, item: svc.title, fee: svc.fee,
+      });
+    }
+    setSending(false);
+    setSlipState(auto ? 'auto' : 'manual');
     const msg =
 `New booking - kishorupadhyaya.com.np/booking
 Booking ID: ${bookingId}
@@ -161,7 +177,7 @@ Problem: ${problem}
 Slot: ${day} · ${slot} (NPT)
 Details: ${details.trim()}
 Service: ${svc.title}
-Payment: ${svc.fee} paid via eSewa/Khalti (screenshot in WhatsApp chat)`;
+Payment: ${svc.fee} paid via eSewa/Khalti ${auto ? '(slip auto-sent)' : '(screenshot in WhatsApp chat)'}`;
     window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
   };
 
@@ -401,13 +417,21 @@ Payment: ${svc.fee} paid via eSewa/Khalti (screenshot in WhatsApp chat)`;
                 <span className="text-sm">I understand the <strong>{svc.fee}</strong> is for the case review and honest diagnosis - <strong>not</strong> a guaranteed recovery.</span>
               </label>
               <button onClick={() => { if (!agreed) { setError('Please tick the agreement above to continue.'); return; } confirmBooking(); }}
-                className="btn-gradient w-full inline-flex items-center justify-center gap-2 text-lg !py-4">
-                <CalendarCheck size={20} /> Confirm booking on WhatsApp
+                disabled={sending}
+                className="btn-gradient w-full inline-flex items-center justify-center gap-2 text-lg !py-4 disabled:opacity-60">
+                <CalendarCheck size={20} /> {sending ? 'Sending slip...' : 'Confirm booking on WhatsApp'}
               </button>
-              <p className="text-xs text-muted-foreground text-center mt-3">
-                WhatsApp will open with your booking details - please attach the payment screenshot in the chat.
-                Your slot is confirmed once payment is verified.
-              </p>
+              {slipState === 'auto' ? (
+                <p className="text-xs text-emerald-600 dark:text-emerald-400 text-center mt-3 font-medium">
+                  Payment slip auto-sent to Kishor - just press send in WhatsApp.
+                  Your slot is confirmed once payment is verified.
+                </p>
+              ) : (
+                <p className="text-xs text-muted-foreground text-center mt-3">
+                  WhatsApp will open with your booking details - please attach the payment screenshot in the chat.
+                  Your slot is confirmed once payment is verified.
+                </p>
+              )}
             </div>
           )}
 

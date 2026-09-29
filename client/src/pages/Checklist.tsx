@@ -6,6 +6,7 @@ import {
 import Navigation from '@/components/Navigation';
 import PageBackdrop from '@/components/PageBackdrop';
 import { PAYMENT_QR } from '@/data/paymentQr';
+import { sendSlipViaApi } from '@/lib/sendSlip';
 
 const WA_NUMBER = '9779843818304';
 const PRICE = 'Rs. 499';
@@ -40,7 +41,7 @@ export default function Checklist() {
 
   const onShot = (e: React.ChangeEvent<HTMLInputElement>) => {
     const f = e.target.files?.[0];
-    if (f) { setShot(URL.createObjectURL(f)); setShotName(f.name); }
+    if (f) { setShotFile(f); setShot(URL.createObjectURL(f)); setShotName(f.name); }
   };
 
   const [copied, setCopied] = useState(false);
@@ -56,6 +57,10 @@ export default function Checklist() {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  const [shotFile, setShotFile] = useState<File | null>(null);
+  const [sending, setSending] = useState(false);
+  const [slipState, setSlipState] = useState<'idle'|'auto'|'manual'>('idle');
+
   const next1 = () => {
     if (!name.trim()) return setError('Please enter your name.');
     if (!/^(98|97)\d{8}$/.test(phone.replace(/[\s-]/g, ''))) return setError('Enter a valid Nepal mobile number (10 digits).');
@@ -66,14 +71,29 @@ export default function Checklist() {
     setError(''); setStep(3);
   };
 
-  const confirmOrder = () => {
+  const confirmOrder = async () => {
+    setSending(true);
+    setSlipState('idle');
+    const ref = orderId;
+    let auto = false;
+    if (shotFile) {
+      auto = await sendSlipViaApi(shotFile, {
+        kind: 'order', ref, name: name.trim(), phone: phone.trim(),
+        line: 'Social Media Security Checklist (PDF)', item: 'Security Checklist PDF', fee: PRICE,
+      });
+    }
+    setSlipState(auto ? 'auto' : 'manual');
+    setSending(false);
+    const tail = auto
+      ? 'Payment screenshot auto-sent to kishorupadhyaya.com.np system.'
+      : 'Payment: ' + PRICE + ' paid via eSewa/Khalti (screenshot attached below).';
     const msg =
 `New checklist order - kishorupadhyaya.com.np/checklist
-Order ID: ${orderId}
+Order ID: ${ref}
 Name: ${name.trim()}
 WhatsApp: ${phone.trim()}
 Product: Social Media Security Checklist (PDF)
-Payment: ${PRICE} paid via eSewa/Khalti (screenshot in WhatsApp chat)`;
+${tail}`;
     window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
   };
 
@@ -253,10 +273,16 @@ Payment: ${PRICE} paid via eSewa/Khalti (screenshot in WhatsApp chat)`;
               <Zap size={16} className="text-violet-600 dark:text-violet-400 shrink-0 mt-0.5" />
               <span><strong>How delivery works:</strong> tap below, send the WhatsApp message with your payment screenshot attached, and I&apos;ll verify it and reply with the PDF - usually within a few hours.</span>
             </div>
-            <button onClick={confirmOrder}
-              className="w-full inline-flex items-center justify-center gap-2 text-lg !py-4 rounded-xl bg-[#25D366] hover:bg-[#20BD5A] text-white font-semibold transition-colors">
-              <FileCheck size={20} /> Send order on WhatsApp
+            <button onClick={confirmOrder} disabled={sending}
+              className="w-full inline-flex items-center justify-center gap-2 text-lg !py-4 rounded-xl bg-[#25D366] hover:bg-[#20BD5A] text-white font-semibold transition-colors disabled:opacity-70">
+              <FileCheck size={20} /> {sending ? 'Sending slip...' : 'Send order on WhatsApp'}
             </button>
+            {slipState === 'auto' && (
+              <p className="text-sm text-green-700">Payment slip auto-sent. Order details pani WhatsApp ma khulcha.</p>
+            )}
+            {slipState === 'manual' && shot && (
+              <p className="text-sm text-amber-700">Slip auto-send vayena. WhatsApp khulda screenshot attach gara.</p>
+            )}
             <p className="text-xs text-muted-foreground mt-4 flex items-center gap-1.5 justify-center">
               <Lock size={12} /> Your details are only used to deliver your PDF.
             </p>
