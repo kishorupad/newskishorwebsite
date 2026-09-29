@@ -5,5 +5,5 @@ const PROOF_HL35 = "data:image/webp;base64,UklGRkwvAABXRUJQVlA4IEAvAAAw3QCdASqAA
 
 export const PART_12 = [
   { src: PROOF_HL34, label: "Account recovered - Sister Collection (60K)" },
-  { src: PROOF_HL35, label: "Monetization fixed on YouTube" },
+  { src: PROOF_HL35, label: "Monetization fixed - @hngma_ningleku_official" },
 ];
