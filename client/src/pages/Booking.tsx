@@ -81,6 +81,15 @@ export default function Booking() {
   const search = useSearch();
   const svc = services[new URLSearchParams(search).get('service') || ''] || defaultService;
 
+  // Unique booking reference, generated once per visit
+  const bookingId = useMemo(() => {
+    const now = new Date();
+    const mm = String(now.getMonth() + 1).padStart(2, '0');
+    const dd = String(now.getDate()).padStart(2, '0');
+    const rand = Math.random().toString(36).slice(2, 6).toUpperCase();
+    return `KU-${mm}${dd}-${rand}`;
+  }, []);
+
   const excluded = platformExcludes[platform] || [];
   const visibleProblems = problems.filter(pr => !excluded.includes(pr.id));
   const pickPlatform = (id: string) => {
@@ -129,6 +138,7 @@ export default function Booking() {
     const day = dateIdx !== null ? fmtFull(days[dateIdx]) : '';
     const msg =
 `New booking — kishorupadhyaya.com.np/booking
+Booking ID: ${bookingId}
 Name: ${name.trim()}
 WhatsApp: ${phone.trim()}
 Platform: ${platform}
@@ -336,6 +346,10 @@ Payment: ${svc.fee} paid via eSewa/Khalti (screenshot attached)`;
               <h2 className="text-2xl font-bold mb-1">Review & confirm</h2>
               <p className="text-muted-foreground text-sm mb-6">Check everything, then confirm on WhatsApp.</p>
               <div className="rounded-2xl border border-border bg-muted/30 p-5 space-y-3 text-sm mb-6">
+                <div className="flex gap-3 pb-3 mb-1 border-b border-border">
+                  <span className="w-24 shrink-0 text-muted-foreground font-medium">Booking ID</span>
+                  <span className="font-bold text-violet-600 dark:text-violet-400 tracking-wide">{bookingId}</span>
+                </div>
                 {[
                   ['Name', name], ['WhatsApp', phone], ['Platform', platform], ['Problem', problem],
                   ['Slot', `${dateIdx !== null ? fmtFull(days[dateIdx]) : ''} · ${slot} (NPT)`],
