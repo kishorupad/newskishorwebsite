@@ -392,7 +392,6 @@ export default function Resources() {
                 <p className="text-muted-foreground">Try adjusting your search or filter criteria.</p>
               </div>
             )}
-          </>
       </div>
     </div>
   );
