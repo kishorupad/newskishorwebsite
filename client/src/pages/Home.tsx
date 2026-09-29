@@ -61,6 +61,13 @@ export default function Home() {
     { q: 'How do I pay?', a: 'Through the booking page: scan the eSewa/Khalti QR, pay the fee for your chosen service (Rs. 2,000\u20133,500), and upload the payment screenshot. Your slot is locked once I verify payment - then we talk on WhatsApp.' },
   ];
 
+  const heroProblems = ['Hacked?', 'Disabled?', 'Demonetized?', 'Payout stuck?', 'Shadowbanned?'];
+  const [heroPi, setHeroPi] = useState(0);
+  useEffect(() => {
+    const t = setInterval(() => setHeroPi(i => (i + 1) % heroProblems.length), 2200);
+    return () => clearInterval(t);
+  }, []);
+
   const stats = [
     { numeric: 1500, suffix: '+', label: 'Problems Solved' },
     { numeric: 98, suffix: '%', label: 'Success Rate' },
@@ -99,9 +106,9 @@ export default function Home() {
                   <span className="text-sm font-semibold">Available now · replies within 24 hours</span>
                 </div>
 
-                <h1 className="font-[Sora] text-[2.9rem] leading-[1.02] sm:text-6xl lg:text-7xl xl:text-[5.1rem] font-bold mb-6 tracking-tight">
-                  Hacked? Disabled?<br />
-                  <span className="animate-gradient bg-gradient-to-r from-violet-600 via-indigo-600 to-fuchsia-600 dark:from-violet-400 dark:via-indigo-400 dark:to-fuchsia-400 bg-clip-text text-transparent">I&apos;ll get it back.</span>
+                <h1 className="font-[Sora] text-[2.9rem] leading-[1.02] sm:text-6xl lg:text-7xl xl:text-[5.1rem] font-bold mb-6 tracking-tight min-h-[7.5rem] sm:min-h-[9rem] lg:min-h-[10.5rem]">
+                  <span key={heroPi} className="animate-fade-in-up inline-block">{heroProblems[heroPi]}</span><br />
+                  <span className="animate-gradient bg-gradient-to-r from-violet-600 via-indigo-600 to-fuchsia-600 dark:from-violet-400 dark:via-indigo-400 dark:to-fuchsia-400 bg-clip-text text-transparent">I&apos;ll fix it.</span>
                 </h1>
 
                 <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-xl mb-8">
