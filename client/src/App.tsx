@@ -22,7 +22,6 @@ import Terms from "./pages/Terms";
 const sectionRoutes = [
   "/services",
   "/how-it-works",
-  "/assessment",
   "/social-proof",
   "/certifications",
   "/guarantees",

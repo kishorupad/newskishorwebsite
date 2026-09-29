@@ -1,6 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
 import Navigation from '@/components/Navigation';
-import RecoveryAssessment from '@/components/RecoveryAssessment';
 import LiveChat from '@/components/LiveChat';
 import InstagramFeature from '@/components/InstagramFeature';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
@@ -434,21 +433,6 @@ export default function Home() {
                 </div>
               ))}
             </div>
-          </div>
-        </section>
-
-        {/* ─── PROBLEM ASSESSMENT ─── */}
-        <section id="assessment" className="py-16 md:py-20">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-10 scroll-animate">
-              <h2 className="text-4xl md:text-5xl font-bold mb-3">
-                Free Problem <span className="text-violet-600 dark:text-violet-400">Assessment</span>
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-xl mx-auto">
-                Answer 5 quick questions and get a personalized solution plan
-              </p>
-            </div>
-            <RecoveryAssessment />
           </div>
         </section>
 
@@ -1059,7 +1043,7 @@ export default function Home() {
             <div>
               <h4 className="font-bold mb-2 text-sm">Quick Links</h4>
               <ul className="space-y-1 text-sm text-muted-foreground">
-                <li><a href="/assessment" className="hover:text-foreground transition-colors">Free Assessment</a></li>
+                <li><a href="/booking" className="hover:text-foreground transition-colors">Book a Review</a></li>
                 <li><a href="/resources" className="hover:text-foreground transition-colors">Resources</a></li>
                 <li><a href="/faq" className="hover:text-foreground transition-colors">FAQ</a></li>
               </ul>

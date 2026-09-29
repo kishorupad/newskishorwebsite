@@ -37,13 +37,6 @@ const pageMeta = {
     keywords:
       'how social media recovery works, account recovery process Nepal, hacked account help process, social media support steps',
   },
-  '/assessment': {
-    title: 'Free Social Media Problem Assessment | Kishor Upadhyaya',
-    description:
-      'Get a free assessment for Facebook, Instagram, YouTube, AdSense, and social media platform issues in Nepal.',
-    keywords:
-      'free social media assessment Nepal, facebook problem check, instagram issue diagnosis, youtube monetization assessment',
-  },
   '/booking': {
     title: 'Book a Case Review | Kishor Upadhyaya',
     description:
