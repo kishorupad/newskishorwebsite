@@ -8,6 +8,7 @@ import PageBackdrop from '@/components/PageBackdrop';
 
 const WA_NUMBER = '9779843818304';
 const PRICE = 'Rs. 499';
+const AVAILABLE = false; // set true when the PDF is ready for sale
 
 const inside = [
   { t: 'Lock your accounts', d: '2FA, strong passwords, backup codes, login alerts, trusted contacts' },
@@ -78,8 +79,13 @@ Payment: ${PRICE} paid via eSewa/Khalti (screenshot attached)`;
         {/* product hero */}
         <div className="rounded-3xl overflow-hidden border border-border mb-8">
           <div className="bg-gradient-to-r from-violet-600 to-indigo-600 p-8 text-white">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 text-xs font-semibold mb-4">
-              <FileCheck size={13} /> DIGITAL DOWNLOAD · PDF
+            <div className="flex flex-wrap items-center gap-2 mb-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 text-xs font-semibold">
+                <FileCheck size={13} /> DIGITAL DOWNLOAD · PDF
+              </div>
+              <div className="inline-flex items-center px-3 py-1 rounded-full bg-amber-400 text-amber-950 text-xs font-bold">
+                COMING SOON
+              </div>
             </div>
             <h1 className="text-3xl md:text-4xl font-bold mb-2">Social Media Security Checklist</h1>
             <p className="text-violet-100 text-sm leading-relaxed mb-5">
@@ -108,7 +114,18 @@ Payment: ${PRICE} paid via eSewa/Khalti (screenshot attached)`;
           </div>
         </div>
 
-        {/* steps indicator */}
+        {/* purchase flow disabled until the PDF is ready */}
+        {!AVAILABLE ? (
+          <div className="rounded-2xl border border-amber-500/30 bg-amber-500/5 p-6 md:p-8 text-center">
+            <p className="font-bold text-lg mb-1">PDF coming soon</p>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              I&apos;m finalizing the checklist right now. It will be available here
+              for {PRICE} very soon - please check back in a bit.
+            </p>
+          </div>
+        ) : (
+        <>
+{/* steps indicator */}
         <div className="flex items-center gap-2 mb-8">
           {['Details', 'Payment', 'Get PDF'].map((s, i) => (
             <div key={s} className="flex items-center gap-2 flex-1">
@@ -222,7 +239,10 @@ Payment: ${PRICE} paid via eSewa/Khalti (screenshot attached)`;
             </p>
           </div>
         )}
-      </main>
+      
+        </>
+        )}
+        </main>
     </div>
   );
 }
