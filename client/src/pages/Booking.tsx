@@ -123,8 +123,9 @@ Payment: ${svc.fee} paid via eSewa/Khalti (screenshot attached)`;
             Book a <span className="bg-gradient-to-r from-violet-600 to-indigo-600 dark:from-violet-400 dark:to-indigo-400 bg-clip-text text-transparent">Review</span>
           </h1>
           <p className="text-muted-foreground max-w-xl mx-auto">
-            30-minute case review over a call. Pay the {svc.fee} consultation fee to lock your slot —
-            no payment, no booking, no time-wasting.
+            Book 30 minutes of focused, one-on-one time on <em>your</em> case. I&apos;ll dig into what happened,
+            diagnose the real issue, and lay out your best next steps — the {svc.fee} fee is for this expert
+            review itself, not a guaranteed fix.
           </p>
         </div>
 
@@ -258,7 +259,7 @@ Payment: ${svc.fee} paid via eSewa/Khalti (screenshot attached)`;
           {step === 4 && (
             <div>
               <h2 className="text-2xl font-bold mb-1">Pay {svc.fee}</h2>
-              <p className="text-muted-foreground text-sm mb-6">{svc.title} — locks your slot. {svc.note || 'The remaining service fee is only charged after your problem is solved.'}</p>
+              <p className="text-muted-foreground text-sm mb-6">{svc.title} — focused time on your specific case: a proper diagnosis and honest next steps, not generic advice. {svc.note || 'Any recovery work after this is quoted separately — and only charged if your problem gets solved.'}</p>
               <div className="grid sm:grid-cols-2 gap-6 items-start">
                 <div className="rounded-2xl border border-border p-5 text-center bg-muted/30">
                   {qrOk ? (
