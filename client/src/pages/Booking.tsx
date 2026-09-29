@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import PageBackdrop from '@/components/PageBackdrop';
+import { PAYMENT_QR } from '@/data/paymentQr';
 
 const WA_NUMBER = '9779843818304';
 
@@ -304,7 +305,7 @@ Payment: ${svc.fee} paid via eSewa/Khalti (screenshot attached)`;
               <div className="grid sm:grid-cols-2 gap-6 items-start">
                 <div className="rounded-2xl border border-border p-5 text-center bg-muted/30">
                   {qrOk ? (
-                    <img src="/payment-qr.png" alt="eSewa / Khalti payment QR" onError={() => setQrOk(false)}
+                    <img src={PAYMENT_QR} alt="eSewa / Khalti payment QR" onError={() => setQrOk(false)}
                       className="w-48 h-48 object-contain mx-auto rounded-xl bg-white p-2" />
                   ) : (
                     <div className="w-48 h-48 mx-auto rounded-xl border-2 border-dashed border-violet-500/40 bg-violet-500/5 flex flex-col items-center justify-center gap-2 p-4">
