@@ -51,7 +51,8 @@ export default function InstagramProof() {
   }, [highlights]);
 
   const scrollCards = (dir: 1 | -1) => {
-    scrollRef.current?.scrollBy({ left: dir * 480, behavior: 'smooth' });
+    const el = scrollRef.current;
+    if (el) el.scrollBy({ left: dir * el.clientWidth, behavior: 'smooth' });
   };
 
   const close = useCallback(() => setLightbox(null), []);
@@ -106,7 +107,7 @@ export default function InstagramProof() {
           {highlights === null
             ? // Skeleton placeholders while the proof images load
               Array.from({ length: 5 }).map((_, i) => (
-                <div key={i} className="snap-start shrink-0 w-52 md:w-60">
+                <div key={i} className="snap-start shrink-0 w-[calc((100%-1rem)/2)] md:w-[calc((100%-3rem)/4)]">
                   <div className="rounded-2xl bg-muted/60 border border-border aspect-[9/16] animate-pulse" />
                   <div className="h-3 w-3/4 mx-auto mt-2 rounded bg-muted/60 animate-pulse" />
                 </div>
@@ -115,7 +116,7 @@ export default function InstagramProof() {
                 <button
                   key={i}
                   onClick={() => setLightbox(i)}
-                  className="snap-start shrink-0 w-52 md:w-60 group text-left cursor-pointer"
+                  className="snap-start shrink-0 w-[calc((100%-1rem)/2)] md:w-[calc((100%-3rem)/4)] group text-left cursor-pointer"
                   aria-label={`View proof: ${h.label}`}
                 >
                   <div className="rounded-2xl p-[3px] bg-gradient-to-tr from-amber-400 via-pink-500 to-violet-600">
