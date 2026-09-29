@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo } from 'react';
 import { useSearch } from 'wouter';
 import {
   Facebook, Instagram, Youtube, Music2, DollarSign, MoreHorizontal,
@@ -36,40 +36,7 @@ const problems = [
   { id: 'Something else', icon: MoreHorizontal, hint: 'Describe it next' },
 ];
 
-// ── Schedule config: edit these to change availability ──
-const bookingConfig = {
-  workingDays: [0, 1, 2, 3, 4, 5], // Sun–Fri (Saturday closed)
-  openHour: 10,          // 10 AM
-  closeHour: 18,         // 6 PM — last slot starts before this
-  slotIntervalMin: 90,   // gap between slots
-  minAdvanceHours: 2,    // same-day bookings need this much notice
-  closedDates: [] as string[], // 'YYYY-MM-DD' festival holidays, e.g. ['2026-10-20']
-};
-
-const fmtSlot = (h: number) => {
-  const hr = Math.floor(h), m = Math.round((h - hr) * 60);
-  const ap = hr >= 12 ? 'PM' : 'AM';
-  const hr12 = hr % 12 === 0 ? 12 : hr % 12;
-  return `${hr12}:${String(m).padStart(2, '0')} ${ap}`;
-};
-
-// Slots for a day, minus any that are too close to now
-const genSlots = (day: Date) => {
-  const slots: string[] = [];
-  for (let h = bookingConfig.openHour; h + bookingConfig.slotIntervalMin / 60 <= bookingConfig.closeHour + 0.001; h += bookingConfig.slotIntervalMin / 60)
-    slots.push(fmtSlot(h));
-  const now = new Date();
-  if (day.toDateString() !== now.toDateString()) return slots;
-  const cutoff = new Date(now.getTime() + bookingConfig.minAdvanceHours * 3600 * 1000);
-  return slots.filter(s => {
-    const [time, ap] = s.split(' ');
-    let [hh, mm] = time.split(':').map(Number);
-    if (ap === 'PM' && hh !== 12) hh += 12;
-    if (ap === 'AM' && hh === 12) hh = 0;
-    const dt = new Date(day); dt.setHours(hh, mm, 0, 0);
-    return dt > cutoff;
-  });
-};
+const timeSlots = ['10:00 AM', '11:30 AM', '1:00 PM', '2:30 PM', '4:00 PM', '5:30 PM'];
 const steps = ['Platform', 'Problem', 'Details', 'Schedule', 'Payment', 'Confirm'];
 
 const fmtDay = (d: Date) =>
@@ -96,26 +63,14 @@ export default function Booking() {
   const search = useSearch();
   const svc = services[new URLSearchParams(search).get('service') || ''] || defaultService;
 
-  // Next 7 open days (skips closed weekdays, holidays, and today if no slots left)
   const days = useMemo(() => {
-    const out: Date[] = [];
     const now = new Date();
-    for (let i = 0; i < 14 && out.length < 7; i++) {
+    return Array.from({ length: 7 }, (_, i) => {
       const d = new Date(now);
-      d.setDate(now.getDate() + i);
-      const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
-      if (!bookingConfig.workingDays.includes(d.getDay())) continue;
-      if (bookingConfig.closedDates.includes(key)) continue;
-      if (i === 0 && genSlots(d).length === 0) continue;
-      out.push(d);
-    }
-    return out;
+      d.setDate(now.getDate() + i + 1);
+      return d;
+    });
   }, []);
-
-  // Auto-pick the first available day when reaching the schedule step
-  useEffect(() => {
-    if (step === 3 && dateIdx === null && days.length > 0) setDateIdx(0);
-  }, [step]);
 
   const canNext = () => {
     setError('');
@@ -271,7 +226,7 @@ Payment: ${svc.fee} paid via eSewa/Khalti (screenshot attached)`;
           {step === 3 && (
             <div>
               <h2 className="text-2xl font-bold mb-1">Pick your slot</h2>
-              <p className="text-muted-foreground text-sm mb-6">30-minute review call · Nepal time (NPT) · same-day bookings need {bookingConfig.minAdvanceHours}h notice.</p>
+              <p className="text-muted-foreground text-sm mb-6">30-minute review call · Nepal time (NPT).</p>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-6">
                 {days.map((d, i) => (
                   <button key={i} onClick={() => { setDateIdx(i); setSlot(''); }}
@@ -286,7 +241,7 @@ Payment: ${svc.fee} paid via eSewa/Khalti (screenshot attached)`;
                 <div>
                   <p className="text-sm font-medium mb-3 flex items-center gap-2"><Clock size={15} className="text-muted-foreground" /> Available times — {fmtDay(days[dateIdx])}</p>
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                    {genSlots(days[dateIdx]).map(ts => (
+                    {timeSlots.map(ts => (
                       <button key={ts} onClick={() => setSlot(ts)}
                         className={`px-3 py-3 rounded-xl border text-sm font-medium transition-all ${
                           slot === ts ? 'border-violet-500 bg-violet-600 text-white shadow-md shadow-violet-500/25' : 'border-border hover:border-violet-500/40'
