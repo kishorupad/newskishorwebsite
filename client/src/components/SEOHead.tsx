@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation } from 'wouter';
 import { getYearsExperienceText } from '@/lib/experience';
+import { articles } from '@/pages/Resources';
 
 const PROFILE_IMAGE = '/kishwor-5-1770795722.jpg';
 const SITE_URL = 'https://kishorupadhyaya.com.np';
@@ -84,7 +85,17 @@ export default function SEOHead() {
 
   useEffect(() => {
     const currentPath = location || '/';
-    const meta = pageMeta[currentPath as keyof typeof pageMeta] || pageMeta['/'];
+    const articleMatch = currentPath.match(/^\/resources\/([\w-]+)$/);
+    const article = articleMatch
+      ? articles.find((art) => art.slug === articleMatch[1])
+      : undefined;
+    const meta = article
+      ? {
+          title: `${article.title} | Kishor Upadhyaya`,
+          description: article.excerpt,
+          keywords: `social media guide nepal, ${article.title.toLowerCase()}, account security nepal, kishor upadhyaya`,
+        }
+      : pageMeta[currentPath as keyof typeof pageMeta] || pageMeta['/'];
 
     document.title = meta.title;
 

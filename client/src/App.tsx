@@ -8,6 +8,8 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 import Resources from "./pages/Resources";
 import SEOHead from "./components/SEOHead";
+import Analytics from "./components/Analytics";
+import Article from "./pages/Article";
 
 const sectionRoutes = [
   "/services",
@@ -39,6 +41,7 @@ function Router() {
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/resources" component={Resources} />
+      <Route path="/resources/:slug" component={Article} />
       {sectionRoutes.map((route) => {
         const sectionId = route.slice(1);
         return (
@@ -62,6 +65,7 @@ function App() {
       >
         <TooltipProvider>
           <SEOHead />
+          <Analytics />
           <Toaster />
           <Router />
         </TooltipProvider>

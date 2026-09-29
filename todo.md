@@ -115,3 +115,14 @@
 - [x] Add email notification for bookings (logging enabled)
 - [x] Test calendar functionality
 - [ ] Create checkpoint for scheduling feature
+
+## Upgrade - SEO & Wow-factor (2026-09-30)
+- [x] Animated count-up stats (hero + social proof) via AnimatedCounter component
+- [x] Recent-recoveries marquee ticker under hero (RecoveryTicker; SAMPLE DATA — replace with real)
+- [x] Article detail pages at /resources/:slug with unique URLs (was modal-only)
+- [x] Per-article SEO meta (title/description/keywords/canonical) in SEOHead
+- [x] Article URLs added to sitemap.xml
+- [x] Google Analytics wired via VITE_GA_MEASUREMENT_ID env var (placeholder removed from index.html)
+- [ ] Set VITE_GA_MEASUREMENT_ID in Vercel env vars with real Measurement ID
+- [ ] Replace ticker sample data with real recent recoveries
+- [ ] Submit updated sitemap in Google Search Console
