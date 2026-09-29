@@ -127,8 +127,9 @@ export default function SEOHead() {
       priceRange: '$$',
       image: PROFILE_IMAGE,
       sameAs: [
-        'https://www.facebook.com/kishorupadhyaya',
-        'https://www.instagram.com/kishorupadhyaya',
+        'https://www.facebook.com/kishorupp',
+        'https://www.instagram.com/kishorupp',
+        'https://www.linkedin.com/in/kishorupadhyaya/',
       ],
       aggregateRating: {
         '@type': 'AggregateRating',
@@ -169,8 +170,9 @@ export default function SEOHead() {
       logo: PROFILE_IMAGE,
       description: `Professional account recovery expert with ${getYearsExperienceText()} years of experience`,
       sameAs: [
-        'https://www.facebook.com/kishorupadhyaya',
-        'https://www.instagram.com/kishorupadhyaya',
+        'https://www.facebook.com/kishorupp',
+        'https://www.instagram.com/kishorupp',
+        'https://www.linkedin.com/in/kishorupadhyaya/',
       ],
       contactPoint: {
         '@type': 'ContactPoint',

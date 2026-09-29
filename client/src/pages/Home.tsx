@@ -940,13 +940,13 @@ export default function Home() {
               <h3 className="font-bold mb-2 font-[Sora] text-violet-600 dark:text-violet-400">Kishor</h3>
               <p className="text-sm text-muted-foreground leading-relaxed mb-3">Expert in solving all social media problems - account recovery, monetization, AdSense, payouts, verification, and more.</p>
               <div className="flex items-center gap-2">
-                <a href="https://facebook.com/kishorupadhyaya" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="w-8 h-8 rounded-lg bg-muted hover:bg-violet-500/10 flex items-center justify-center text-muted-foreground hover:text-violet-600 dark:hover:text-violet-400 transition-colors">
+                <a href="https://www.facebook.com/kishorupp" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="w-8 h-8 rounded-lg bg-muted hover:bg-violet-500/10 flex items-center justify-center text-muted-foreground hover:text-violet-600 dark:hover:text-violet-400 transition-colors">
                   <Facebook size={15} />
                 </a>
-                <a href="https://instagram.com/kishorupadhyaya" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-8 h-8 rounded-lg bg-muted hover:bg-violet-500/10 flex items-center justify-center text-muted-foreground hover:text-violet-600 dark:hover:text-violet-400 transition-colors">
+                <a href="https://www.instagram.com/kishorupp" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-8 h-8 rounded-lg bg-muted hover:bg-violet-500/10 flex items-center justify-center text-muted-foreground hover:text-violet-600 dark:hover:text-violet-400 transition-colors">
                   <Instagram size={15} />
                 </a>
-                <a href="https://linkedin.com/in/kishorupadhyaya" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="w-8 h-8 rounded-lg bg-muted hover:bg-violet-500/10 flex items-center justify-center text-muted-foreground hover:text-violet-600 dark:hover:text-violet-400 transition-colors">
+                <a href="https://www.linkedin.com/in/kishorupadhyaya/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="w-8 h-8 rounded-lg bg-muted hover:bg-violet-500/10 flex items-center justify-center text-muted-foreground hover:text-violet-600 dark:hover:text-violet-400 transition-colors">
                   <ExternalLink size={15} />
                 </a>
               </div>
