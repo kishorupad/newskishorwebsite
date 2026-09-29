@@ -1,17 +1,18 @@
-import { useEffect, useRef, useState } from 'react';
-import { Instagram, ExternalLink, ArrowRight } from 'lucide-react';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { Instagram, ExternalLink, ArrowRight, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import type { ProofHighlight } from '@/data/proofImages';
 
 const INSTAGRAM_URL = 'https://www.instagram.com/kishorupp';
 
 /**
  * Real proof: screenshots of the Instagram story highlights where client work
- * is documented. The images module (~700KB of data URIs) is lazy-loaded via
- * dynamic import() only when this section scrolls near the viewport, so it
- * never blocks the initial page load.
+ * is documented. The images module is lazy-loaded via dynamic import() only
+ * when this section scrolls near the viewport, so it never blocks the
+ * initial page load. Clicking a card opens a lightbox to read the screenshot.
  */
 export default function InstagramProof() {
   const [highlights, setHighlights] = useState<ProofHighlight[] | null>(null);
+  const [lightbox, setLightbox] = useState<number | null>(null);
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -30,24 +31,51 @@ export default function InstagramProof() {
     return () => obs.disconnect();
   }, []);
 
+  const close = useCallback(() => setLightbox(null), []);
+  const step = useCallback(
+    (dir: 1 | -1) => {
+      setLightbox((i) => {
+        if (i === null || highlights === null) return i;
+        return (i + dir + highlights.length) % highlights.length;
+      });
+    },
+    [highlights]
+  );
+
+  // Keyboard: Esc closes, arrows navigate. Lock body scroll while open.
+  useEffect(() => {
+    if (lightbox === null) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') close();
+      if (e.key === 'ArrowRight') step(1);
+      if (e.key === 'ArrowLeft') step(-1);
+    };
+    window.addEventListener('keydown', onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [lightbox, close, step]);
+
   return (
     <div ref={ref} className="max-w-4xl mx-auto">
       <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {highlights === null
           ? // Skeleton placeholders while the proof images load
-            Array.from({ length: 6 }).map((_, i) => (
-              <div key={i} className="snap-start shrink-0 w-40 md:w-48">
+            Array.from({ length: 5 }).map((_, i) => (
+              <div key={i} className="snap-start shrink-0 w-52 md:w-60">
                 <div className="rounded-2xl bg-muted/60 border border-border aspect-[9/16] animate-pulse" />
                 <div className="h-3 w-3/4 mx-auto mt-2 rounded bg-muted/60 animate-pulse" />
               </div>
             ))
           : highlights.map((h, i) => (
-              <a
+              <button
                 key={i}
-                href={INSTAGRAM_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="snap-start shrink-0 w-40 md:w-48 group"
+                onClick={() => setLightbox(i)}
+                className="snap-start shrink-0 w-52 md:w-60 group text-left cursor-pointer"
+                aria-label={`View proof: ${h.label}`}
               >
                 <div className="rounded-2xl p-[3px] bg-gradient-to-tr from-amber-400 via-pink-500 to-violet-600">
                   <div className="rounded-[14px] overflow-hidden bg-card aspect-[9/16]">
@@ -60,7 +88,7 @@ export default function InstagramProof() {
                   </div>
                 </div>
                 <p className="text-xs text-muted-foreground mt-2 text-center leading-tight">{h.label}</p>
-              </a>
+              </button>
             ))}
       </div>
 
@@ -79,6 +107,50 @@ export default function InstagramProof() {
           <ExternalLink size={11} /> {highlights === null ? '' : `${highlights.length} documented recoveries - and counting`}
         </p>
       </div>
+
+      {/* Lightbox */}
+      {lightbox !== null && highlights !== null && (
+        <div
+          className="fixed inset-0 z-[100] bg-black/95 flex items-center justify-center p-4"
+          onClick={close}
+          role="dialog"
+          aria-modal="true"
+          aria-label={`Proof ${lightbox + 1} of ${highlights.length}: ${highlights[lightbox].label}`}
+        >
+          <button
+            onClick={close}
+            className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors"
+            aria-label="Close"
+          >
+            <X size={20} />
+          </button>
+          <button
+            onClick={(e) => { e.stopPropagation(); step(-1); }}
+            className="absolute left-2 md:left-6 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors"
+            aria-label="Previous"
+          >
+            <ChevronLeft size={20} />
+          </button>
+          <button
+            onClick={(e) => { e.stopPropagation(); step(1); }}
+            className="absolute right-2 md:right-6 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors"
+            aria-label="Next"
+          >
+            <ChevronRight size={20} />
+          </button>
+          <figure className="max-w-full" onClick={(e) => e.stopPropagation()}>
+            <img
+              src={highlights[lightbox].src}
+              alt={highlights[lightbox].label}
+              className="max-h-[82vh] w-auto mx-auto rounded-xl"
+            />
+            <figcaption className="text-center text-white/80 text-sm mt-3">
+              {highlights[lightbox].label}
+              <span className="text-white/40"> - {lightbox + 1} / {highlights.length}</span>
+            </figcaption>
+          </figure>
+        </div>
+      )}
     </div>
   );
 }
