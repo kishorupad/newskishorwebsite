@@ -138,13 +138,6 @@ export default function SEOHead() {
         'https://www.instagram.com/kishorupp',
         'https://www.linkedin.com/in/kishorupadhyaya/',
       ],
-      aggregateRating: {
-        '@type': 'AggregateRating',
-        ratingValue: '4.9',
-        ratingCount: '500',
-        bestRating: '5',
-        worstRating: '1',
-      },
       address: {
         '@type': 'PostalAddress',
         addressCountry: 'NP',
