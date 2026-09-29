@@ -1,24 +1,16 @@
 import { useState, useEffect, useMemo } from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import Navigation from '@/components/Navigation';
 import RecoveryAssessment from '@/components/RecoveryAssessment';
 import LiveChat from '@/components/LiveChat';
 import InstagramFeature from '@/components/InstagramFeature';
-import { trpc } from '@/lib/trpc';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { getYearsExperience, getYearsExperienceText } from '@/lib/experience';
 import AnimatedCounter from '@/components/AnimatedCounter';
 import RecoveryTicker from '@/components/RecoveryTicker';
-import { Phone, Mail, MessageCircle, ArrowRight, Shield, Facebook, Instagram, Youtube, Users, Search, CheckCircle, Clock, Lock, DollarSign, Award, ExternalLink } from 'lucide-react';
+import { Phone, Mail, MessageCircle, ArrowRight, Shield, Facebook, Instagram, Youtube, Users, Search, CheckCircle, Clock, Lock, DollarSign, Award, ExternalLink, CalendarCheck } from 'lucide-react';
 
 export default function Home() {
   useScrollAnimation();
-  const [formData, setFormData] = useState({ name: '', email: '', phone: '', platform: '' as 'facebook' | 'instagram' | 'youtube' | 'tiktok' | 'adsense' | 'other' | '', message: '', source: '' as 'google' | 'whatsapp' | 'referral' | 'social-media' | 'other' | '' });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const [hasScrolled, setHasScrolled] = useState(false);
@@ -57,19 +49,6 @@ export default function Home() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const contactMutation = trpc.contact.submit.useMutation({
-    onSuccess: () => { setSubmitStatus('success'); setFormData({ name: '', email: '', phone: '', platform: '', message: '', source: '' }); setTimeout(() => setSubmitStatus('idle'), 5000); },
-    onError: () => { setSubmitStatus('error'); setTimeout(() => setSubmitStatus('idle'), 5000); },
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    contactMutation.mutate({ ...formData, platform: formData.platform || 'other' }, { onSettled: () => setIsSubmitting(false) });
-  };
-
-  const wa = (msg: string) => `https://wa.me/9779843818304?text=${encodeURIComponent(msg)}`;
 
   const faqs = [
     { q: 'How long does account recovery take?', a: 'Most recoveries are completed within 24-72 hours. Complex cases may take up to a week. I keep you updated throughout the process.' },
@@ -353,8 +332,8 @@ export default function Home() {
                     <div className="flex items-center gap-1.5 text-xs text-violet-600 dark:text-violet-400 font-medium">
                       <Clock size={12} /> {service.time}
                     </div>
-                    <a href={wa(service.msg)} target="_blank" rel="noopener noreferrer" className="text-xs font-medium text-[#25D366] hover:text-[#20BD5A] transition-colors">
-                      Chat →
+                    <a href="/booking" className="text-xs font-medium text-violet-600 dark:text-violet-400 hover:underline transition-colors">
+                      Book →
                     </a>
                   </div>
                 </div>
@@ -600,9 +579,7 @@ export default function Home() {
                   </div>
 
                   <a
-                    href={wa(`Hi Kishor, I have a similar problem: ${study.title}`)}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="/booking"
                     className="mt-4 text-center text-sm font-medium text-violet-600 dark:text-violet-400 hover:underline"
                   >
                     I have a similar problem →
@@ -853,10 +830,10 @@ export default function Home() {
           <div className="container mx-auto px-4">
             <div className="scroll-animate text-center mb-12">
               <h2 className="text-4xl md:text-5xl font-bold mb-3">
-                Request a <span className="text-violet-600 dark:text-violet-400">Problem Review</span>
+                Book a <span className="text-violet-600 dark:text-violet-400">Problem Review</span>
               </h2>
               <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                Share your issue and the platform involved. After review, I will confirm whether a paid consultation or recovery service is needed.
+                All reviews are booked and paid in advance — pick a time, pay via eSewa/Khalti, and we talk. No free chats, no waiting.
               </p>
             </div>
 
@@ -884,13 +861,13 @@ export default function Home() {
                         <p className="font-semibold text-sm truncate">kishorupadhyaya222@gmail.com</p>
                       </div>
                     </a>
-                    <a href="https://wa.me/9779843818304?text=Hi%20Kishor%2C%20I%20want%20to%20share%20my%20social%20media%20problem%20and%20book%20a%20review%20session." target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all duration-300 group">
-                      <div className="w-10 h-10 rounded-xl bg-[#25D366]/10 flex items-center justify-center group-hover:bg-[#25D366]/20 transition-colors flex-shrink-0">
-                        <MessageCircle size={18} className="text-[#25D366]" />
+                    <a href="/booking" className="flex items-center gap-3 p-3 rounded-xl hover:bg-muted/50 transition-all duration-300 group">
+                      <div className="w-10 h-10 rounded-xl bg-violet-500/10 flex items-center justify-center group-hover:bg-violet-500/20 transition-colors flex-shrink-0">
+                        <CalendarCheck size={18} className="text-violet-600 dark:text-violet-400" />
                       </div>
                       <div className="min-w-0">
-                        <p className="text-xs text-muted-foreground">WhatsApp</p>
-                        <p className="font-semibold text-sm">Share your issue</p>
+                        <p className="text-xs text-muted-foreground">Booking</p>
+                        <p className="font-semibold text-sm">Book a paid review</p>
                       </div>
                     </a>
                   </div>
@@ -905,95 +882,25 @@ export default function Home() {
 
               {/* Contact Form */}
               <div className="lg:col-span-3">
-                <form onSubmit={handleSubmit} className="p-6 rounded-2xl bg-card border border-border space-y-4" noValidate>
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    <div>
-                      <label htmlFor="contact-name" className="block text-sm font-medium mb-1.5">Name *</label>
-                      <Input id="contact-name" placeholder="Your name" value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} required />
-                    </div>
-                    <div>
-                      <label htmlFor="contact-email" className="block text-sm font-medium mb-1.5">Email *</label>
-                      <Input id="contact-email" type="email" placeholder="you@example.com" value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} required />
-                    </div>
+                <div className="p-8 rounded-2xl bg-card border border-border text-center">
+                  <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-to-r from-violet-600 to-indigo-600 flex items-center justify-center">
+                    <CalendarCheck size={26} className="text-white" />
                   </div>
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    <div>
-                      <label htmlFor="contact-phone" className="block text-sm font-medium mb-1.5">Phone *</label>
-                      <Input id="contact-phone" type="tel" placeholder="+977 9843818304" value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})} required />
-                    </div>
-                    <div>
-                      <label htmlFor="contact-platform" className="block text-sm font-medium mb-1.5">Platform *</label>
-                      <Select value={formData.platform} onValueChange={(value: 'facebook' | 'instagram' | 'youtube' | 'tiktok' | 'adsense' | 'other') => setFormData({...formData, platform: value})}>
-                        <SelectTrigger id="contact-platform" aria-label="Select platform">
-                          <SelectValue placeholder="Select platform" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="facebook">Facebook</SelectItem>
-                          <SelectItem value="instagram">Instagram</SelectItem>
-                          <SelectItem value="youtube">YouTube</SelectItem>
-                          <SelectItem value="tiktok">TikTok</SelectItem>
-                          <SelectItem value="adsense">Google AdSense</SelectItem>
-                          <SelectItem value="other">Other</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
+                  <h3 className="text-2xl font-bold mb-2">Skip the form — book directly</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-5 max-w-md mx-auto">
+                    I don&apos;t do free chats or free advice. Every case review is booked and paid in advance —
+                    you get my full focused time, and a straight answer.
+                  </p>
+                  <div className="flex flex-wrap justify-center gap-2 mb-6">
+                    {['Rs. 2,000 review', 'Rs. 3,000 health check', 'Rs. 3,500 monetization'].map(tag => (
+                      <span key={tag} className="px-3 py-1.5 rounded-full bg-violet-500/10 border border-violet-500/20 text-xs font-semibold text-violet-700 dark:text-violet-300">{tag}</span>
+                    ))}
                   </div>
-                  <div>
-                    <label htmlFor="contact-message" className="block text-sm font-medium mb-1.5">Describe Your Issue *</label>
-                    <Textarea id="contact-message" placeholder="Tell me about your account issue, error message, or recovery problem..." value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} rows={4} required />
-                  </div>
-                  <div>
-                    <label htmlFor="contact-screenshot" className="block text-sm font-medium mb-1.5">Screenshot (optional)</label>
-                    <p className="text-xs text-muted-foreground mb-2">Attach a screenshot of the error/issue message only — not profile photos</p>
-                    <input
-                      type="file"
-                      id="contact-screenshot"
-                      accept="image/png,image/jpeg,image/jpg,image/webp"
-                      className="w-full text-sm text-muted-foreground file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-violet-500/10 file:text-violet-600 dark:file:text-violet-400 hover:file:bg-violet-500/20 file:cursor-pointer"
-                    />
-                    <p className="text-[10px] text-muted-foreground mt-1">PNG, JPG, WebP only. Max 5MB. Error messages only — inappropriate content will be ignored.</p>
-                  </div>
-                  <div>
-                    <label htmlFor="contact-source" className="block text-sm font-medium mb-1.5">How did you hear about me?</label>
-                    <Select value={formData.source} onValueChange={(value: 'google' | 'whatsapp' | 'referral' | 'social-media' | 'other') => setFormData({...formData, source: value})}>
-                      <SelectTrigger id="contact-source" aria-label="How did you hear about me">
-                        <SelectValue placeholder="Select an option" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="google">Google Search</SelectItem>
-                        <SelectItem value="whatsapp">WhatsApp Group</SelectItem>
-                        <SelectItem value="referral">Friend / Referral</SelectItem>
-                        <SelectItem value="social-media">Social Media</SelectItem>
-                        <SelectItem value="other">Other</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-
-                  {submitStatus === 'success' && (
-                    <div className="p-4 bg-emerald-500/10 border border-emerald-500/30 rounded-lg text-emerald-600 dark:text-emerald-400 text-sm">
-                      <p className="font-semibold mb-1">✓ Request Submitted!</p>
-                      <p className="mb-2">I'll contact you within 2-4 hours. For faster response:</p>
-                      <a
-                        href={`https://wa.me/9779843818304?text=${encodeURIComponent(`Hi Kishor, I just submitted the review request form. My name is ${formData.name}. My platform is ${formData.platform || 'social media'} and I need a consultation review for my issue.`)}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#25D366] hover:bg-[#20BD5A] text-white rounded-lg text-xs font-semibold transition-colors"
-                      >
-                        <MessageCircle size={12} /> Send review request on WhatsApp
-                      </a>
-                    </div>
-                  )}
-                  {submitStatus === 'error' && (
-                    <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-lg text-red-600 dark:text-red-400 text-sm">
-                      Something went wrong. Please try again or contact me via WhatsApp.
-                    </div>
-                  )}
-
-                  <Button type="submit" className="w-full btn-gradient" disabled={isSubmitting}>
-                    {isSubmitting ? 'Submitting...' : 'Send Review Request'}
-                    {!isSubmitting && <ArrowRight className="ml-2" size={16} />}
-                  </Button>
-                </form>
+                  <a href="/booking" className="btn-gradient inline-flex items-center justify-center gap-2 px-8 py-3.5 text-base">
+                    Book a Review <ArrowRight size={16} />
+                  </a>
+                  <p className="text-xs text-muted-foreground mt-4">Pay via eSewa/Khalti · slot locked after payment verification</p>
+                </div>
               </div>
             </div>
           </div>
@@ -1074,13 +981,11 @@ export default function Home() {
 
       {/* ─── FLOATING WHATSAPP BUTTON ─── */}
       <a
-        href="https://wa.me/9779843818304?text=Hi%20Kishor%2C%20I%20need%20help%20recovering%20my%20account"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Chat on WhatsApp"
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] hover:bg-[#20BD5A] text-white rounded-full flex items-center justify-center shadow-lg shadow-[#25D366]/30 hover:shadow-[#25D366]/50 transition-all duration-300 hover:scale-110 hidden lg:flex"
+        href="/booking"
+        aria-label="Book a review"
+        className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-gradient-to-r from-violet-600 to-indigo-600 hover:opacity-95 text-white rounded-full flex items-center justify-center shadow-lg shadow-violet-500/30 hover:shadow-violet-500/50 transition-all duration-300 hover:scale-110 hidden lg:flex"
       >
-        <MessageCircle size={26} />
+        <CalendarCheck size={26} />
       </a>
 
       {/* ─── STICKY MOBILE CONTACT BAR ─── */}
@@ -1097,12 +1002,10 @@ export default function Home() {
             <Phone size={13} /> Call
           </a>
           <a
-            href="https://wa.me/9779843818304?text=Hi%20Kishor%2C%20I%20need%20help%20recovering%20my%20account"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex-shrink-0 flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-xl bg-[#25D366] hover:bg-[#20BD5A] text-white text-xs font-semibold transition-colors"
+            href="/booking"
+            className="flex-shrink-0 flex items-center justify-center gap-1.5 py-2.5 px-4 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 text-white text-xs font-semibold transition-colors"
           >
-            <MessageCircle size={13} /> WhatsApp
+            <CalendarCheck size={13} /> Book
           </a>
         </div>
       )}
