@@ -108,7 +108,7 @@ export default function About() {
             <ShieldCheck size={19} className="text-emerald-500" /> Something you should know
           </h3>
           <p className="text-muted-foreground leading-relaxed text-[1.02rem]">
-            I&apos;m a <strong className="text-foreground">computer engineering student</strong> - not a Meta or
+            I&apos;ve <strong className="text-foreground">studied computer engineering</strong> - but I&apos;m not a Meta or
             Google employee, and I have no formal affiliation with any platform. I solve cases using their
             official policies, appeal systems and guidelines, which I&apos;ve learned inside-out over the years.
             That independence is exactly why I can be honest with you: if a case can&apos;t be won, I&apos;ll say so.
