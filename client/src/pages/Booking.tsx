@@ -178,7 +178,7 @@ Payment: ${svc.fee} paid via eSewa/Khalti (screenshot attached)`;
               <h2 className="text-2xl font-bold mb-1">What went wrong?</h2>
               <p className="text-muted-foreground text-sm mb-6">Pick the closest match on {platform || 'your account'}.</p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {problems.map(p => (
+                {visibleProblems.map(p => (
                   <button key={p.id} onClick={() => setProblem(p.id)}
                     className={`p-4 rounded-2xl border text-left transition-all duration-200 hover:-translate-y-0.5 flex items-start gap-3 ${
                       problem === p.id ? 'border-violet-500 bg-violet-500/10 shadow-md shadow-violet-500/10' : 'border-border hover:border-violet-500/40'
