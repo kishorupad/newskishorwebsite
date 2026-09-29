@@ -4,6 +4,7 @@ import {
   Facebook, Instagram, Youtube, Music2, DollarSign, MoreHorizontal,
   ShieldAlert, Lock, BadgeCheck, Wallet, ArrowLeft, ArrowRight,
   CheckCircle2, Upload, CalendarCheck, Clock, QrCode, ImagePlus,
+  Download, Copy, Check,
 } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import PageBackdrop from '@/components/PageBackdrop';
@@ -121,7 +122,6 @@ export default function Booking() {
     if (step === 3 && (dateIdx === null || !slot)) { setError('Please pick a day and time.'); return false; }
     if (step === 4) {
       if (!paid) { setError('Please confirm you have paid the consultation fee.'); return false; }
-      if (!shot) { setError('Please upload your payment screenshot.'); return false; }
     }
     return true;
   };
@@ -135,6 +135,19 @@ export default function Booking() {
     setShotName(f.name);
     setShot(URL.createObjectURL(f));
   };
+  const [copied, setCopied] = useState(false);
+  const copyNumber = async () => {
+    try { await navigator.clipboard.writeText('9843818304'); }
+    catch {
+      const ta = document.createElement('textarea');
+      ta.value = '9843818304';
+      document.body.appendChild(ta); ta.select();
+      document.execCommand('copy'); ta.remove();
+    }
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
 
   const confirmBooking = () => {
     const day = dateIdx !== null ? fmtFull(days[dateIdx]) : '';
@@ -148,7 +161,7 @@ Problem: ${problem}
 Slot: ${day} · ${slot} (NPT)
 Details: ${details.trim()}
 Service: ${svc.title}
-Payment: ${svc.fee} paid via eSewa/Khalti (screenshot attached)`;
+Payment: ${svc.fee} paid via eSewa/Khalti (screenshot in WhatsApp chat)`;
     window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
   };
 
@@ -305,25 +318,39 @@ Payment: ${svc.fee} paid via eSewa/Khalti (screenshot attached)`;
               <div className="grid sm:grid-cols-2 gap-6 items-start">
                 <div className="rounded-2xl border border-border p-5 text-center bg-muted/30">
                   {qrOk ? (
-                    <img src={PAYMENT_QR} alt="eSewa / Khalti payment QR" onError={() => setQrOk(false)}
-                      className="w-48 h-48 object-contain mx-auto rounded-xl bg-white p-2" />
+                    <div>
+                      <img src={PAYMENT_QR} alt="eSewa / Khalti payment QR" onError={() => setQrOk(false)}
+                        className="w-48 h-48 object-contain mx-auto rounded-xl bg-white p-2" />
+                      <div className="flex items-center justify-center gap-2 mt-3">
+                        <a href={PAYMENT_QR} download="esewa-qr-9843818304.png"
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border text-xs font-medium hover:border-violet-500/50 hover:bg-muted transition-colors">
+                          <Download size={14} /> Download QR
+                        </a>
+                        <button onClick={copyNumber}
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border text-xs font-medium hover:border-violet-500/50 hover:bg-muted transition-colors">
+                          {copied ? <Check size={14} className="text-emerald-500" /> : <Copy size={14} />}
+                          {copied ? 'Copied!' : '9843818304'}
+                        </button>
+                      </div>
+                    </div>
                   ) : (
                     <div className="w-48 h-48 mx-auto rounded-xl border-2 border-dashed border-violet-500/40 bg-violet-500/5 flex flex-col items-center justify-center gap-2 p-4">
                       <QrCode size={36} className="text-violet-500" />
                       <p className="text-xs text-muted-foreground font-medium">eSewa / Khalti QR<br />pay {svc.fee} to<br /><span className="text-foreground font-bold">9843818304</span></p>
                     </div>
                   )}
-                  <p className="text-xs text-muted-foreground mt-3">Scan with eSewa or Khalti · {svc.fee}</p>
+                  <p className="text-xs text-muted-foreground mt-3">Paying from your phone? Download the QR, then in eSewa/Khalti tap Scan → Gallery. Or send {svc.fee} straight to the number above.</p>
                 </div>
                 <div className="space-y-4">
                   <label className="block">
-                    <span className="text-sm font-medium block mb-1.5">Upload payment screenshot</span>
+                    <span className="text-sm font-medium block mb-1.5">Upload payment screenshot <span className="text-muted-foreground font-normal">(optional)</span></span>
                     <span className={`flex items-center justify-center gap-2 px-4 py-8 rounded-2xl border-2 border-dashed cursor-pointer transition-colors ${shot ? 'border-emerald-500/50 bg-emerald-500/5' : 'border-border hover:border-violet-500/50 bg-muted/30'}`}>
                       {shot
                         ? <img src={shot} alt="Payment screenshot" className="max-h-40 rounded-lg object-contain" />
                         : <span className="text-center">
                             <ImagePlus size={28} className="mx-auto text-muted-foreground mb-2" />
                             <span className="text-sm text-muted-foreground">Tap to upload screenshot</span>
+                            <span className="block text-xs text-muted-foreground/70 mt-1">or skip - attach it directly in WhatsApp</span>
                           </span>}
                     </span>
                     <input type="file" accept="image/*" onChange={onShot} className="hidden" />
@@ -331,7 +358,7 @@ Payment: ${svc.fee} paid via eSewa/Khalti (screenshot attached)`;
                   {shotName && <p className="text-xs text-muted-foreground truncate flex items-center gap-1.5"><Upload size={13} /> {shotName}</p>}
                   <label className="flex items-start gap-3 cursor-pointer rounded-xl border border-border p-4 hover:border-violet-500/40 transition-colors">
                     <input type="checkbox" checked={paid} onChange={e => setPaid(e.target.checked)} className="mt-1 w-4 h-4 accent-violet-600" />
-                    <span className="text-sm">I have paid <strong>{svc.fee}</strong> via eSewa/Khalti and the screenshot above is mine.</span>
+                    <span className="text-sm">I have paid <strong>{svc.fee}</strong> via eSewa/Khalti and I will attach the payment screenshot in the WhatsApp chat.</span>
                   </label>
                 </div>
               </div>
@@ -357,7 +384,7 @@ Payment: ${svc.fee} paid via eSewa/Khalti (screenshot attached)`;
                   ['Name', name], ['WhatsApp', phone], ['Platform', platform], ['Problem', problem],
                   ['Slot', `${dateIdx !== null ? fmtFull(days[dateIdx]) : ''} · ${slot} (NPT)`],
                   ['Service', svc.title],
-                  ['Payment', `${svc.fee} paid - screenshot ${shotName || 'uploaded'}`],
+                  ['Payment', shotName ? `${svc.fee} paid - screenshot ${shotName}` : `${svc.fee} paid - screenshot via WhatsApp`],
                 ].map(([k, v]) => (
                   <div key={k} className="flex gap-3">
                     <span className="w-24 shrink-0 text-muted-foreground font-medium">{k}</span>

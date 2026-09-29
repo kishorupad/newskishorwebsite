@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react';
 import {
   ShieldCheck, ArrowLeft, ArrowRight, CheckCircle2, Upload,
-  QrCode, ImagePlus, FileCheck, Lock, Zap,
+  QrCode, ImagePlus, FileCheck, Lock, Zap, Download, Copy, Check,
 } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 import PageBackdrop from '@/components/PageBackdrop';
@@ -43,13 +43,25 @@ export default function Checklist() {
     if (f) { setShot(URL.createObjectURL(f)); setShotName(f.name); }
   };
 
+  const [copied, setCopied] = useState(false);
+  const copyNumber = async () => {
+    try { await navigator.clipboard.writeText('9843818304'); }
+    catch {
+      const ta = document.createElement('textarea');
+      ta.value = '9843818304';
+      document.body.appendChild(ta); ta.select();
+      document.execCommand('copy'); ta.remove();
+    }
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   const next1 = () => {
     if (!name.trim()) return setError('Please enter your name.');
     if (!/^(98|97)\d{8}$/.test(phone.replace(/[\s-]/g, ''))) return setError('Enter a valid Nepal mobile number (10 digits).');
     setError(''); setStep(2);
   };
   const next2 = () => {
-    if (!shot) return setError('Please upload your payment screenshot.');
     if (!paid) return setError('Please confirm you have paid.');
     setError(''); setStep(3);
   };
@@ -61,7 +73,7 @@ Order ID: ${orderId}
 Name: ${name.trim()}
 WhatsApp: ${phone.trim()}
 Product: Social Media Security Checklist (PDF)
-Payment: ${PRICE} paid via eSewa/Khalti (screenshot attached)`;
+Payment: ${PRICE} paid via eSewa/Khalti (screenshot in WhatsApp chat)`;
     window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
   };
 
@@ -166,29 +178,43 @@ Payment: ${PRICE} paid via eSewa/Khalti (screenshot attached)`;
         {step === 2 && (
           <div>
             <h2 className="text-2xl font-bold mb-1">Pay {PRICE}</h2>
-            <p className="text-muted-foreground text-sm mb-6">Scan with eSewa or Khalti, then upload your screenshot.</p>
+            <p className="text-muted-foreground text-sm mb-6">Scan with eSewa or Khalti, then continue - you&apos;ll send the screenshot on WhatsApp.</p>
             <div className="grid sm:grid-cols-2 gap-6 items-start">
               <div className="rounded-2xl border border-border p-5 text-center bg-muted/30">
                 {qrOk ? (
-                  <img src={PAYMENT_QR} alt="eSewa / Khalti payment QR" onError={() => setQrOk(false)}
-                    className="w-48 h-48 object-contain mx-auto rounded-xl bg-white p-2" />
+                  <div>
+                    <img src={PAYMENT_QR} alt="eSewa / Khalti payment QR" onError={() => setQrOk(false)}
+                      className="w-48 h-48 object-contain mx-auto rounded-xl bg-white p-2" />
+                    <div className="flex items-center justify-center gap-2 mt-3">
+                      <a href={PAYMENT_QR} download="esewa-qr-9843818304.png"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border text-xs font-medium hover:border-violet-500/50 hover:bg-muted transition-colors">
+                        <Download size={14} /> Download QR
+                      </a>
+                      <button onClick={copyNumber}
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border text-xs font-medium hover:border-violet-500/50 hover:bg-muted transition-colors">
+                        {copied ? <Check size={14} className="text-emerald-500" /> : <Copy size={14} />}
+                        {copied ? 'Copied!' : '9843818304'}
+                      </button>
+                    </div>
+                  </div>
                 ) : (
                   <div className="w-48 h-48 mx-auto rounded-xl border-2 border-dashed border-violet-500/40 bg-violet-500/5 flex flex-col items-center justify-center gap-2 p-4">
                     <QrCode size={36} className="text-violet-500" />
                     <p className="text-xs text-muted-foreground font-medium">eSewa / Khalti QR<br />pay {PRICE} to<br /><span className="text-foreground font-bold">9843818304</span></p>
                   </div>
                 )}
-                <p className="text-xs text-muted-foreground mt-3">Scan with eSewa or Khalti · {PRICE}</p>
+                <p className="text-xs text-muted-foreground mt-3">Paying from your phone? Download the QR, then in eSewa/Khalti tap Scan → Gallery. Or send {PRICE} straight to the number above.</p>
               </div>
               <div className="space-y-4">
                 <label className="block">
-                  <span className="text-sm font-medium block mb-1.5">Upload payment screenshot</span>
+                  <span className="text-sm font-medium block mb-1.5">Upload payment screenshot <span className="text-muted-foreground font-normal">(optional)</span></span>
                   <span className={`flex items-center justify-center gap-2 px-4 py-8 rounded-2xl border-2 border-dashed cursor-pointer transition-colors ${shot ? 'border-emerald-500/50 bg-emerald-500/5' : 'border-border hover:border-violet-500/50 bg-muted/30'}`}>
                     {shot
                       ? <img src={shot} alt="Payment screenshot" className="max-h-40 rounded-lg object-contain" />
                       : <span className="text-center">
                           <ImagePlus size={28} className="mx-auto text-muted-foreground mb-2" />
                           <span className="text-sm text-muted-foreground">Tap to upload screenshot</span>
+                          <span className="block text-xs text-muted-foreground/70 mt-1">or skip - attach it directly in WhatsApp</span>
                         </span>}
                   </span>
                   <input type="file" accept="image/*" onChange={onShot} className="hidden" />
@@ -196,7 +222,7 @@ Payment: ${PRICE} paid via eSewa/Khalti (screenshot attached)`;
                 {shotName && <p className="text-xs text-muted-foreground truncate flex items-center gap-1.5"><Upload size={13} /> {shotName}</p>}
                 <label className="flex items-start gap-3 cursor-pointer rounded-xl border border-border p-4 hover:border-violet-500/40 transition-colors">
                   <input type="checkbox" checked={paid} onChange={e => setPaid(e.target.checked)} className="mt-1 w-4 h-4 accent-violet-600" />
-                  <span className="text-sm">I have paid <strong>{PRICE}</strong> via eSewa/Khalti and the screenshot above is mine.</span>
+                  <span className="text-sm">I have paid <strong>{PRICE}</strong> via eSewa/Khalti and I will attach the payment screenshot in the WhatsApp chat.</span>
                 </label>
               </div>
             </div>
@@ -216,7 +242,7 @@ Payment: ${PRICE} paid via eSewa/Khalti (screenshot attached)`;
                 <span className="w-24 shrink-0 text-muted-foreground font-medium">Order ID</span>
                 <span className="font-bold text-violet-600 dark:text-violet-400 tracking-wide">{orderId}</span>
               </div>
-              {[['Name', name], ['WhatsApp', phone], ['Product', 'Security Checklist (PDF)'], ['Payment', `${PRICE} paid - screenshot ${shotName || 'uploaded'}`]].map(([k, v]) => (
+              {[['Name', name], ['WhatsApp', phone], ['Product', 'Security Checklist (PDF)'], ['Payment', shotName ? `${PRICE} paid - screenshot ${shotName}` : `${PRICE} paid - screenshot via WhatsApp`]].map(([k, v]) => (
                 <div key={k} className="flex gap-3">
                   <span className="w-24 shrink-0 text-muted-foreground font-medium">{k}</span>
                   <span className="font-semibold">{v}</span>
@@ -225,7 +251,7 @@ Payment: ${PRICE} paid via eSewa/Khalti (screenshot attached)`;
             </div>
             <div className="flex items-start gap-3 px-4 py-3 rounded-xl bg-violet-500/10 border border-violet-500/25 text-sm mb-4">
               <Zap size={16} className="text-violet-600 dark:text-violet-400 shrink-0 mt-0.5" />
-              <span><strong>How delivery works:</strong> tap below, send the WhatsApp message, and I&apos;ll verify your payment and reply with the PDF - usually within a few hours.</span>
+              <span><strong>How delivery works:</strong> tap below, send the WhatsApp message with your payment screenshot attached, and I&apos;ll verify it and reply with the PDF - usually within a few hours.</span>
             </div>
             <button onClick={confirmOrder}
               className="w-full inline-flex items-center justify-center gap-2 text-lg !py-4 rounded-xl bg-[#25D366] hover:bg-[#20BD5A] text-white font-semibold transition-colors">
