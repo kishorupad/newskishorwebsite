@@ -36,6 +36,11 @@ const problems = [
   { id: 'Something else', icon: MoreHorizontal, hint: 'Describe it next' },
 ];
 
+// Problems that don't apply to a platform (Instagram has no monetization/payout products)
+const platformExcludes: Record<string, string[]> = {
+  Instagram: ['Monetization issue', 'Payout issue'],
+};
+
 const timeSlots = ['10:00 AM', '11:30 AM', '1:00 PM', '2:30 PM', '4:00 PM', '5:30 PM'];
 const steps = ['Platform', 'Problem', 'Details', 'Schedule', 'Payment', 'Confirm'];
 
@@ -75,6 +80,14 @@ export default function Booking() {
 
   const search = useSearch();
   const svc = services[new URLSearchParams(search).get('service') || ''] || defaultService;
+
+  const excluded = platformExcludes[platform] || [];
+  const visibleProblems = problems.filter(pr => !excluded.includes(pr.id));
+  const pickPlatform = (id: string) => {
+    setPlatform(id);
+    // clear problem if it doesn't apply to the newly picked platform
+    if ((platformExcludes[id] || []).includes(problem)) setProblem('');
+  };
 
   const days = useMemo(() => {
     const now = new Date();
@@ -173,7 +186,7 @@ Payment: ${svc.fee} paid via eSewa/Khalti (screenshot attached)`;
               <p className="text-muted-foreground text-sm mb-6">Where did the problem happen?</p>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                 {platforms.map(p => (
-                  <button key={p.id} onClick={() => setPlatform(p.id)}
+                  <button key={p.id} onClick={() => pickPlatform(p.id)}
                     className={`p-5 rounded-2xl border text-left transition-all duration-200 hover:-translate-y-0.5 ${
                       platform === p.id ? 'border-violet-500 bg-violet-500/10 shadow-md shadow-violet-500/10' : 'border-border hover:border-violet-500/40'
                     }`}>
