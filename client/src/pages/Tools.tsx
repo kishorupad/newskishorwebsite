@@ -84,6 +84,7 @@ function analyze(pw: string) {
   const secs = combos / 1e10; // 10B guesses/sec
   let crack: string;
   if (!pw) crack = '-';
+  else if (isCommon || wordNumPattern) crack = 'instantly';
   else if (secs < 1) crack = 'instantly';
   else if (secs < 60) crack = `${Math.round(secs)} seconds`;
   else if (secs < 3600) crack = `${Math.round(secs / 60)} minutes`;
@@ -188,7 +189,7 @@ export default function Tools() {
                 <span className={`inline-flex items-center gap-1.5 text-sm font-bold ${iconColor}`}>
                   <Icon size={16} /> {displayLabel}
                 </span>
-                <span className="text-xs text-muted-foreground">Cracked in: <strong className="text-foreground">{result.crack}</strong></span>
+                <span className="text-xs text-muted-foreground">Cracked in: <strong className="text-foreground">{isBreached ? 'instantly' : result.crack}</strong></span>
               </div>
               <div className="h-2.5 rounded-full bg-muted overflow-hidden mb-4">
                 <div className={`h-full rounded-full transition-all duration-500 ${barColor}`} style={{ width: `${displayScore}%` }} />
