@@ -6,6 +6,6 @@ const PROOF_HL18 = "data:image/webp;base64,UklGRtoyAABXRUJQVlA4IM4yAADQ6ACdASqAA
 
 export const PART_2 = [
   { src: PROOF_HL6, label: "We're back - IN-Depth Story (40K)" },
-  { src: PROOF_HL14, label: "YouTube channel recovered - Ganesh GD" },
+  { src: PROOF_HL14, label: "YouTube channel recovered - @ganeshgd10" },
   { src: PROOF_HL18, label: "Account recovered - Yabi The G" },
 ];
