@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { Instagram, ExternalLink, ArrowRight, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import type { ProofHighlight } from '@/data/proofImages';
 
-const INSTAGRAM_URL = 'https://www.instagram.com/kishorupp';
+const INSTAGRAM_URL = 'https://www.instagram.com/stories/highlights/17917716932810353/';
 
 /**
  * Real proof: screenshots of the Instagram story highlights where client work
@@ -100,7 +100,7 @@ export default function InstagramProof() {
           className="inline-flex items-center gap-2 text-sm font-medium text-pink-600 dark:text-pink-400 hover:gap-3 transition-all"
         >
           <Instagram size={16} />
-          See all highlights on Instagram
+          Watch the highlight on Instagram
           <ArrowRight size={14} />
         </a>
         <p className="text-xs text-muted-foreground mt-2 flex items-center justify-center gap-1">
@@ -147,6 +147,15 @@ export default function InstagramProof() {
             <figcaption className="text-center text-white/80 text-sm mt-3">
               {highlights[lightbox].label}
               <span className="text-white/40"> - {lightbox + 1} / {highlights.length}</span>
+              <a
+                href={INSTAGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="block mt-2 text-pink-400 hover:text-pink-300 text-xs font-medium"
+              >
+                Open this highlight on Instagram
+              </a>
             </figcaption>
           </figure>
         </div>
