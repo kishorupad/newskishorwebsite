@@ -202,6 +202,7 @@ export default function Home() {
                   price: 'Rs. 2,000',
                   description: 'A focused review session to understand the issue, identify the cause, and explain the best next step.',
                   bullets: ['Issue diagnosis', 'Recovery roadmap', '30-minute consultation'],
+                  service: 'problem-review',
                   cta: 'Book consultation',
                   waText: 'Hi Kishor, I want to book a 30-minute problem review and understand my issue before any recovery work begins.',
                 },
@@ -210,6 +211,7 @@ export default function Home() {
                   price: 'Rs. 3,000',
                   description: 'A professional check to confirm whether your account has a real issue, security risk, restriction, or recovery problem before any paid recovery work begins.',
                   bullets: ['Issue detection', 'Risk review', 'Action recommendation'],
+                  service: 'health-check',
                   cta: 'Check my account',
                   waText: 'Hi Kishor, I want to check my account for issues and book an account health review.',
                 },
@@ -218,6 +220,7 @@ export default function Home() {
                   price: 'Rs. 3,500',
                   description: 'For monetization issues, policy restrictions, and account eligibility review before any setup work begins.',
                   bullets: ['Eligibility check', 'Policy review', 'Fix roadmap'],
+                  service: 'monetization-review',
                   cta: 'Review monetization',
                   waText: 'Hi Kishor, I want to review my monetization issue and understand the next step.',
                 },
@@ -226,6 +229,7 @@ export default function Home() {
                   price: 'Custom quote',
                   description: 'Priority review for time-sensitive issues that need immediate attention and a faster action plan.',
                   bullets: ['Priority response', 'Fast diagnosis', 'Urgent action plan'],
+                  service: 'urgent-review',
                   cta: 'Request urgent review',
                   waText: 'Hi Kishor, I need an urgent case review for my time-sensitive issue.',
                 },
@@ -258,9 +262,7 @@ export default function Home() {
                   </div>
 
                   <a
-                    href={wa(plan.waText)}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href={`/booking?service=${plan.service}`}
                     className="mt-auto inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-semibold px-4 py-3 hover:opacity-95 transition-opacity"
                   >
                     {plan.cta} <ArrowRight size={16} />
@@ -301,9 +303,7 @@ export default function Home() {
                   <div className="text-sm text-muted-foreground mb-5">per month</div>
 
                   <a
-                    href={wa('Hi Kishor, I want to know more about your monthly social media security plan.')}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="/booking?service=security-plan"
                     className="inline-flex items-center justify-center gap-2 w-full rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-semibold px-4 py-3 hover:opacity-95 transition-opacity"
                   >
                     Ask about support <ArrowRight size={16} />

@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react';
+import { useSearch } from 'wouter';
 import {
   Facebook, Instagram, Youtube, Music2, DollarSign, MoreHorizontal,
   ShieldAlert, Lock, BadgeCheck, Wallet, ArrowLeft, ArrowRight,
@@ -7,7 +8,15 @@ import {
 import Navigation from '@/components/Navigation';
 
 const WA_NUMBER = '9779843818304';
-const CONSULT_FEE = 'Rs. 2,000';
+
+const services: Record<string, { title: string; fee: string; note?: string }> = {
+  'problem-review': { title: '30-Minute Problem Review', fee: 'Rs. 2,000' },
+  'health-check': { title: 'Account Health Check', fee: 'Rs. 3,000' },
+  'monetization-review': { title: 'Monetization Review', fee: 'Rs. 3,500' },
+  'urgent-review': { title: 'Urgent Case Review', fee: 'Rs. 2,000', note: 'Advance — final quote given after your review.' },
+  'security-plan': { title: 'Social Media Security Plan', fee: 'Rs. 2,000', note: 'Advance — adjusted against your monthly plan.' },
+};
+const defaultService = { title: 'Case Review', fee: 'Rs. 2,000' };
 
 const platforms = [
   { id: 'Facebook', icon: Facebook },
@@ -49,6 +58,9 @@ export default function Booking() {
   const [shotName, setShotName] = useState('');
   const [qrOk, setQrOk] = useState(true);
   const [error, setError] = useState('');
+
+  const search = useSearch();
+  const svc = services[new URLSearchParams(search).get('service') || ''] || defaultService;
 
   const days = useMemo(() => {
     const now = new Date();
@@ -96,7 +108,8 @@ Platform: ${platform}
 Problem: ${problem}
 Slot: ${day} · ${slot} (NPT)
 Details: ${details.trim()}
-Payment: ${CONSULT_FEE} paid via eSewa/Khalti (screenshot attached)`;
+Service: ${svc.title}
+Payment: ${svc.fee} paid via eSewa/Khalti (screenshot attached)`;
     window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
   };
 
@@ -109,7 +122,7 @@ Payment: ${CONSULT_FEE} paid via eSewa/Khalti (screenshot attached)`;
             Book a <span className="bg-gradient-to-r from-violet-600 to-indigo-600 dark:from-violet-400 dark:to-indigo-400 bg-clip-text text-transparent">Review</span>
           </h1>
           <p className="text-muted-foreground max-w-xl mx-auto">
-            30-minute case review over a call. Pay the {CONSULT_FEE} consultation fee to lock your slot —
+            30-minute case review over a call. Pay the {svc.fee} consultation fee to lock your slot —
             no payment, no booking, no time-wasting.
           </p>
         </div>
@@ -243,8 +256,8 @@ Payment: ${CONSULT_FEE} paid via eSewa/Khalti (screenshot attached)`;
           {/* STEP 4 — payment */}
           {step === 4 && (
             <div>
-              <h2 className="text-2xl font-bold mb-1">Pay {CONSULT_FEE}</h2>
-              <p className="text-muted-foreground text-sm mb-6">Consultation fee — locks your slot. The remaining service fee is only charged after your problem is solved.</p>
+              <h2 className="text-2xl font-bold mb-1">Pay {svc.fee}</h2>
+              <p className="text-muted-foreground text-sm mb-6">{svc.title} — locks your slot. {svc.note || 'The remaining service fee is only charged after your problem is solved.'}</p>
               <div className="grid sm:grid-cols-2 gap-6 items-start">
                 <div className="rounded-2xl border border-border p-5 text-center bg-muted/30">
                   {qrOk ? (
@@ -253,10 +266,10 @@ Payment: ${CONSULT_FEE} paid via eSewa/Khalti (screenshot attached)`;
                   ) : (
                     <div className="w-48 h-48 mx-auto rounded-xl border-2 border-dashed border-violet-500/40 bg-violet-500/5 flex flex-col items-center justify-center gap-2 p-4">
                       <QrCode size={36} className="text-violet-500" />
-                      <p className="text-xs text-muted-foreground font-medium">eSewa / Khalti QR<br />pay {CONSULT_FEE} to<br /><span className="text-foreground font-bold">9843818304</span></p>
+                      <p className="text-xs text-muted-foreground font-medium">eSewa / Khalti QR<br />pay {svc.fee} to<br /><span className="text-foreground font-bold">9843818304</span></p>
                     </div>
                   )}
-                  <p className="text-xs text-muted-foreground mt-3">Scan with eSewa or Khalti · {CONSULT_FEE}</p>
+                  <p className="text-xs text-muted-foreground mt-3">Scan with eSewa or Khalti · {svc.fee}</p>
                 </div>
                 <div className="space-y-4">
                   <label className="block">
@@ -274,7 +287,7 @@ Payment: ${CONSULT_FEE} paid via eSewa/Khalti (screenshot attached)`;
                   {shotName && <p className="text-xs text-muted-foreground truncate flex items-center gap-1.5"><Upload size={13} /> {shotName}</p>}
                   <label className="flex items-start gap-3 cursor-pointer rounded-xl border border-border p-4 hover:border-violet-500/40 transition-colors">
                     <input type="checkbox" checked={paid} onChange={e => setPaid(e.target.checked)} className="mt-1 w-4 h-4 accent-violet-600" />
-                    <span className="text-sm">I have paid <strong>{CONSULT_FEE}</strong> via eSewa/Khalti and the screenshot above is mine.</span>
+                    <span className="text-sm">I have paid <strong>{svc.fee}</strong> via eSewa/Khalti and the screenshot above is mine.</span>
                   </label>
                 </div>
               </div>
@@ -290,7 +303,8 @@ Payment: ${CONSULT_FEE} paid via eSewa/Khalti (screenshot attached)`;
                 {[
                   ['Name', name], ['WhatsApp', phone], ['Platform', platform], ['Problem', problem],
                   ['Slot', `${dateIdx !== null ? fmtFull(days[dateIdx]) : ''} · ${slot} (NPT)`],
-                  ['Payment', `${CONSULT_FEE} paid — screenshot ${shotName || 'uploaded'}`],
+                  ['Service', svc.title],
+                  ['Payment', `${svc.fee} paid — screenshot ${shotName || 'uploaded'}`],
                 ].map(([k, v]) => (
                   <div key={k} className="flex gap-3">
                     <span className="w-24 shrink-0 text-muted-foreground font-medium">{k}</span>
