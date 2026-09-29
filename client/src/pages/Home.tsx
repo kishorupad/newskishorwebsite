@@ -73,11 +73,13 @@ export default function Home() {
 
   const faqs = [
     { q: 'How long does account recovery take?', a: 'Most recoveries are completed within 24-72 hours. Complex cases may take up to a week. I keep you updated throughout the process.' },
-    { q: 'What information do you need from me?', a: 'I need your account details, the nature of the hack, any recovery emails or phone numbers on file, and proof of identity. I\'ll guide you through everything.' },
+    { q: 'Do I have to pay before we talk?', a: 'Yes. Every consultation is booked and paid in advance through the booking page — pick your service, pay via eSewa/Khalti, upload the screenshot. This way you get my full focused time, instead of rushed free chats.' },
+    { q: 'What exactly am I paying for?', a: "You're paying for my time and expertise: a proper diagnosis of your specific case and honest next steps — not a guaranteed recovery. Some cases genuinely can't be fixed, and I'll tell you that straight instead of taking more of your money." },
+    { q: 'What if my account cannot be recovered?', a: "Then you don't pay anything beyond the consultation fee. That fee covers the investigation and honest diagnosis itself — and I'll guide your next steps (like securing a new account) so it still works for you." },
+    { q: 'What information do you need from me?', a: 'Your account details, what happened, any recovery emails or phone numbers on file, and proof of identity. The booking form asks for the essentials upfront.' },
     { q: 'Is my personal information safe?', a: 'Absolutely. I use strict security protocols and never share your information with third parties. All data is deleted after recovery.' },
-    { q: 'What if my account cannot be recovered?', a: 'The Rs. 2,000 consultation fee covers investigation and assessment. If I cannot solve your problem, you don\'t pay the remaining service fee.' },
     { q: 'Do you only handle hacking cases?', a: 'I handle all social media issues including hacked accounts, locked accounts, suspended accounts, disabled accounts, and forgotten credentials.' },
-    { q: 'How do I pay?', a: 'Rs. 2,000 consultation fee upfront (covers investigation and assessment). The remaining service fee is charged only after your problem is resolved. I accept bank transfer, eSewa, and Khalti.' },
+    { q: 'How do I pay?', a: 'Through the booking page: scan the eSewa/Khalti QR, pay the fee for your chosen service (Rs. 2,000\u20133,500), and upload the payment screenshot. Your slot is locked once I verify payment — then we talk on WhatsApp.' },
   ];
 
   const stats = [
