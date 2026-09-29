@@ -13,7 +13,7 @@ const SEQS = ['012', '123', '234', '345', '456', '567', '678', '789', '890', 'ab
 // only the first 5 chars of the SHA-1 hash leave the device - the password itself never does.
 async function sha1Hex(s: string): Promise<string> {
   const buf = await crypto.subtle.digest('SHA-1', new TextEncoder().encode(s));
-  return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('').toUpperCase();
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('').toUpperCase();
 }
 async function breachCount(pw: string): Promise<number | null> {
   try {
