@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import {
   KeyRound, ShieldCheck, ShieldAlert, ShieldX, Copy, Check,
   RefreshCw, ArrowLeft, Lock,
@@ -7,6 +7,28 @@ import Navigation from '@/components/Navigation';
 
 const COMMON = ['password', '123456', '123456789', 'qwerty', 'abc123', 'password1', '12345678', '111111', '123123', 'admin', 'letmein', 'welcome', 'monkey', 'dragon', 'master', 'kathmandu', 'kathmandu123', 'nepal', 'nepal123', 'everest', 'himalaya', 'pokhara', 'ram123', 'hari123', 'sita123', 'test123', 'user123', 'facebook', 'instagram', 'tiktok', 'youtube', 'iloveyou', 'superman', 'football', 'sunshine', 'princess'];
 const SEQS = ['012', '123', '234', '345', '456', '567', '678', '789', '890', 'abc', 'bcd', 'cde', 'def', 'qwe', 'asd'];
+
+// Check against 800M+ real breached passwords (Have I Been Pwned, k-anonymity):
+// only the first 5 chars of the SHA-1 hash leave the device - the password itself never does.
+async function sha1Hex(s: string): Promise<string> {
+  const buf = await crypto.subtle.digest('SHA-1', new TextEncoder().encode(s));
+  return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('').toUpperCase();
+}
+async function breachCount(pw: string): Promise<number | null> {
+  try {
+    const hash = await sha1Hex(pw);
+    const res = await fetch(`https://api.pwnedpasswords.com/range/${hash.slice(0, 5)}`);
+    if (!res.ok) return null;
+    const suffix = hash.slice(5);
+    for (const line of (await res.text()).split('\n')) {
+      const [s, count] = line.trim().split(':');
+      if (s === suffix) return parseInt(count, 10) || 0;
+    }
+    return 0;
+  } catch {
+    return null;
+  }
+}
 
 function analyze(pw: string) {
   let score = 0;
@@ -75,6 +97,19 @@ export default function Tools() {
   const [pw, setPw] = useState('');
   const [show, setShow] = useState(false);
   const result = useMemo(() => analyze(pw), [pw]);
+  const [breach, setBreach] = useState<{ count: number | null; checking: boolean }>({ count: null, checking: false });
+  useEffect(() => {
+    if (!pw) { setBreach({ count: null, checking: false }); return; }
+    setBreach(b => ({ ...b, checking: true }));
+    const t = setTimeout(async () => {
+      const c = await breachCount(pw);
+      setBreach({ count: c, checking: false });
+    }, 700);
+    return () => clearTimeout(t);
+  }, [pw]);
+  const isBreached = breach.count !== null && breach.count > 0;
+  const displayScore = isBreached ? Math.min(result.score, 10) : result.score;
+  const displayLabel = isBreached ? 'Breached - do not use' : result.label;
 
   const [len, setLen] = useState(16);
   const [upper, setUpper] = useState(true);
@@ -84,9 +119,9 @@ export default function Tools() {
   const [generated, setGenerated] = useState(() => genPassword(16, true, true, true, true));
   const [copied, setCopied] = useState(false);
 
-  const barColor = result.score >= 80 ? 'bg-emerald-500' : result.score >= 60 ? 'bg-lime-500' : result.score >= 40 ? 'bg-amber-500' : 'bg-red-500';
-  const Icon = result.score >= 60 ? ShieldCheck : result.score >= 40 ? ShieldAlert : ShieldX;
-  const iconColor = result.score >= 60 ? 'text-emerald-500' : result.score >= 40 ? 'text-amber-500' : 'text-red-500';
+  const barColor = displayScore >= 80 ? 'bg-emerald-500' : displayScore >= 60 ? 'bg-lime-500' : displayScore >= 40 ? 'bg-amber-500' : 'bg-red-500';
+  const Icon = isBreached ? ShieldX : displayScore >= 60 ? ShieldCheck : displayScore >= 40 ? ShieldAlert : ShieldX;
+  const iconColor = isBreached ? 'text-red-500' : displayScore >= 60 ? 'text-emerald-500' : displayScore >= 40 ? 'text-amber-500' : 'text-red-500';
 
   const copy = async () => {
     await navigator.clipboard.writeText(generated);
@@ -138,12 +173,12 @@ export default function Tools() {
             <div className="animate-fade-in-up">
               <div className="flex items-center justify-between mb-2">
                 <span className={`inline-flex items-center gap-1.5 text-sm font-bold ${iconColor}`}>
-                  <Icon size={16} /> {result.label}
+                  <Icon size={16} /> {displayLabel}
                 </span>
                 <span className="text-xs text-muted-foreground">Cracked in: <strong className="text-foreground">{result.crack}</strong></span>
               </div>
               <div className="h-2.5 rounded-full bg-muted overflow-hidden mb-4">
-                <div className={`h-full rounded-full transition-all duration-500 ${barColor}`} style={{ width: `${result.score}%` }} />
+                <div className={`h-full rounded-full transition-all duration-500 ${barColor}`} style={{ width: `${displayScore}%` }} />
               </div>
               {result.feedback.length > 0 && (
                 <ul className="space-y-1.5">
@@ -154,13 +189,28 @@ export default function Tools() {
                   ))}
                 </ul>
               )}
-              {result.score >= 80 && (
+              {displayScore >= 80 && !isBreached && (
                 <p className="text-sm text-emerald-600 dark:text-emerald-400 font-medium">Solid password. Now make sure you never reuse it anywhere else.</p>
               )}
+              <div className={`mt-4 rounded-xl border px-4 py-3 text-sm flex items-center gap-2.5 ${
+                isBreached ? 'border-red-500/40 bg-red-500/5 text-red-600 dark:text-red-400'
+                : breach.checking ? 'border-border text-muted-foreground'
+                : breach.count === 0 ? 'border-emerald-500/30 bg-emerald-500/5 text-emerald-600 dark:text-emerald-400'
+                : 'border-border text-muted-foreground'}`}>
+                {breach.checking ? (
+                  <><RefreshCw size={15} className="animate-spin shrink-0" /> Checking against 800M+ breached passwords...</>
+                ) : isBreached ? (
+                  <><ShieldX size={15} className="shrink-0" /> <span><strong>Found in {breach.count!.toLocaleString()} data breaches.</strong> Hackers already have this password. Never use it.</span></>
+                ) : breach.count === 0 ? (
+                  <><ShieldCheck size={15} className="shrink-0" /> Not found in known data breaches. Still follow the tips above.</>
+                ) : (
+                  <><ShieldAlert size={15} className="shrink-0" /> Breach check unavailable (offline). Local checks only.</>
+                )}
+              </div>
             </div>
           )}
           <p className="text-[11px] text-muted-foreground mt-5 flex items-center gap-1.5">
-            <Lock size={11} /> Private by design: this check happens only on your device.
+            <Lock size={11} /> Private by design: your password never leaves this device - breach lookup sends only 5 characters of its hash.
           </p>
         </div>
 
