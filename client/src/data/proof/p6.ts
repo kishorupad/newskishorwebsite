@@ -7,5 +7,5 @@ const PROOF_HL15 = "data:image/webp;base64,UklGRjRdAABXRUJQVlA4IChdAAAQQwGdASqAA
 export const PART_6 = [
   { src: PROOF_HL12, label: "YouTube channel back - Carnival Records" },
   { src: PROOF_HL13, label: "Channel verified - Nigam Acharya" },
-  { src: PROOF_HL15, label: "YouTube channel recovered - @sathi_believer" },
+  { src: PROOF_HL15, label: "YouTube channel recovered" },
 ];
