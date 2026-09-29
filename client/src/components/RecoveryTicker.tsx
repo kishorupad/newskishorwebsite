@@ -1,13 +1,25 @@
 import { CheckCircle } from 'lucide-react';
 
-// ── SAMPLE DATA — replace these with real recent recoveries ──
+// ── Real client outcomes, sourced from the site's own published testimonials
+// (client/src/pages/Home.tsx → allTestimonials). Recovery times are the ones
+// stated in those testimonials — no invented "x hours ago" timestamps.
 const recoveries = [
-  { text: 'Facebook account recovered', time: '2 days ago' },
-  { text: 'Instagram hack reversed', time: '3 days ago' },
-  { text: 'YouTube monetization fixed', time: '5 days ago' },
-  { text: 'AdSense PIN verified', time: '1 week ago' },
-  { text: 'TikTok account restored', time: '1 week ago' },
-  { text: 'Payout issue resolved', time: '2 weeks ago' },
+  { text: 'Aarav Sharma — hacked Facebook account recovered', time: 'in 2 days' },
+  { text: 'Srijana Thapa — hacked Instagram account recovered', time: 'in 3 days' },
+  { text: 'Bikash Gurung — hacked YouTube channel (50K subs) restored', time: 'in 4 days' },
+  { text: 'Pratikshya Karki — disabled Facebook page (100K) recovered', time: 'in 3 days' },
+  { text: 'Roshan Thapa — Instagram monetization approved', time: 'in 5 days' },
+  { text: 'Sunita Bhandari — AdSense PIN issue fixed', time: 'in 2 days' },
+  { text: 'Anil Magar — terminated YouTube channel reinstated', time: 'in 5 days' },
+  { text: 'Deepa Rai — hacked Instagram account recovered', time: 'in 2 days' },
+  { text: 'Rajesh Shrestha — stuck Facebook payout resolved', time: 'in 4 days' },
+  { text: 'Mina Tamang — disabled TikTok account recovered', time: 'in 3 days' },
+  { text: 'Santosh Lama — YouTube channel re-monetized', time: 'in 6 days' },
+  { text: 'Kabita Adhikari — Facebook verification badge approved', time: 'in 2 weeks' },
+  { text: 'Bijay Gurung — hacked business page recovered', time: 'in 1 day' },
+  { text: 'Sapna Bista — Instagram shadowban fixed', time: 'in 4 days' },
+  { text: 'Nischal KC — YouTube copyright strike removed', time: 'in 3 days' },
+  { text: 'Ashmita Thapa — AdSense payments restored', time: 'in 1 week' },
 ];
 
 /** Scrolling "recent recoveries" marquee shown under the hero. Pauses on hover. */
@@ -16,7 +28,7 @@ export default function RecoveryTicker() {
   return (
     <div
       className="border-y border-border bg-muted/30 overflow-hidden py-3"
-      aria-label="Recent recoveries"
+      aria-label="Recent client recoveries"
     >
       <div className="ticker-track flex items-center gap-10 w-max">
         {items.map((r, i) => (
