@@ -7,7 +7,7 @@ import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 import { getYearsExperience, getYearsExperienceText } from '@/lib/experience';
 import AnimatedCounter from '@/components/AnimatedCounter';
 import RecoveryTicker from '@/components/RecoveryTicker';
-import { Phone, Mail, MessageCircle, ArrowRight, Shield, Facebook, Instagram, Youtube, Users, Search, CheckCircle, Clock, Lock, DollarSign, Award, ExternalLink, CalendarCheck, FileCheck } from 'lucide-react';
+import { Phone, Mail, MessageCircle, ArrowRight, Shield, Facebook, Instagram, Youtube, Users, Search, CheckCircle, Clock, Lock, DollarSign, Award, ExternalLink, CalendarCheck, FileCheck, KeyRound, Siren, BookOpen } from 'lucide-react';
 
 export default function Home() {
   useScrollAnimation();
@@ -52,7 +52,7 @@ export default function Home() {
 
   const faqs = [
     { q: 'How long does account recovery take?', a: 'Most recoveries are completed within 24-72 hours. Complex cases may take up to a week. I keep you updated throughout the process.' },
-    { q: 'Do I have to pay before we talk?', a: 'Yes. Every consultation is booked and paid in advance through the booking page - pick your service, pay via eSewa/Khalti, upload the screenshot. This way you get my full focused time, instead of rushed free chats.' },
+    { q: 'Do I have to pay before we talk?', a: 'Yes. Every consultation is booked and paid in advance through the booking page - pick your service, pay via eSewa/Khalti, upload the screenshot. This way you get my full focused time, instead of a rushed, distracted call.' },
     { q: 'What exactly am I paying for?', a: "You're paying for my time and expertise: a proper diagnosis of your specific case and honest next steps - not a guaranteed recovery. Some cases genuinely can't be fixed, and I'll tell you that straight instead of taking more of your money." },
     { q: 'What if my account cannot be recovered?', a: "Then you don't pay anything beyond the consultation fee. That fee covers the investigation and honest diagnosis itself - and I'll guide your next steps (like securing a new account) so it still works for you." },
     { q: 'What information do you need from me?', a: 'Your account details, what happened, any recovery emails or phone numbers on file, and proof of identity. The booking form asks for the essentials upfront.' },
@@ -825,6 +825,35 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ─── START FREE ─── */}
+        <section className="py-16 md:py-20 bg-muted/30">
+          <div className="container mx-auto px-4">
+            <div className="scroll-animate text-center mb-10">
+              <h2 className="text-4xl md:text-5xl font-bold mb-3">
+                Start <span className="text-emerald-600 dark:text-emerald-400">Free</span>
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+                Help yourself first - these are free forever. If you need me personally on your case, that&apos;s what the reviews below are for.
+              </p>
+            </div>
+            <div className="grid sm:grid-cols-3 gap-5 max-w-5xl mx-auto">
+              {[
+                { icon: KeyRound, title: 'Free Password Tools', desc: 'Check your password strength against 800M+ breached passwords, or generate a strong one.', href: '/tools' },
+                { icon: Siren, title: 'Hacked Right Now?', desc: 'Just got hacked? Do these 5 emergency steps immediately - before it gets worse.', href: '/emergency' },
+                { icon: BookOpen, title: 'Recovery Guides', desc: 'Step-by-step guides for Facebook, Instagram, YouTube and TikTok problems.', href: '/resources' },
+              ].map(c => (
+                <a key={c.title} href={c.href} className="scroll-animate group rounded-2xl bg-card border border-border p-6 hover:border-emerald-500/40 hover:shadow-lg hover:shadow-emerald-500/10 transition-all duration-300">
+                  <div className="w-11 h-11 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                    <c.icon size={20} className="text-emerald-600 dark:text-emerald-400" />
+                  </div>
+                  <h3 className="font-bold text-lg mb-1 flex items-center gap-1.5">{c.title} <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" /></h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{c.desc}</p>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* ─── PRICING ─── */}
         <section className="py-16 md:py-20">
           <div className="container mx-auto px-4">
@@ -833,7 +862,7 @@ export default function Home() {
                 Services & <span className="text-violet-600 dark:text-violet-400">Pricing</span>
               </h2>
               <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                Pick what fits your situation. Every booking is paid in advance - no free chats, no surprises.
+                Pick what fits your situation. Clear pricing, paid in advance - no surprises.
               </p>
             </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto">
@@ -895,7 +924,7 @@ export default function Home() {
                 Book a <span className="text-violet-600 dark:text-violet-400">Problem Review</span>
               </h2>
               <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                All reviews are booked and paid in advance - pick a time, pay via eSewa/Khalti, and we talk. No free chats, no waiting.
+                All reviews are booked and paid in advance - pick a time, pay via eSewa/Khalti, and we talk. No waiting, no back-and-forth.
               </p>
             </div>
 
@@ -950,7 +979,7 @@ export default function Home() {
                   </div>
                   <h3 className="text-2xl font-bold mb-2">Skip the form - book directly</h3>
                   <p className="text-muted-foreground text-sm leading-relaxed mb-5 max-w-md mx-auto">
-                    I don&apos;t do free chats or free advice. Every case review is booked and paid in advance: you get my full focused time, and a straight answer.
+                    The free tools and guides on this page are yours to use anytime. If you want me personally on your case, book a review: you get my full focused time, and a straight answer.
                   </p>
                   <div className="flex flex-wrap justify-center gap-2 mb-6">
                     {['Rs. 2,000 review', 'Rs. 3,000 health check', 'Rs. 3,500 monetization'].map(tag => (
