@@ -86,7 +86,7 @@ export default function Home() {
       <main id="main-content">
 
         {/* ─── HERO ─── */}
-        <section id="hero" className="relative min-h-[92svh] flex items-center pt-24 pb-14 overflow-hidden">
+        <section id="hero" className="relative min-h-[92svh] flex items-center pt-24 pb-14 md:pt-28 md:pb-16 overflow-hidden">
           {/* Aurora background */}
           <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
             <div className="animate-blob absolute -top-24 -left-24 w-[38rem] h-[38rem] bg-violet-600/10 dark:bg-violet-600/20 rounded-full blur-[130px]" />
@@ -98,7 +98,7 @@ export default function Home() {
           <div className="container mx-auto px-4 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
               <div className="animate-fade-in-up">
-                <div className="inline-flex items-center gap-2.5 mb-5 px-4 py-2 rounded-full border border-violet-500/25 bg-white/60 dark:bg-white/5 backdrop-blur-xl shadow-lg shadow-violet-500/10">
+                <div className="inline-flex items-center gap-2.5 mb-5 md:mb-7 px-4 py-2 rounded-full border border-violet-500/25 bg-white/60 dark:bg-white/5 backdrop-blur-xl shadow-lg shadow-violet-500/10">
                   <span className="relative flex h-2.5 w-2.5">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
@@ -106,7 +106,7 @@ export default function Home() {
                   <span className="text-sm font-semibold">Available now · replies within 24 hours</span>
                 </div>
 
-                <h1 className="font-[Sora] text-[2.6rem] leading-[1.04] sm:text-6xl lg:text-7xl xl:text-[5.1rem] font-bold mb-5 tracking-tight min-h-[6rem] sm:min-h-[7.75rem] lg:min-h-[9.25rem] xl:min-h-[10.5rem]">
+                <h1 className="font-[Sora] text-[2.6rem] leading-[1.04] sm:text-6xl lg:text-7xl xl:text-[5.1rem] font-bold mb-5 md:mb-6 tracking-tight min-h-[6rem] sm:min-h-[7.75rem] lg:min-h-[9.25rem] xl:min-h-[10.5rem]">
                   <span key={heroPi} className="animate-fade-in-up inline-block">{heroProblems[heroPi]}</span><br />
                   <span className="animate-gradient bg-gradient-to-r from-violet-600 via-indigo-600 to-fuchsia-600 dark:from-violet-400 dark:via-indigo-400 dark:to-fuchsia-400 bg-clip-text text-transparent">I&apos;ll fix it.</span>
                 </h1>
