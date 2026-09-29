@@ -58,6 +58,7 @@ export default function Booking() {
   const [shotName, setShotName] = useState('');
   const [qrOk, setQrOk] = useState(true);
   const [error, setError] = useState('');
+  const [agreed, setAgreed] = useState(false);
 
   const search = useSearch();
   const svc = services[new URLSearchParams(search).get('service') || ''] || defaultService;
@@ -321,7 +322,11 @@ Payment: ${svc.fee} paid via eSewa/Khalti (screenshot attached)`;
                   <span className="text-muted-foreground">{details}</span>
                 </div>
               </div>
-              <button onClick={confirmBooking}
+              <label className="flex items-start gap-3 cursor-pointer rounded-xl border border-border p-4 hover:border-violet-500/40 transition-colors mb-4">
+                <input type="checkbox" checked={agreed} onChange={e => setAgreed(e.target.checked)} className="mt-1 w-4 h-4 accent-violet-600" />
+                <span className="text-sm">I understand the <strong>{svc.fee}</strong> is for the case review and honest diagnosis — <strong>not</strong> a guaranteed recovery.</span>
+              </label>
+              <button onClick={() => { if (!agreed) { setError('Please tick the agreement above to continue.'); return; } confirmBooking(); }}
                 className="btn-gradient w-full inline-flex items-center justify-center gap-2 text-lg !py-4">
                 <CalendarCheck size={20} /> Confirm booking on WhatsApp
               </button>
