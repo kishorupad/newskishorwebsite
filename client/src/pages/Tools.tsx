@@ -56,7 +56,7 @@ function analyze(pw: string) {
   if (isCommon || wordNumPattern) {
     score = Math.min(score, 15);
     feedback.unshift(isCommon
-      ? 'This password (or its pattern) is in every hacker\'s list - never use it'
+      ? 'This password (or its pattern) is in every hacker\'s list - try 5 random words joined together instead'
       : 'Word + numbers is the most hacked pattern - hackers try this first');
   } else {
     score += 25;
@@ -107,6 +107,19 @@ function genPassword(len: number, upper: boolean, lower: boolean, digits: boolea
   return Array.from(buf, b => chars[b % chars.length]).join('');
 }
 
+const WORDS = ('apple river mountain tiger cloud paper stone fire water wind tree star moon sun fish bird horse book pen door light green blue red happy brave quick smart strong ' +
+  'himal khola badal kagaj simal tarara ujyalo phool paat pani aago hawa danda bensi goreto chautari pipal kafal godavari koshi gandaki bagmati ' +
+  'himal khola badal kagaj simal tarara ujyalo phool paat pani aago hawa danda bensi goreto chautari pipal kafal godavari koshi gandaki bagmati ' +
+  'sagar nadi pokhari himali pahad jungle bagh hatti ghodha chara bhuin aakash jamin mausam barsa ' +
+  'kalam kitab kursi table jhyal dhoka batti rato nilo hariyo seto kalo mitho').split(' ');
+function genPassphrase(n = 5) {
+  const buf = new Uint32Array(n);
+  crypto.getRandomValues(buf);
+  const words = Array.from(buf, b => WORDS[b % WORDS.length]);
+  const num = Math.floor(crypto.getRandomValues(new Uint32Array(1))[0] % 90) + 10;
+  return words.join('-') + '-' + num;
+}
+
 export default function Tools() {
   const [pw, setPw] = useState('');
   const [show, setShow] = useState(false);
@@ -130,6 +143,7 @@ export default function Tools() {
   const [lower, setLower] = useState(true);
   const [digits, setDigits] = useState(true);
   const [symbols, setSymbols] = useState(true);
+  const [genMode, setGenMode] = useState<'random' | 'words'>('random');
   const [generated, setGenerated] = useState(() => genPassword(16, true, true, true, true));
   const [copied, setCopied] = useState(false);
 
@@ -246,7 +260,17 @@ export default function Tools() {
           <h2 className="text-xl font-bold mb-1 flex items-center gap-2">
             <RefreshCw size={20} className="text-violet-600 dark:text-violet-400" /> Strong Password Generator
           </h2>
-          <p className="text-sm text-muted-foreground mb-5">One click. Unhackable. Copy it into a password manager.</p>
+          <p className="text-sm text-muted-foreground mb-4">One click. Unhackable. Copy it into a password manager.</p>
+          <div className="flex gap-2 mb-5">
+            <button onClick={() => { setGenMode('random'); setGenerated(genPassword(len, upper, lower, digits, symbols)); }}
+              className={`flex-1 px-4 py-2.5 rounded-xl text-sm font-semibold border transition-all ${genMode === 'random' ? 'bg-violet-500/10 border-violet-500/40 text-violet-700 dark:text-violet-300' : 'border-border text-muted-foreground'}`}>
+              Random (strongest)
+            </button>
+            <button onClick={() => { setGenMode('words'); setGenerated(genPassphrase()); }}
+              className={`flex-1 px-4 py-2.5 rounded-xl text-sm font-semibold border transition-all ${genMode === 'words' ? 'bg-violet-500/10 border-violet-500/40 text-violet-700 dark:text-violet-300' : 'border-border text-muted-foreground'}`}>
+              5 words (easy to remember)
+            </button>
+          </div>
           <div className="flex items-center gap-3 rounded-2xl bg-muted/50 border border-border px-4 py-4 mb-5">
             <code className="flex-1 font-mono text-base md:text-lg break-all text-foreground">{generated}</code>
             <button onClick={copy}
@@ -254,6 +278,7 @@ export default function Tools() {
               {copied ? <><Check size={14} /> Copied</> : <><Copy size={14} /> Copy</>}
             </button>
           </div>
+          {genMode === 'random' && (<>
           <div className="mb-5">
             <div className="flex justify-between text-sm mb-2">
               <span className="font-medium">Length: <strong>{len}</strong></span>
@@ -271,9 +296,15 @@ export default function Tools() {
               </button>
             ))}
           </div>
-          <button onClick={() => setGenerated(genPassword(len, upper, lower, digits, symbols))}
+          </>)}
+          {genMode === 'words' && (
+            <p className="text-sm text-muted-foreground mb-5 leading-relaxed">
+              5 random words + a number: <strong className="text-foreground">easy to remember, hard to crack.</strong> Say it out loud twice - you'll remember it.
+            </p>
+          )}
+          <button onClick={() => setGenerated(genMode === 'words' ? genPassphrase() : genPassword(len, upper, lower, digits, symbols))}
             className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl border border-border font-semibold hover:bg-muted transition-colors">
-            <RefreshCw size={16} /> Generate new password
+            <RefreshCw size={16} /> Generate new {genMode === 'words' ? 'passphrase' : 'password'}
           </button>
         </div>
 
