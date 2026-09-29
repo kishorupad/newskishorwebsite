@@ -1,7 +1,7 @@
 import { useState, useMemo, useEffect } from 'react';
 import {
   KeyRound, ShieldCheck, ShieldAlert, ShieldX, Copy, Check,
-  RefreshCw, ArrowLeft, Lock,
+  RefreshCw, ArrowLeft, Lock, CheckCircle2, XCircle,
 } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 
@@ -42,31 +42,44 @@ function analyze(pw: string) {
   const raw = pw.toLowerCase().replace(/[^a-z0-9]/g, '');
   const wordNumPattern = pw.length < 14 && (/[a-z]{4,}[0-9]{1,4}$/.test(raw) || /^[0-9]{1,4}[a-z]{4,}/.test(raw));
   const hasSeq = SEQS.some(s => norm.includes(s));
+  const hasRepeat = /(.)\1\1/.test(pw);
+  const hasLower = /[a-z]/.test(pw), hasUpper = /[A-Z]/.test(pw);
+  const hasDigit = /\d/.test(pw), hasSymbol = /[^a-zA-Z0-9]/.test(pw);
+
   if (pw.length >= 16) score += 30;
   else if (pw.length >= 12) score += 25;
-  else if (pw.length >= 8) { score += 12; feedback.push('Use at least 12 characters'); }
-  else if (pw.length > 0) { score += 4; feedback.push('Too short - use at least 12 characters'); }
-  if (/[a-z]/.test(pw) && /[A-Z]/.test(pw)) score += 20; else if (pw) feedback.push('Mix UPPER and lower case');
-  if (/\d/.test(pw)) score += 15; else if (pw) feedback.push('Add some numbers');
-  if (/[^a-zA-Z0-9]/.test(pw)) score += 15; else if (pw) feedback.push('Add symbols like ! @ # $');
+  else if (pw.length >= 8) { score += 12; feedback.push('Good length - 12+ is even better'); }
+  else if (pw.length > 0) { score += 4; feedback.push('Use at least 8 characters'); }
+  if (hasLower && hasUpper) score += 15; else if (pw) feedback.push('Mix UPPER and lower case');
+  if (hasDigit) score += 15; else if (pw) feedback.push('Add some numbers');
+  if (hasSymbol) score += 15; else if (pw) feedback.push('Add symbols like ! @ # $');
   if (isCommon || wordNumPattern) {
     score = Math.min(score, 15);
     feedback.unshift(isCommon
       ? 'This password (or its pattern) is in every hacker\'s list - never use it'
       : 'Word + numbers is the most hacked pattern - hackers try this first');
   } else {
-    score += 20;
+    score += 25;
   }
   if (hasSeq) { score = Math.max(0, score - 10); feedback.push('Avoid sequences like 123 or abc'); }
-  if (/(.)\1\1/.test(pw)) { score = Math.max(0, score - 10); feedback.push('Avoid repeated characters like "aaa"'); }
+  if (hasRepeat) { score = Math.max(0, score - 10); feedback.push('Avoid repeated characters like "aaa"'); }
   score = Math.max(0, Math.min(100, score));
   const label = !pw ? 'Type a password' : score >= 80 ? 'Very strong' : score >= 60 ? 'Strong' : score >= 40 ? 'Fair' : 'Weak';
+  const criteria = [
+    { label: 'At least 8 characters', pass: pw.length >= 8 },
+    { label: 'Uppercase + lowercase', pass: hasLower && hasUpper },
+    { label: 'Numbers', pass: hasDigit },
+    { label: 'Symbols (!@#$)', pass: hasSymbol },
+    { label: 'Not a common password', pass: !isCommon },
+    { label: 'No word+number pattern', pass: !wordNumPattern },
+    { label: 'No 123/abc sequences or aaa repeats', pass: !hasSeq && !hasRepeat },
+  ];
   // rough crack-time estimate from charset size
   let charset = 0;
-  if (/[a-z]/.test(pw)) charset += 26;
-  if (/[A-Z]/.test(pw)) charset += 26;
-  if (/\d/.test(pw)) charset += 10;
-  if (/[^a-zA-Z0-9]/.test(pw)) charset += 32;
+  if (hasLower || hasUpper) charset += 26;
+  if (hasLower && hasUpper) charset += 26;
+  if (hasDigit) charset += 10;
+  if (hasSymbol) charset += 32;
   const combos = Math.pow(charset, pw.length);
   const secs = combos / 1e10; // 10B guesses/sec
   let crack: string;
@@ -78,7 +91,7 @@ function analyze(pw: string) {
   else if (secs < 31536000) crack = `${Math.round(secs / 86400)} days`;
   else if (secs < 31536000 * 100) crack = `${Math.round(secs / 31536000)} years`;
   else crack = 'centuries';
-  return { score, label, feedback: feedback.slice(0, 3), crack };
+  return { score, label, feedback: feedback.slice(0, 3), crack, criteria };
 }
 
 function genPassword(len: number, upper: boolean, lower: boolean, digits: boolean, symbols: boolean) {
@@ -179,6 +192,19 @@ export default function Tools() {
               </div>
               <div className="h-2.5 rounded-full bg-muted overflow-hidden mb-4">
                 <div className={`h-full rounded-full transition-all duration-500 ${barColor}`} style={{ width: `${displayScore}%` }} />
+              </div>
+              <div className="mb-4">
+                <p className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2">Strong password checklist</p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
+                  {result.criteria.map(c => (
+                    <div key={c.label} className="flex items-center gap-2 text-sm">
+                      {c.pass
+                        ? <CheckCircle2 size={15} className="text-emerald-500 shrink-0" />
+                        : <XCircle size={15} className="text-red-500 shrink-0" />}
+                      <span className={c.pass ? 'text-foreground' : 'text-muted-foreground'}>{c.label}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
               {result.feedback.length > 0 && (
                 <ul className="space-y-1.5">
