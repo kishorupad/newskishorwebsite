@@ -92,11 +92,7 @@ Payment: ${PRICE} paid via eSewa/Khalti (screenshot attached)`;
               20 steps to lock your Facebook, Instagram, YouTube &amp; TikTok,
               everything I tell my paid 1-on-1 clients, in one checklist.
             </p>
-            <div className="flex items-center gap-3">
-              <span className="text-3xl font-bold">{PRICE}</span>
-              <span className="text-violet-200 text-sm line-through">Rs. 999</span>
-              <span className="px-2 py-0.5 rounded-md bg-white text-violet-700 text-xs font-bold">LAUNCH PRICE</span>
-            </div>
+            
           </div>
           <div className="p-6 bg-card">
             <p className="text-sm font-semibold mb-3">What&apos;s inside:</p>

@@ -874,8 +874,6 @@ export default function Home() {
                   <p className="text-violet-100 text-sm">20 steps to lock your accounts before hackers lock you out - the same steps I give my paid clients.</p>
                 </div>
                 <div className="shrink-0 text-left md:text-right">
-                  <p className="text-3xl font-bold">Rs. 499</p>
-                  <p className="text-violet-200 text-xs line-through mb-2">Rs. 999</p>
                   <span className="inline-flex items-center px-5 py-2.5 rounded-xl bg-white/20 text-white text-sm font-bold cursor-default">
                     Coming Soon
                   </span>
