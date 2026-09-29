@@ -89,9 +89,9 @@ export default function Home() {
         <section id="hero" className="relative min-h-[94vh] flex items-center pt-28 pb-16 overflow-hidden">
           {/* Aurora background */}
           <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-            <div className="animate-blob absolute -top-24 -left-24 w-[38rem] h-[38rem] bg-violet-600/20 dark:bg-violet-600/25 rounded-full blur-[130px]" />
-            <div className="animate-blob-slow absolute top-1/3 -right-28 w-[34rem] h-[34rem] bg-indigo-600/20 dark:bg-indigo-600/25 rounded-full blur-[130px]" />
-            <div className="animate-blob absolute bottom-0 left-1/3 w-[30rem] h-[30rem] bg-fuchsia-600/10 dark:bg-fuchsia-600/15 rounded-full blur-[130px]" />
+            <div className="animate-blob absolute -top-24 -left-24 w-[38rem] h-[38rem] bg-violet-600/10 dark:bg-violet-600/20 rounded-full blur-[130px]" />
+            <div className="animate-blob-slow absolute top-1/3 -right-28 w-[34rem] h-[34rem] bg-indigo-600/10 dark:bg-indigo-600/20 rounded-full blur-[130px]" />
+            <div className="animate-blob absolute bottom-0 left-1/3 w-[30rem] h-[30rem] bg-fuchsia-600/[0.06] dark:bg-fuchsia-600/[0.12] rounded-full blur-[130px]" />
             <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(128,128,128,0.07)_1px,transparent_1px),linear-gradient(to_bottom,rgba(128,128,128,0.07)_1px,transparent_1px)] bg-[size:54px_54px] [mask-image:radial-gradient(ellipse_75%_65%_at_50%_38%,black,transparent)]" />
           </div>
 
