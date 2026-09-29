@@ -5,20 +5,38 @@ import {
 } from 'lucide-react';
 import Navigation from '@/components/Navigation';
 
-const COMMON = ['password', '123456', '123456789', 'qwerty', 'abc123', 'password1', '12345678', '111111', '123123', 'admin', 'letmein', 'welcome', 'monkey', 'dragon', 'master', 'kathmandu', 'nepal123', 'ram123', 'hari123'];
+const COMMON = ['password', '123456', '123456789', 'qwerty', 'abc123', 'password1', '12345678', '111111', '123123', 'admin', 'letmein', 'welcome', 'monkey', 'dragon', 'master', 'kathmandu', 'kathmandu123', 'nepal', 'nepal123', 'everest', 'himalaya', 'pokhara', 'ram123', 'hari123', 'sita123', 'test123', 'user123', 'facebook', 'instagram', 'tiktok', 'youtube', 'iloveyou', 'superman', 'football', 'sunshine', 'princess'];
+const SEQS = ['012', '123', '234', '345', '456', '567', '678', '789', '890', 'abc', 'bcd', 'cde', 'def', 'qwe', 'asd'];
 
 function analyze(pw: string) {
   let score = 0;
   const feedback: string[] = [];
-  if (pw.length >= 12) score += 25;
+  // strip symbols so nepal@123 -> nepal123, p@ssw0rd -> pssw0rd etc.
+  const leetFirst = pw.toLowerCase().replace(/@/g, 'a').replace(/0/g, 'o').replace(/1/g, 'i').replace(/!/g, 'i').replace(/3/g, 'e').replace(/\$/g, 's');
+  const norm = leetFirst.replace(/[^a-z0-9]/g, '');
+  const isCommon = COMMON.some(c => norm === c || (c.length >= 4 && norm.includes(c)));
+  // structure check on digits-intact version, only for short passwords
+  // (long random passwords can end in letters+digits by chance)
+  const raw = pw.toLowerCase().replace(/[^a-z0-9]/g, '');
+  const wordNumPattern = pw.length < 14 && (/[a-z]{4,}[0-9]{1,4}$/.test(raw) || /^[0-9]{1,4}[a-z]{4,}/.test(raw));
+  const hasSeq = SEQS.some(s => norm.includes(s));
+  if (pw.length >= 16) score += 30;
+  else if (pw.length >= 12) score += 25;
   else if (pw.length >= 8) { score += 12; feedback.push('Use at least 12 characters'); }
   else if (pw.length > 0) { score += 4; feedback.push('Too short - use at least 12 characters'); }
   if (/[a-z]/.test(pw) && /[A-Z]/.test(pw)) score += 20; else if (pw) feedback.push('Mix UPPER and lower case');
   if (/\d/.test(pw)) score += 15; else if (pw) feedback.push('Add some numbers');
-  if (/[^a-zA-Z0-9]/.test(pw)) score += 20; else if (pw) feedback.push('Add symbols like ! @ # $');
-  if (!COMMON.some(c => pw.toLowerCase().includes(c))) score += 20;
-  else { score = Math.min(score, 20); feedback.push('This is a commonly hacked password - never use it'); }
-  if (/(.)\1\1/.test(pw)) { score -= 10; feedback.push('Avoid repeated characters like "aaa"'); }
+  if (/[^a-zA-Z0-9]/.test(pw)) score += 15; else if (pw) feedback.push('Add symbols like ! @ # $');
+  if (isCommon || wordNumPattern) {
+    score = Math.min(score, 15);
+    feedback.unshift(isCommon
+      ? 'This password (or its pattern) is in every hacker\'s list - never use it'
+      : 'Word + numbers is the most hacked pattern - hackers try this first');
+  } else {
+    score += 20;
+  }
+  if (hasSeq) { score = Math.max(0, score - 10); feedback.push('Avoid sequences like 123 or abc'); }
+  if (/(.)\1\1/.test(pw)) { score = Math.max(0, score - 10); feedback.push('Avoid repeated characters like "aaa"'); }
   score = Math.max(0, Math.min(100, score));
   const label = !pw ? 'Type a password' : score >= 80 ? 'Very strong' : score >= 60 ? 'Strong' : score >= 40 ? 'Fair' : 'Weak';
   // rough crack-time estimate from charset size
