@@ -145,9 +145,6 @@ export default function InstagramProof() {
           Watch the highlight on Instagram
           <ArrowRight size={14} />
         </a>
-        <p className="text-xs text-muted-foreground mt-2">
-          {highlights === null ? '' : `${highlights.length} documented recoveries - and counting`}
-        </p>
       </div>
 
       {/* Lightbox */}
