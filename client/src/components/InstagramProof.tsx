@@ -1,4 +1,5 @@
 import { Instagram, ExternalLink } from 'lucide-react';
+import { PROOF_HL1 } from '@/data/proofImages';
 
 const INSTAGRAM_URL = 'https://www.instagram.com/kishorupp';
 
@@ -7,7 +8,9 @@ const INSTAGRAM_URL = 'https://www.instagram.com/kishorupp';
 // client/public/proof/ (e.g. proof/highlight-1.jpg) and add an entry here:
 //   { src: '/proof/highlight-1.jpg', label: 'Hacked FB recovered' },
 // Keep labels short and factual - only what the screenshot actually shows.
-const highlights: { src: string; label: string }[] = [];
+const highlights: { src: string; label: string }[] = [
+  { src: PROOF_HL1, label: 'YouTube account recovered - KRIZN (47K subs)' },
+];
 
 export default function InstagramProof() {
   return (
